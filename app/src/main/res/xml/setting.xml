@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="pref_key_data_settings"
+        android:title="Acount Settings"
+        >
+
+        <Preference
+            android:key="change_password_key"
+            android:title="Change Password" />
+
+        <Preference
+            android:key="edit_key"
+            android:title="Edit profile" />
+        <Preference
+            android:key="logout_key"
+            android:title="Log Out" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="About"
+        android:key="pref_key_information_settings">
+
+        <Preference
+            android:key="feedback_key"
+            android:title="Feedback" />
+
+        <Preference
+            android:key="version_key"
+            android:title="Version"
+            />
+
+        <Preference
+            android:key="about_key"
+            android:title="About Us"
+            />
+        <Preference
+            android:key="tos_key"
+            android:title="Term and Consitions"
+            />
+        <Preference
+            android:key="privacypolicy_key"
+            android:title="Privacy Policy"
+            />
+        <Preference
+            android:key="contact_key"
+            android:title="Contact Us"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>

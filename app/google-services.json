@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "229371245947",
+    "firebase_url": "https://betterhalf-f52a7.firebaseio.com",
+    "project_id": "betterhalf-f52a7",
+    "storage_bucket": "betterhalf-f52a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229371245947:android:31a206443610384ff3f9de",
+        "android_client_info": {
+          "package_name": "com.dropoutsolutions.betterhalf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229371245947-2omfgomdmr0ooppp78ojhlf62kvph4hv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBslgbGNTDRiYccZvojuCzoCZMWDuGDUrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229371245947-2omfgomdmr0ooppp78ojhlf62kvph4hv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
