@@ -113,6 +113,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_gravity="center"
+                    android:id="@+id/profilesetting"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -142,6 +143,7 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30sp"
+                        android:id="@+id/editprofile"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:src="@drawable/ic_mode_edit_black_24dp"

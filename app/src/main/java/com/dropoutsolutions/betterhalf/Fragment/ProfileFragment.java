@@ -127,7 +127,8 @@ public class ProfileFragment extends Fragment {
 
                             downloadurl = uri.toString();
                             HashMap<String, Object> user = new HashMap<>();
-                            user.put("Profile Image" , downloadurl);
+                            user.put("ProfileImage" , downloadurl);
+                            user.put("Status" , "e");
                             userref.updateChildren(user).addOnCompleteListener(task -> {
                                 if (task.isSuccessful())
                                 {

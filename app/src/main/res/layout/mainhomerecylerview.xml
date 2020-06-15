@@ -62,6 +62,7 @@
         app:layout_constraintStart_toStartOf="@id/profession"
         app:layout_constraintEnd_toEndOf="@id/profession"
         android:textColor="#ffffff"
+        android:id="@+id/country"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="200dp"
         android:textSize="22sp"
