@@ -27,31 +27,42 @@ public class ReligionActivity extends AppCompatActivity {
         verypractising.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                verypractising.setPadding(20 , 10 , 20 , 10);
+                verypractising.setPadding(20, 10, 20, 10);
                 verypractising.setBackgroundResource(R.drawable.edittextback);
                 practising.setBackgroundResource(R.drawable.resetbackground);
                 modepractsing.setBackgroundResource(R.drawable.resetbackground);
                 notpractising.setBackgroundResource(R.drawable.resetbackground);
                 Handler mainLooperHandler = new Handler(Looper.getMainLooper());
 
-                mainLooperHandler.postDelayed(() ->
-                        startActivity(new Intent(ReligionActivity.this , PrayActivity.class)), 1000);
+                mainLooperHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
+                    }
+                }, 1000);
             }
         });
 
         practising.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                practising.setPadding(20 , 10 , 20 , 10);
+                practising.setPadding(20, 10, 20, 10);
                 practising.setBackgroundResource(R.drawable.edittextback);
                 verypractising.setBackgroundResource(R.drawable.resetbackground);
                 modepractsing.setBackgroundResource(R.drawable.resetbackground);
                 notpractising.setBackgroundResource(R.drawable.resetbackground);
                 Handler mainLooperHandler = new Handler(Looper.getMainLooper());
 
-                mainLooperHandler.postDelayed(() ->
-                        startActivity(new Intent(ReligionActivity.this , PrayActivity.class)), 1000);
+                mainLooperHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(ReligionActivity.this , PrayActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                    }
+                }, 1000);
             }
         });
 
@@ -65,8 +76,14 @@ public class ReligionActivity extends AppCompatActivity {
                 notpractising.setBackgroundResource(R.drawable.resetbackground);
                 Handler mainLooperHandler = new Handler(Looper.getMainLooper());
 
-                mainLooperHandler.postDelayed(() ->
-                        startActivity(new Intent(ReligionActivity.this , PrayActivity.class)), 1000);
+                mainLooperHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(ReligionActivity.this , PrayActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                    }
+                }, 1000);
             }
         });
 
@@ -80,9 +97,20 @@ public class ReligionActivity extends AppCompatActivity {
                 modepractsing.setBackgroundResource(R.drawable.resetbackground);
                 Handler mainLooperHandler = new Handler(Looper.getMainLooper());
 
-                mainLooperHandler.postDelayed(() ->
-                        startActivity(new Intent(ReligionActivity.this , PrayActivity.class)), 1000);
+                mainLooperHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(ReligionActivity.this , PrayActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                    }
+                }, 1000);
             }
         });
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

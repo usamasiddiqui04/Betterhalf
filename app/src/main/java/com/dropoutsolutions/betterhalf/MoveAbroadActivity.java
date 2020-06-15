@@ -33,6 +33,7 @@ public class MoveAbroadActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         startActivity(new Intent(MoveAbroadActivity.this , ConvertActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                     }
                 }, 1000);
@@ -51,10 +52,16 @@ public class MoveAbroadActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         startActivity(new Intent(MoveAbroadActivity.this , ConvertActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                     }
                 }, 1000);
             }
         });
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

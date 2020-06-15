@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConvertActivity"></activity>
+        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".ConvertActivity" />
         <activity android:name=".MoveAbroadActivity" />
         <activity android:name=".ChildernActivity" />
         <activity android:name=".DrinkActivity" />

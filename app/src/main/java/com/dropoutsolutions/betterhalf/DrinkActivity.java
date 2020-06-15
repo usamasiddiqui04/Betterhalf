@@ -32,6 +32,7 @@ public class DrinkActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         startActivity(new Intent(DrinkActivity.this , ChildernActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                     }
                 }, 1000);
@@ -50,10 +51,16 @@ public class DrinkActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         startActivity(new Intent(DrinkActivity.this , ChildernActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                     }
                 }, 1000);
             }
         });
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

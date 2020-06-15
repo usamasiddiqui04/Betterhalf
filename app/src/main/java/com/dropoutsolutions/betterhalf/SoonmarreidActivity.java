@@ -28,16 +28,21 @@ public class SoonmarreidActivity extends AppCompatActivity {
         asap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                asap.setPadding(20 , 10 , 20 , 10);
+                asap.setPadding(20, 10, 20, 10);
                 asap.setBackgroundResource(R.drawable.edittextback);
                 one.setBackgroundResource(R.drawable.resetbackground);
                 three.setBackgroundResource(R.drawable.resetbackground);
                 four.setBackgroundResource(R.drawable.resetbackground);
                 Handler mainLooperHandler = new Handler(Looper.getMainLooper());
 
-                mainLooperHandler.postDelayed(() ->
-                        startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class)), 1000);
+                mainLooperHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
+                    }
+                }, 1000);
             }
         });
 
@@ -51,9 +56,14 @@ public class SoonmarreidActivity extends AppCompatActivity {
                 four.setBackgroundResource(R.drawable.resetbackground);
                 Handler mainLooperHandler = new Handler(Looper.getMainLooper());
 
-                mainLooperHandler.postDelayed(() ->
-                        startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class)), 1000);
+                mainLooperHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
+                    }
+                }, 1000);
             }
         });
 
@@ -67,9 +77,14 @@ public class SoonmarreidActivity extends AppCompatActivity {
                 four.setBackgroundResource(R.drawable.resetbackground);
                 Handler mainLooperHandler = new Handler(Looper.getMainLooper());
 
-                mainLooperHandler.postDelayed(() ->
-                        startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class)), 1000);
+                mainLooperHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
+                    }
+                }, 1000);
             }
         });
 
@@ -83,10 +98,20 @@ public class SoonmarreidActivity extends AppCompatActivity {
                 three.setBackgroundResource(R.drawable.resetbackground);
                 Handler mainLooperHandler = new Handler(Looper.getMainLooper());
 
-                mainLooperHandler.postDelayed(() ->
-                        startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class)), 1000);
+                mainLooperHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
+                    }
+                }, 1000);
             }
         });
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
