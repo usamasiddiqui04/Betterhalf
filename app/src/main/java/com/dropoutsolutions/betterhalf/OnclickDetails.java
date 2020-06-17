@@ -69,78 +69,78 @@ public class OnclickDetails extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String Name = (String) dataSnapshot.child("Name").getValue();
-                    String Profession = (String) dataSnapshot.child("Profession").getValue();
-                    String Age = (String) dataSnapshot.child("DateOfBirth").getValue();
-                    String Count = (String) dataSnapshot.child("Country").getValue();
-                    String Image = (String) dataSnapshot.child("ProfileImage").getValue();
-                    String Mstatus = (String) dataSnapshot.child("MaritalStatus").getValue();
-                    String Countryname = (String) dataSnapshot.child("Country").getValue();
-                    String longstatus = (String) dataSnapshot.child("AboutDetails").getValue();
-                    String Education = (String) dataSnapshot.child("EducationLevel").getValue();
-                    String Prcatising = (String) dataSnapshot.child("Religious").getValue();
-                    String Prayer = (String) dataSnapshot.child("Prayer").getValue();
-                    String Eathalal = (String) dataSnapshot.child("EatHalal").getValue();
-                    String Drink = (String) dataSnapshot.child("Drink").getValue();
-                    String Smoke = (String) dataSnapshot.child("Smoke").getValue();
-                    String Soon = (String) dataSnapshot.child("SoonMarried").getValue();
-                    String Abroad = (String) dataSnapshot.child("MoveToAbroad").getValue();
-
-                    mstatus.setText(Mstatus);
-                    countryname.setText(Countryname);
-                    education.setText(Education);
-                    profession.setText(Profession);
-                    statuslong.setText(longstatus);
-                    practising.setText(Prcatising);
-                    paryer.setText(Prayer);
-                    eathalal.setText(Eathalal);
-                    if (Drink.equals("Yes"))
+                    if (dataSnapshot.hasChild("AboutDetails"))
                     {
-                        drink.setText("Drink Alcohol");
+                        String Name = (String) dataSnapshot.child("Name").getValue();
+                        String Profession = (String) dataSnapshot.child("Profession").getValue();
+                        String Age = (String) dataSnapshot.child("DateOfBirth").getValue();
+                        String Count = (String) dataSnapshot.child("Country").getValue();
+                        String Image = (String) dataSnapshot.child("ProfileImage").getValue();
+                        String Mstatus = (String) dataSnapshot.child("MaritalStatus").getValue();
+                        String Countryname = (String) dataSnapshot.child("Country").getValue();
+                        String longstatus = (String) dataSnapshot.child("AboutDetails").getValue();
+                        String Education = (String) dataSnapshot.child("EducationLevel").getValue();
+                        String Prcatising = (String) dataSnapshot.child("Religious").getValue();
+                        String Prayer = (String) dataSnapshot.child("Prayer").getValue();
+                        String Eathalal = (String) dataSnapshot.child("EatHalal").getValue();
+                        String Drink = (String) dataSnapshot.child("Drink").getValue();
+                        String Smoke = (String) dataSnapshot.child("Smoke").getValue();
+                        String Soon = (String) dataSnapshot.child("SoonMarried").getValue();
+                        String Abroad = (String) dataSnapshot.child("MoveToAbroad").getValue();
+
+                        mstatus.setText(Mstatus);
+                        countryname.setText(Countryname);
+                        education.setText(Education);
+                        profession.setText(Profession);
+                        statuslong.setText(longstatus);
+                        practising.setText(Prcatising);
+                        paryer.setText(Prayer);
+                        eathalal.setText(Eathalal);
+                        if (Drink.equals("Yes"))
+                        {
+                            drink.setText("Drink Alcohol");
+                        }
+                        else
+                        {
+                            drink.setText("Don't Drink Alcohol");
+                        }
+
+                        if (Smoke.equals("Yes"))
+                        {
+                            smoke.setText("Smoke");
+                        }
+                        else
+                        {
+                            smoke.setText("Does't smoke");
+                        }
+
+                        if (Soon.equals("As soon as possible"))
+                        {
+                            soon.setText("Seeking marriage " + Soon);
+                        }
+                        else if (Soon.equals("1-2 years"))
+                        {
+                            soon.setText("Seeking marriage with in " + Soon);
+                        }
+                        else if (Soon.equals("3-4 years"))
+                        {
+                            soon.setText("Seeking marriage with in " + Soon);
+                        }
+                        else
+                            soon.setText("Seeking marriage with in " + Soon);
+
+                        if (Abroad.equals("Yes"))
+                            abroad.setText("Will move abroad");
+                        else
+                            abroad.setText("Will not move abroad");
+
+                        Glide.with(getApplicationContext()).load(Image).into(imageview);
+                        name.setText(Name);
+                        profession.setText(Profession);
+                        dob.setText(Age);
+                        country.setText(Count);
                     }
-                    else
-                    {
-                        drink.setText("Don't Drink Alcohol");
-                    }
 
-                    if (Smoke.equals("Yes"))
-                    {
-                        smoke.setText("Smoke");
-                    }
-                    else
-                    {
-                        smoke.setText("Does't smoke");
-                    }
-
-                    if (Soon.equals("As soon as possible"))
-                    {
-                        soon.setText("Seeking marriage " + Soon);
-                    }
-                    else if (Soon.equals("1-2 years"))
-                    {
-                        soon.setText("Seeking marriage with in " + Soon);
-                    }
-                    else if (Soon.equals("3-4 years"))
-                    {
-                        soon.setText("Seeking marriage with in " + Soon);
-                    }
-                    else
-                        soon.setText("Seeking marriage with in " + Soon);
-
-                    if (Abroad.equals("Yes"))
-                        abroad.setText("Will move abroad");
-                    else
-                        abroad.setText("Will not move abroad");
-
-
-
-
-
-                    Glide.with(getApplicationContext()).load(Image).into(imageview);
-                    name.setText(Name);
-                    profession.setText(Profession);
-                    dob.setText(Age);
-                    country.setText(Count);
 
                 }
             }

@@ -109,6 +109,7 @@ public class HomeFragment extends Fragment {
                                 userViewHOlder.roundedImageView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
+
                                         Intent intent = new Intent(getContext() , OnclickDetails.class);
                                         intent.putExtra("Userid" , postid);
                                         startActivity(intent);
@@ -124,6 +125,7 @@ public class HomeFragment extends Fragment {
                                     userViewHOlder.messageimage.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
+
                                             Intent intent = new Intent(getContext() , ChatActivity.class);
                                             intent.putExtra("Userid" , postid);
                                             startActivity(intent);
