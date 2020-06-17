@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/blue"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="7dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/colorPrimary"
+        android:id="@+id/recieverimage"
+        android:src="@drawable/ic_person"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/recievermessage"
+        android:layout_margin="7dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/recieverimage"
+        android:layout_toRightOf="@id/recieverimage"
+        android:background="@drawable/recievermessagelayout"
+        android:text="Receiver Message"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_marginEnd="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="7dp"
+        android:id="@+id/sendermessage"
+        android:layout_marginTop="2dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/recieverimage"
+        android:background="@drawable/sendermessagelayout"
+        android:text="Sender message"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_alignParentRight="true" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/sender_imageview"
+        app:riv_border_color="@color/colorPrimary"
+        app:riv_border_width="1dp"
+        app:riv_corner_radius="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="7dp"
+        android:padding="10dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="7dp"
+        android:layout_alignParentEnd="true" />
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/recievr_imageview"
+        app:riv_border_color="@color/colorPrimary"
+        app:riv_corner_radius="10dp"
+        app:riv_border_width="1dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="60dp"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="60dp"
+        android:padding="10dp"
+        android:layout_alignParentLeft="true" />
+
+
+
+
+
+</RelativeLayout>

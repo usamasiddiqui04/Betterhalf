@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity  {
 
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.nav_host_fragment, fragment)
+                .replace(R.id.nav_host_fragment, fragment).addToBackStack(null)
                 .commit();
     }
 
@@ -94,5 +94,14 @@ public class HomeActivity extends AppCompatActivity  {
     private void gotosetupactitvity() {
         Intent intent = new Intent(HomeActivity.this , Continue.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }

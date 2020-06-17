@@ -16,11 +16,14 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dropoutsolutions.betterhalf.Adaptor.HomeitemAdapter;
+import com.dropoutsolutions.betterhalf.ChatActivity;
 import com.dropoutsolutions.betterhalf.Continue;
 import com.dropoutsolutions.betterhalf.HomeActivity;
+import com.dropoutsolutions.betterhalf.OnclickDetails;
 import com.dropoutsolutions.betterhalf.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -32,6 +35,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -41,6 +46,7 @@ public class HomeFragment extends Fragment {
     private View view ;
     private DatabaseReference userref ;
     private FirebaseAuth mAuth ;
+    String currentuserid;
     public HomeFragment() {
     }
     @Override
@@ -49,6 +55,7 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.recyclerview);
         mAuth = FirebaseAuth.getInstance();
+        currentuserid = mAuth.getCurrentUser().getUid();
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -75,23 +82,73 @@ public class HomeFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists())
                         {
-                            String name = (String) dataSnapshot.child("Name").getValue();
-                            String Profession = (String) dataSnapshot.child("Profession").getValue();
-                            String Age = (String) dataSnapshot.child("DateOfBirth").getValue();
-//                            if (dataSnapshot.hasChild("Status"))
-//                            {
-//                                String status = dataSnapshot.child("Status").getValue().toString() ;
-//                                if (status.equals("d"))
-//                                {
-//                                    startActivity(new Intent(getContext() , Continue.class));
-//                                }
-//
-//                            }
-                            String Image = (String) dataSnapshot.child("ProfileImage").getValue();
-                            Glide.with(getActivity()).load(Image).into(userViewHOlder.roundedImageView);
-                            userViewHOlder.name.setText(name);
-                            userViewHOlder.age.setText(Age);
-                            userViewHOlder.profession.setText(Profession);
+                            if (isAdded())
+                            {
+                                String name = (String) dataSnapshot.child("Name").getValue();
+                                String Profession = (String) dataSnapshot.child("Profession").getValue();
+                                String Age = (String) dataSnapshot.child("DateOfBirth").getValue();
+                                String count = (String) dataSnapshot.child("Country").getValue();
+
+
+                                if (dataSnapshot.hasChild("Status"))
+                                {
+                                    String status = dataSnapshot.child("Status").getValue().toString() ;
+                                    if (status.equals("d"))
+                                    {
+                                        startActivity(new Intent(getContext() , Continue.class));
+                                    }
+
+                                }
+                                String Image = (String) dataSnapshot.child("ProfileImage").getValue();
+                                Glide.with(getContext()).load(Image).into(userViewHOlder.roundedImageView);
+                                userViewHOlder.name.setText(name);
+                                userViewHOlder.age.setText(Age);
+                                userViewHOlder.profession.setText(Profession);
+                                userViewHOlder.country.setText(count);
+
+                                userViewHOlder.roundedImageView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(getContext() , OnclickDetails.class);
+                                        intent.putExtra("Userid" , postid);
+                                        startActivity(intent);
+                                    }
+                                });
+
+                                if (postid.equals(currentuserid))
+                                {
+                                    userViewHOlder.messageimage.setVisibility(View.GONE);
+                                }
+                                else
+                                {
+                                    userViewHOlder.messageimage.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(getContext() , ChatActivity.class);
+                                            intent.putExtra("Userid" , postid);
+                                            startActivity(intent);
+                                        }
+                                    });
+                                }
+
+                                if (postid.equals(currentuserid))
+                                {
+                                    userViewHOlder.fav.setVisibility(View.GONE);
+                                }
+                                else
+                                {
+                                    userViewHOlder.fav.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Toast.makeText(getActivity(),"Favourite", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+                                }
+
+
+                            }
+
                         }
                     }
                     @Override
@@ -116,12 +173,15 @@ public class HomeFragment extends Fragment {
     public static class UserViewHOlder extends RecyclerView.ViewHolder {
         private RoundedImageView roundedImageView ;
         private TextView name , age , profession , country ;
+        private CircleImageView messageimage  , fav;
         public UserViewHOlder(@NonNull View itemView) {
             super(itemView);
 
+            messageimage = itemView.findViewById(R.id.message);
             roundedImageView = itemView.findViewById(R.id.imageView);
             name = itemView.findViewById(R.id.name);
             age = itemView.findViewById(R.id.age);
+            fav = itemView.findViewById(R.id.fav);
             profession = itemView.findViewById(R.id.profession);
             country = itemView.findViewById(R.id.country);
         }

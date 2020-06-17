@@ -1,11 +1,13 @@
 package com.dropoutsolutions;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,15 +16,28 @@ import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
 import com.dropoutsolutions.betterhalf.R;
 import com.dropoutsolutions.betterhalf.ReligionActivity;
 import com.dropoutsolutions.betterhalf.SoonmarreidActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class PrayActivity extends AppCompatActivity {
 
     TextView  apray , upray , spray , npray ;
+    private FirebaseAuth mauth ;
+    private DatabaseReference userref ;
+    private String Currentuserid ;
+    long mlastclicktime = 0 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pray);
-
+        mauth = FirebaseAuth.getInstance() ;
+        Currentuserid = mauth.getCurrentUser().getUid();
+        userref = FirebaseDatabase.getInstance().getReference().child("Users").child(Currentuserid);
         apray = findViewById(R.id.apray);
         upray = findViewById(R.id.upray);
         spray = findViewById(R.id.spray);
@@ -31,42 +46,54 @@ public class PrayActivity extends AppCompatActivity {
         apray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
+                    return;
+                mlastclicktime = SystemClock.elapsedRealtime();
                 apray.setPadding(20 , 10 , 20 , 10);
                 apray.setBackgroundResource(R.drawable.edittextback);
                 spray.setBackgroundResource(R.drawable.resetbackground);
                 npray.setBackgroundResource(R.drawable.resetbackground);
                 upray.setBackgroundResource(R.drawable.resetbackground);
-                Handler mainLooperHandler = new Handler(Looper.getMainLooper());
-
-                mainLooperHandler.postDelayed(new Runnable() {
+                HashMap<String, Object> user = new HashMap<>();
+                user.put("Prayer" , apray.getText());
+                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void run() {
-                        startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        }
 
                     }
-                }, 1000);
+                });
             }
         });
 
         upray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
+                    return;
+                mlastclicktime = SystemClock.elapsedRealtime();
                 upray.setPadding(20, 10, 20, 10);
                 upray.setBackgroundResource(R.drawable.edittextback);
                 spray.setBackgroundResource(R.drawable.resetbackground);
                 npray.setBackgroundResource(R.drawable.resetbackground);
                 apray.setBackgroundResource(R.drawable.resetbackground);
-                Handler mainLooperHandler = new Handler(Looper.getMainLooper());
-
-                mainLooperHandler.postDelayed(new Runnable() {
+                HashMap<String, Object> user = new HashMap<>();
+                user.put("Prayer" , upray.getText());
+                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void run() {
-                        startActivity(new Intent(PrayActivity.this, SoonmarreidActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        }
 
                     }
-                }, 1000);
+                });
             }
         });
 
@@ -74,42 +101,55 @@ public class PrayActivity extends AppCompatActivity {
         spray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
+                    return;
+                mlastclicktime = SystemClock.elapsedRealtime();
                 spray.setPadding(20, 10, 20, 10);
                 spray.setBackgroundResource(R.drawable.edittextback);
                 upray.setBackgroundResource(R.drawable.resetbackground);
                 npray.setBackgroundResource(R.drawable.resetbackground);
                 apray.setBackgroundResource(R.drawable.resetbackground);
-                Handler mainLooperHandler = new Handler(Looper.getMainLooper());
-
-                mainLooperHandler.postDelayed(new Runnable() {
+                HashMap<String, Object> user = new HashMap<>();
+                user.put("Prayer" , spray.getText());
+                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void run() {
-                        startActivity(new Intent(PrayActivity.this, SoonmarreidActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        }
 
                     }
-                }, 1000);
+                });
             }
         });
 
         npray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
+                    return;
+                mlastclicktime = SystemClock.elapsedRealtime();
                 npray.setPadding(20, 10, 20, 10);
                 npray.setBackgroundResource(R.drawable.edittextback);
                 upray.setBackgroundResource(R.drawable.resetbackground);
                 spray.setBackgroundResource(R.drawable.resetbackground);
                 apray.setBackgroundResource(R.drawable.resetbackground);
-                Handler mainLooperHandler = new Handler(Looper.getMainLooper());
-
-                mainLooperHandler.postDelayed(new Runnable() {
+                HashMap<String, Object> user = new HashMap<>();
+                user.put("Prayer" , npray.getText());
+                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void run() {
-                        startActivity(new Intent(PrayActivity.this, SoonmarreidActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        }
 
                     }
-                }, 1000);
+                });
+
             }
         });
 
