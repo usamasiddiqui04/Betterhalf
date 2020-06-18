@@ -58,12 +58,13 @@ public class SoonmarreidActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -85,12 +86,13 @@ public class SoonmarreidActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -112,12 +114,13 @@ public class SoonmarreidActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -140,12 +143,13 @@ public class SoonmarreidActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

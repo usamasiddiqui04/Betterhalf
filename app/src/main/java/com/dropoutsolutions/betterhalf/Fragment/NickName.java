@@ -93,4 +93,6 @@ public class NickName extends Fragment {
         transaction.commit();
     }
 
+
+
 }

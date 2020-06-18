@@ -27,6 +27,8 @@ import com.dropoutsolutions.betterhalf.OnclickDetails;
 import com.dropoutsolutions.betterhalf.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +36,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.makeramen.roundedimageview.RoundedImageView;
+
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -46,6 +50,7 @@ public class HomeFragment extends Fragment {
     private View view ;
     private DatabaseReference userref ;
     private FirebaseAuth mAuth ;
+    private DatabaseReference favref ;
     String currentuserid;
     public HomeFragment() {
     }
@@ -57,6 +62,7 @@ public class HomeFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         currentuserid = mAuth.getCurrentUser().getUid();
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
+        favref = FirebaseDatabase.getInstance().getReference().child("Favourites");
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setNestedScrollingEnabled(false);
@@ -88,8 +94,6 @@ public class HomeFragment extends Fragment {
                                 String Profession = (String) dataSnapshot.child("Profession").getValue();
                                 String Age = (String) dataSnapshot.child("DateOfBirth").getValue();
                                 String count = (String) dataSnapshot.child("Country").getValue();
-
-
                                 if (dataSnapshot.hasChild("Status"))
                                 {
                                     String status = dataSnapshot.child("Status").getValue().toString() ;
@@ -143,6 +147,19 @@ public class HomeFragment extends Fragment {
                                         @Override
                                         public void onClick(View v) {
                                             Toast.makeText(getActivity(),"Favourite", Toast.LENGTH_SHORT).show();
+                                            HashMap hashMap = new HashMap();
+                                            hashMap.put("Like by" , currentuserid);
+                                            favref.child(currentuserid).child(postid).updateChildren(hashMap).addOnCompleteListener(
+                                                    new OnCompleteListener() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task task) {
+                                                            if (task.isSuccessful())
+                                                            {
+                                                                Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    }
+                                            );
                                         }
                                     });
 

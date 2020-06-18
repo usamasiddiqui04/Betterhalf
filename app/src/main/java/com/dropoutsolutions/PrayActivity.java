@@ -46,9 +46,6 @@ public class PrayActivity extends AppCompatActivity {
         apray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
-                mlastclicktime = SystemClock.elapsedRealtime();
                 apray.setPadding(20 , 10 , 20 , 10);
                 apray.setBackgroundResource(R.drawable.edittextback);
                 spray.setBackgroundResource(R.drawable.resetbackground);
@@ -61,20 +58,21 @@ public class PrayActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
+
                 });
+                startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         upray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
+
                 mlastclicktime = SystemClock.elapsedRealtime();
                 upray.setPadding(20, 10, 20, 10);
                 upray.setBackgroundResource(R.drawable.edittextback);
@@ -88,12 +86,13 @@ public class PrayActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -101,8 +100,7 @@ public class PrayActivity extends AppCompatActivity {
         spray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
+
                 mlastclicktime = SystemClock.elapsedRealtime();
                 spray.setPadding(20, 10, 20, 10);
                 spray.setBackgroundResource(R.drawable.edittextback);
@@ -116,20 +114,20 @@ public class PrayActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         npray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
+
                 mlastclicktime = SystemClock.elapsedRealtime();
                 npray.setPadding(20, 10, 20, 10);
                 npray.setBackgroundResource(R.drawable.edittextback);
@@ -143,12 +141,13 @@ public class PrayActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });

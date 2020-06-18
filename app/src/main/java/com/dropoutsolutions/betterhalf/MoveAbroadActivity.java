@@ -39,8 +39,6 @@ public class MoveAbroadActivity extends AppCompatActivity {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 yes.setPadding(20 , 10 , 20 , 10);
                 yes.setBackgroundResource(R.drawable.edittextback);
@@ -52,20 +50,19 @@ public class MoveAbroadActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(MoveAbroadActivity.this , ConvertActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(MoveAbroadActivity.this , ConvertActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 no.setPadding(20 , 10 , 20 , 10);
                 no.setBackgroundResource(R.drawable.edittextback);
@@ -77,12 +74,13 @@ public class MoveAbroadActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(MoveAbroadActivity.this , ConvertActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(MoveAbroadActivity.this , ConvertActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

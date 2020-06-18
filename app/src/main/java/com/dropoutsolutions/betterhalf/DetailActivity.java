@@ -40,20 +40,21 @@ public class DetailActivity extends AppCompatActivity {
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
+
                 mlastclicktime = SystemClock.elapsedRealtime();
                 userref.child("AboutDetails").setValue(details.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(DetailActivity.this , HomeActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+
+                startActivity(new Intent(DetailActivity.this , HomeActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

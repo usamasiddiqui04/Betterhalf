@@ -45,8 +45,6 @@ public class EducationActivity extends AppCompatActivity {
         bdegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 bdegree.setPadding(20 , 10 , 20 , 10);
                 bdegree.setBackgroundResource(R.drawable.edittextback);
@@ -62,12 +60,13 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -75,8 +74,6 @@ public class EducationActivity extends AppCompatActivity {
         mdegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 mdegree.setPadding(20 , 10 , 20 , 10);
                 mdegree.setBackgroundResource(R.drawable.edittextback);
@@ -92,12 +89,13 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -105,8 +103,7 @@ public class EducationActivity extends AppCompatActivity {
         nondegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
+
                 mlastclicktime = SystemClock.elapsedRealtime();
                 nondegree.setPadding(20 , 10 , 20 , 10);
                 nondegree.setBackgroundResource(R.drawable.edittextback);
@@ -121,20 +118,21 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+
+                startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         college.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
+
                 mlastclicktime = SystemClock.elapsedRealtime();
                 college.setPadding(20 , 10 , 20 , 10);
                 college.setBackgroundResource(R.drawable.edittextback);
@@ -150,20 +148,19 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         doctorate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 doctorate.setPadding(20 , 10 , 20 , 10);
                 doctorate.setBackgroundResource(R.drawable.edittextback);
@@ -179,20 +176,19 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 other.setPadding(20, 10, 20, 10);
                 other.setBackgroundResource(R.drawable.edittextback);
@@ -207,12 +203,14 @@ public class EducationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+
+                startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

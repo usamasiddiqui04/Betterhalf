@@ -91,7 +91,7 @@ public class OnclickDetails extends AppCompatActivity {
                         mstatus.setText(Mstatus);
                         countryname.setText(Countryname);
                         education.setText(Education);
-                        profession.setText(Profession);
+                        profession2.setText(Profession);
                         statuslong.setText(longstatus);
                         practising.setText(Prcatising);
                         paryer.setText(Prayer);

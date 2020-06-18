@@ -14,29 +14,40 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.dropoutsolutions.betterhalf.GoogleFacebookLogin;
 import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
 import com.dropoutsolutions.betterhalf.OnclickDetails;
 import com.dropoutsolutions.betterhalf.R;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SettingFragment extends Fragment {
 
-    TextView logout ;
+    ConstraintLayout logout  , profileview;
     View view ;
+    TextView username ;
+    CircleImageView profileimage ;
     CardView constraintLayout;
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
+    TextView email ;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -49,11 +60,16 @@ public class SettingFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_setting, container, false);
         logout = view.findViewById(R.id.logout);
-        constraintLayout = view.findViewById(R.id.two);
+        profileview = view.findViewById(R.id.profileview);
+
+        username = view.findViewById(R.id.username);
+        profileimage = view.findViewById(R.id.profileimage);
+
+
         mauth = FirebaseAuth.getInstance() ;
         Currentuserid = mauth.getCurrentUser().getUid();
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
-        constraintLayout.setOnClickListener(v ->
+        profileview.setOnClickListener(v ->
                 userref.child(Currentuserid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,12 +97,69 @@ public class SettingFragment extends Fragment {
             }
         }));
 
-        logout.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-            LoginManager.getInstance().logOut();
+//
+//        if (Currentuserid != null)
+//        {
+//            GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
+//            if (googleSignInAccount.getEmail() == null)
+//                 email.setText(googleSignInAccount.getEmail());
+//        }
 
-            startActivity(new Intent(getContext() , GoogleFacebookLogin.class));
+
+
+
+        logout.setOnClickListener(v -> {
+
+            for (UserInfo user: FirebaseAuth.getInstance().getCurrentUser().getProviderData()) {
+                if (user.getProviderId().equals("facebook.com")) {
+                    LoginManager.getInstance().logOut();
+                    Intent intent = new Intent(getContext() , GoogleFacebookLogin.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+                else
+                {
+                    FirebaseAuth.getInstance().signOut();
+                    GoogleSignInOptions gso = new GoogleSignInOptions.
+                            Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                            build();
+
+                    GoogleSignInClient googleSignInClient=GoogleSignIn.getClient(getContext(),gso);
+                    googleSignInClient.signOut();
+                    Intent intent = new Intent(getContext() , GoogleFacebookLogin.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+                }
+            }
+
+
         });
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        userref.child(Currentuserid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                    String name = (String) dataSnapshot.child("Name").getValue();
+                    String image = (String) dataSnapshot.child("ProfileImage").getValue();
+
+                    username.setText(name);
+                    Glide.with(getContext()).load(image).into(profileimage);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

@@ -42,8 +42,6 @@ public class ReligionActivity extends AppCompatActivity {
         verypractising.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 verypractising.setPadding(20, 10, 20, 10);
                 verypractising.setBackgroundResource(R.drawable.edittextback);
@@ -57,20 +55,19 @@ public class ReligionActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         practising.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 practising.setPadding(20, 10, 20, 10);
                 practising.setBackgroundResource(R.drawable.edittextback);
@@ -84,20 +81,19 @@ public class ReligionActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         modepractsing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 modepractsing.setPadding(20 , 10 , 20 , 10);
                 modepractsing.setBackgroundResource(R.drawable.edittextback);
@@ -111,20 +107,19 @@ public class ReligionActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
         notpractising.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
                 mlastclicktime = SystemClock.elapsedRealtime();
                 notpractising.setPadding(20 , 10 , 20 , 10);
                 notpractising.setBackgroundResource(R.drawable.edittextback);
@@ -138,12 +133,13 @@ public class ReligionActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
 
                     }
                 });
+                startActivity(new Intent(ReligionActivity.this, PrayActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

@@ -87,9 +87,6 @@ public class ProfileFragment extends Fragment {
             }
 
         });
-        lottieAnimationView.setOnClickListener(v -> {
-
-        });
         Calendar calendarfordate = Calendar.getInstance();
         SimpleDateFormat currentdate = new SimpleDateFormat("dd-MMMM-yyyy");
         CurrentDate = currentdate.format(calendarfordate.getTime());

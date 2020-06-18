@@ -49,14 +49,12 @@ public class BirthdayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_birthday, container, false);
         Button button = view.findViewById(R.id.cont);
         datePicker = view.findViewById(R.id.datePicker);
         mauth = FirebaseAuth.getInstance() ;
         Currentuserid = mauth.getCurrentUser().getUid();
         userref = FirebaseDatabase.getInstance().getReference().child("Users").child(Currentuserid);
-
         datePicker.setOnDateChangedListener((view, year, monthOfYear, dayOfMonth) -> {
             birthdaydate = dayOfMonth + "/" + monthOfYear + "/" + year ;
 
@@ -91,5 +89,6 @@ public class BirthdayFragment extends Fragment {
         transaction.replace(R.id.frameLayout, fragment); // give your fragment container id in first parameter
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
+
     }
 }
