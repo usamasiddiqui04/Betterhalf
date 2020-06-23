@@ -21,8 +21,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +34,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -54,6 +57,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ChatActivity extends AppCompatActivity {
 
     EditText inputmessage ;
@@ -63,6 +68,8 @@ public class ChatActivity extends AppCompatActivity {
     private FirebaseAuth auth ;
     private ImageView sendmessage;
     String myurl ;
+    CircleImageView profileimage ;
+    TextView name ;
     private String CurrentDate , CurrentTime ;
     private ImageView addfile ;
     private ProgressDialog progressDialog ;
@@ -83,6 +90,8 @@ public class ChatActivity extends AppCompatActivity {
         Senderid = auth.getCurrentUser().getUid() ;
         sendmessage = findViewById(R.id.sendmessage);
         addfile = findViewById(R.id.add);
+        profileimage = findViewById(R.id.profileimage);
+        name = findViewById(R.id.username);
         recyclerView = findViewById(R.id.recyclerview);
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
         chatref = FirebaseDatabase.getInstance().getReference();
@@ -492,5 +501,28 @@ public class ChatActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        userref.child(recieverid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                    String image = (String) dataSnapshot.child("ProfileImage").getValue();
+                    String Name = (String) dataSnapshot.child("Name").getValue();
+
+                    name.setText(Name);
+                    Glide.with(ChatActivity.this).load(image).into(profileimage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

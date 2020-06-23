@@ -52,13 +52,13 @@ public class EatActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-
+                            startActivity(new Intent(EatActivity.this , SmokeActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
                 });
-                startActivity(new Intent(EatActivity.this , SmokeActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
 
             }
         });
@@ -77,14 +77,14 @@ public class EatActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-
+                            startActivity(new Intent(EatActivity.this , SmokeActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
                 });
 
-                startActivity(new Intent(EatActivity.this , SmokeActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
 
             }
         });

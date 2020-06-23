@@ -52,10 +52,10 @@ public class ChildernActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-
+                            startActivity(new Intent(ChildernActivity.this , MoveAbroadActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
-                        startActivity(new Intent(ChildernActivity.this , MoveAbroadActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
 
                     }
                 });
@@ -76,14 +76,13 @@ public class ChildernActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-
-
+                            startActivity(new Intent(ChildernActivity.this, MoveAbroadActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
                 });
-                startActivity(new Intent(ChildernActivity.this, MoveAbroadActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
     }

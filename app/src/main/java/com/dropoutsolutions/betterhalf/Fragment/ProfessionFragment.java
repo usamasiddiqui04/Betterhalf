@@ -49,7 +49,7 @@ public class ProfessionFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_profession, container, false);
         text.clear();
         text.add("Accountant");
-        text.add("Actor or Actress");
+        text.add("Actor");
         text.add("Architect");
         text.add("Astronomer");
         text.add("Author");
@@ -58,7 +58,7 @@ public class ProfessionFragment extends Fragment {
         text.add("Bus driver");
         text.add("Butcher");
         text.add("Carpenter");
-        text.add("Chef/Cook");
+        text.add("Chef");
         text.add("Cleaner");
         text.add("Dentist");
         text.add("Designer");
@@ -67,7 +67,7 @@ public class ProfessionFragment extends Fragment {
         text.add("Engineer");
         text.add("Factory worker");
         text.add("Farmer");
-        text.add("Fireman/Fire fighter");
+        text.add("Fireman");
         text.add("Gardener");
         text.add("Journalist");
         text.add("Hairdresser");
@@ -87,7 +87,7 @@ public class ProfessionFragment extends Fragment {
         text.add("Pilot");
         text.add("Receptionist");
         text.add("Teacher");
-        text.add("Waiter/Waitress");
+        text.add("Waiter");
         text.add("Soldier");
 
 

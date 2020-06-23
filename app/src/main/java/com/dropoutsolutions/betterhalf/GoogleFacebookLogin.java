@@ -3,7 +3,11 @@ package com.dropoutsolutions.betterhalf;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -41,6 +45,7 @@ public class GoogleFacebookLogin extends AppCompatActivity {
     LoginButton loginButton ;
     CallbackManager callbackManager ;
     private static final String EMAIL = "email";
+    ProgressDialog progressDialog ;
 
 
     @Override
@@ -51,6 +56,7 @@ public class GoogleFacebookLogin extends AppCompatActivity {
         google = findViewById(R.id.google);
         mauth = FirebaseAuth.getInstance() ;
         loginButton = findViewById(R.id.facebook);
+        progressDialog = new ProgressDialog(this);
         FacebookSdk.sdkInitialize(getApplicationContext());
         loginButton.setReadPermissions(Arrays.asList(EMAIL));
         createrequest();
@@ -84,6 +90,10 @@ public class GoogleFacebookLogin extends AppCompatActivity {
     }
 
     private void handleFacebookToken(AccessToken accessToken) {
+        progressDialog.setTitle("Logging with facebook");
+        progressDialog.setMessage("please wait");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
         mauth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -92,13 +102,15 @@ public class GoogleFacebookLogin extends AppCompatActivity {
                     // Sign in success, update UI with the signed-in user's information
 
                     FirebaseUser user = mauth.getCurrentUser();
-                    Toast.makeText(GoogleFacebookLogin.this, "Success", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(GoogleFacebookLogin.this , HomeActivity.class );
                     startActivity(intent);
+                    finish();
+                    progressDialog.dismiss();
 
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(GoogleFacebookLogin.this, "Failed", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
 
 
                 }
@@ -143,6 +155,7 @@ public class GoogleFacebookLogin extends AppCompatActivity {
     private void GoToNickNameActivity() {
         Intent intent = new Intent(GoogleFacebookLogin.this , Continue.class );
         startActivity(intent);
+        finish();
     }
 
     private void signIn() {
@@ -151,21 +164,27 @@ public class GoogleFacebookLogin extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount idToken) {
+        progressDialog.setTitle("Logging with google");
+        progressDialog.setMessage("please wait");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken.getIdToken(), null);
         mauth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
 
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
-
+                        progressDialog.dismiss();
                         FirebaseUser user = mauth.getCurrentUser();
                         Toast.makeText(GoogleFacebookLogin.this, "Success", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(GoogleFacebookLogin.this , HomeActivity.class );
                         startActivity(intent);
+                        finish();
 
                     } else {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(GoogleFacebookLogin.this, "Failed", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
 
 
                     }
@@ -178,12 +197,34 @@ public class GoogleFacebookLogin extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser firebaseUser = mauth.getCurrentUser();
-        if (firebaseUser!= null)
-        {
-            Intent intent = new Intent(GoogleFacebookLogin.this , HomeActivity.class );
-            startActivity(intent);
+
+        progressDialog.setTitle("checking internet connection");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
         }
+        else
+            connected = false;
+        if (connected)
+        {
+            progressDialog.dismiss();
+            FirebaseUser firebaseUser = mauth.getCurrentUser();
+            if (firebaseUser!= null)
+            {
+                Intent intent = new Intent(GoogleFacebookLogin.this , HomeActivity.class );
+                startActivity(intent);
+            }
+        }
+        else
+        {
+            progressDialog.dismiss();
+        }
+
     }
 
     @Override

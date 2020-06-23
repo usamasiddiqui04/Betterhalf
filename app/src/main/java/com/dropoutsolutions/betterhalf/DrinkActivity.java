@@ -75,14 +75,14 @@ public class DrinkActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-
+                            startActivity(new Intent(DrinkActivity.this , ChildernActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
                 });
 
-                startActivity(new Intent(DrinkActivity.this , ChildernActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
     }

@@ -1,21 +1,14 @@
-package com.dropoutsolutions;
+package com.dropoutsolutions.betterhalf;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.TextView;
 
-import com.dropoutsolutions.betterhalf.EducationActivity;
-import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
-import com.dropoutsolutions.betterhalf.R;
-import com.dropoutsolutions.betterhalf.ReligionActivity;
-import com.dropoutsolutions.betterhalf.SoonmarreidActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,14 +51,14 @@ public class PrayActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-
+                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
 
                 });
-                startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 
@@ -86,13 +79,13 @@ public class PrayActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-
+                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
                 });
-                startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 
@@ -114,13 +107,13 @@ public class PrayActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-
+                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
                 });
-                startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 
@@ -141,13 +134,11 @@ public class PrayActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-
+                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
-
                     }
                 });
-                startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });

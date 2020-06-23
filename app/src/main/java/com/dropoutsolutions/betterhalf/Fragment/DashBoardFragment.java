@@ -1,5 +1,6 @@
 package com.dropoutsolutions.betterhalf.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -55,6 +56,7 @@ public class DashBoardFragment extends Fragment {
     private FirebaseAuth mAuth;
     private DatabaseReference favref;
     String currentuserid;
+    ProgressDialog progressDialog ;
     GridLayoutManager gridLayoutManager;
 
     public DashBoardFragment() {
@@ -74,6 +76,7 @@ public class DashBoardFragment extends Fragment {
         favref = FirebaseDatabase.getInstance().getReference().child("Favourites").child(currentuserid);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        progressDialog = new ProgressDialog(getContext());
         recyclerView.setNestedScrollingEnabled(true);
 
         return view;
@@ -82,6 +85,7 @@ public class DashBoardFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
 
         FirebaseRecyclerOptions options =
                 new FirebaseRecyclerOptions.Builder<User>()
@@ -135,11 +139,9 @@ public class DashBoardFragment extends Fragment {
                                     });
 
                                 }
-
-
                             }
-
                         }
+
                         int margin = dptopx(12);
 
                         int top = dptopx(3);

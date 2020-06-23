@@ -90,13 +90,10 @@ public class ProfileFragment extends Fragment {
         Calendar calendarfordate = Calendar.getInstance();
         SimpleDateFormat currentdate = new SimpleDateFormat("dd-MMMM-yyyy");
         CurrentDate = currentdate.format(calendarfordate.getTime());
-
         Calendar calendarfortime = Calendar.getInstance();
         SimpleDateFormat currenttime = new SimpleDateFormat("HH:mm:ss");
         CurrentTime = currenttime.format(calendarfortime.getTime());
-
         randomname = CurrentTime + CurrentDate ;
-
         return view ;
 
     }

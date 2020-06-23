@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.dropoutsolutions.betterhalf.EducationActivity;
+import com.dropoutsolutions.betterhalf.FragmentActivity;
 import com.dropoutsolutions.betterhalf.GoogleFacebookLogin;
 import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
 import com.dropoutsolutions.betterhalf.OnclickDetails;

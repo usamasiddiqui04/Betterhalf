@@ -1,35 +1,29 @@
 package com.dropoutsolutions.betterhalf.Fragment;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.dropoutsolutions.betterhalf.Adaptor.HomeitemAdapter;
 import com.dropoutsolutions.betterhalf.ChatActivity;
 import com.dropoutsolutions.betterhalf.Continue;
-import com.dropoutsolutions.betterhalf.GoogleFacebookLogin;
-import com.dropoutsolutions.betterhalf.HomeActivity;
-import com.dropoutsolutions.betterhalf.MainActivity;
 import com.dropoutsolutions.betterhalf.OnclickDetails;
 import com.dropoutsolutions.betterhalf.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -41,6 +35,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -48,27 +43,26 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
+public class SearchFragment extends Fragment {
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class HomeFragment extends Fragment {
 
+    View view ;
     RecyclerView recyclerView ;
-    private View view ;
     private DatabaseReference userref ;
     private FirebaseAuth mAuth ;
     private DatabaseReference favref ;
     String currentuserid;
-    ProgressDialog progressDialog ;
-    public HomeFragment() {
+    EditText search ;
+    public SearchFragment() {
+        // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_search, container, false);
         recyclerView = view.findViewById(R.id.recyclerview);
+        search = view.findViewById(R.id.search);
         mAuth = FirebaseAuth.getInstance();
         currentuserid = mAuth.getCurrentUser().getUid();
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -77,23 +71,35 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setNestedScrollingEnabled(false);
         SnapHelper snapHelper = new PagerSnapHelper();
-        progressDialog = new ProgressDialog(getContext());
         snapHelper.attachToRecyclerView(recyclerView);
-        progressDialog.setTitle("Fetching data from server please wait");
-        progressDialog.setMessage("loading");
-        progressDialog.setCancelable(true);
 
-        return view ;
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Search(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        return  view ;
     }
-    @Override
-    public void onStart() {
+
+    public void Search (String s) {
         super.onStart();
 
+        Query q = userref.orderByChild("Name").startAt(s).endAt(s + "\uf8ff");
 
-        progressDialog.show();
         FirebaseRecyclerOptions options =
                 new FirebaseRecyclerOptions.Builder<User>()
-                        .setQuery(userref ,User.class)
+                        .setQuery(q , User.class)
                         .build();
         FirebaseRecyclerAdapter<User , UserViewHOlder> firebaseRecyclerAdapter
                 = new FirebaseRecyclerAdapter<User, UserViewHOlder>(options) {
@@ -107,7 +113,6 @@ public class HomeFragment extends Fragment {
                         {
                             if (isAdded())
                             {
-                                progressDialog.dismiss();
                                 String name = (String) dataSnapshot.child("Name").getValue();
                                 String Profession = (String) dataSnapshot.child("Profession").getValue();
                                 String Age = (String) dataSnapshot.child("DateOfBirth").getValue();
@@ -163,7 +168,6 @@ public class HomeFragment extends Fragment {
                                             intent.putExtra("Userid" , postid);
                                             startActivity(intent);
                                         }
-
                                     }
                                 });
 
@@ -252,6 +256,4 @@ public class HomeFragment extends Fragment {
             country = itemView.findViewById(R.id.country);
         }
     }
-
-
 }

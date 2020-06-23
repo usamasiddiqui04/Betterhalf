@@ -1,18 +1,21 @@
-package com.dropoutsolutions.betterhalf;
+package com.dropoutsolutions.betterhalf.Fragment;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.SystemClock;
-import android.view.ActionMode;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dropoutsolutions.betterhalf.CountryActivity;
+import com.dropoutsolutions.betterhalf.EducationActivity;
+import com.dropoutsolutions.betterhalf.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,31 +24,39 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class EducationActivity extends AppCompatActivity {
 
+public class EducationFragment extends Fragment {
+
+
+    public EducationFragment() {
+        // Required empty public constructor
+    }
+
+    View view ;
     TextView bdegree , mdegree ,nondegree , college , doctorate ,other ;
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
-    long mlastclicktime = 0 ;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_education);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_education, container, false);
         mauth = FirebaseAuth.getInstance() ;
         Currentuserid = mauth.getCurrentUser().getUid();
         userref = FirebaseDatabase.getInstance().getReference().child("Users").child(Currentuserid);
-        bdegree = findViewById(R.id.bachlorsdegree);
-        mdegree = findViewById(R.id.master);
-        nondegree = findViewById(R.id.nondegree);
-        college = findViewById(R.id.college);
-        doctorate = findViewById(R.id.doctorate);
-        other = findViewById(R.id.other);
+        bdegree = view.findViewById(R.id.bachlorsdegree);
+        mdegree = view.findViewById(R.id.master);
+        nondegree = view.findViewById(R.id.nondegree);
+        college = view.findViewById(R.id.college);
+        doctorate = view.findViewById(R.id.doctorate);
+        other = view.findViewById(R.id.other);
+
 
         bdegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 bdegree.setPadding(20 , 10 , 20 , 10);
                 bdegree.setBackgroundResource(R.drawable.edittextback);
                 mdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -60,7 +71,7 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            loadFragment(new CountryFragment());
                         }
 
                     }
@@ -73,7 +84,7 @@ public class EducationActivity extends AppCompatActivity {
         mdegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
+
                 mdegree.setPadding(20 , 10 , 20 , 10);
                 mdegree.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -88,7 +99,7 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            loadFragment(new CountryFragment());
                         }
 
                     }
@@ -102,7 +113,6 @@ public class EducationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 nondegree.setPadding(20 , 10 , 20 , 10);
                 nondegree.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -116,8 +126,7 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-
+                            loadFragment(new CountryFragment());
                         }
 
                     }
@@ -130,7 +139,6 @@ public class EducationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 college.setPadding(20 , 10 , 20 , 10);
                 college.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -143,19 +151,21 @@ public class EducationActivity extends AppCompatActivity {
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                        if (task.isSuccessful())
+                        {
+                            loadFragment(new CountryFragment());
                         }
 
                     }
                 });
+
             }
         });
 
         doctorate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
+
                 doctorate.setPadding(20 , 10 , 20 , 10);
                 doctorate.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -170,7 +180,7 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            loadFragment(new CountryFragment());
                         }
 
                     }
@@ -181,7 +191,6 @@ public class EducationActivity extends AppCompatActivity {
         other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 other.setPadding(20, 10, 20, 10);
                 other.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -195,16 +204,23 @@ public class EducationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+
+                            loadFragment(new CountryFragment());
                         }
 
                     }
                 });
 
-
             }
         });
 
+        return  view ;
     }
 
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameLayout, fragment); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
 }

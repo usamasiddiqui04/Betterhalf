@@ -4,8 +4,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:paddingBottom="10dp"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -51,14 +53,14 @@
             app:layout_constraintTop_toBottomOf="@id/text"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/couple" />
+            app:lottie_rawRes="@raw/degree" />
 
         <TextView
             android:id="@+id/gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Your marital status?"
+            android:text="Your level of education"
             android:textColor="#000000"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -72,8 +74,8 @@
             app:layout_constraintStart_toStartOf="@id/gender"
             app:layout_constraintEnd_toEndOf="@id/gender"
             app:layout_constraintTop_toBottomOf="@id/gender"
-            android:text="Never married"
-            android:id="@+id/never"
+            android:text="Bachelors Degree"
+            android:id="@+id/bachlorsdegree"
             android:textColor="@color/pink"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -84,11 +86,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/never"
-            app:layout_constraintEnd_toEndOf="@id/never"
-            app:layout_constraintTop_toBottomOf="@id/never"
-            android:text="Divorced"
-            android:id="@+id/divorced"
+            app:layout_constraintStart_toStartOf="@id/bachlorsdegree"
+            app:layout_constraintEnd_toEndOf="@id/bachlorsdegree"
+            app:layout_constraintTop_toBottomOf="@id/bachlorsdegree"
+            android:text="Master Degree"
+            android:id="@+id/master"
             android:textColor="@color/pink"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -99,11 +101,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/divorced"
-            app:layout_constraintEnd_toEndOf="@id/divorced"
-            app:layout_constraintTop_toBottomOf="@id/divorced"
-            android:text="Separated"
-            android:id="@+id/seprated"
+            app:layout_constraintStart_toStartOf="@id/master"
+            app:layout_constraintEnd_toEndOf="@id/master"
+            app:layout_constraintTop_toBottomOf="@id/master"
+            android:text="Non degree Qualification"
+            android:id="@+id/nondegree"
             android:textColor="@color/pink"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -114,11 +116,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/seprated"
-            app:layout_constraintEnd_toEndOf="@id/seprated"
-            app:layout_constraintTop_toBottomOf="@id/seprated"
-            android:text="Annulled"
-            android:id="@+id/annulled"
+            app:layout_constraintStart_toStartOf="@id/nondegree"
+            app:layout_constraintEnd_toEndOf="@id/nondegree"
+            app:layout_constraintTop_toBottomOf="@id/nondegree"
+            android:text="College"
+            android:id="@+id/college"
             android:textColor="@color/pink"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -129,11 +131,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/annulled"
-            app:layout_constraintEnd_toEndOf="@id/annulled"
-            app:layout_constraintTop_toBottomOf="@id/annulled"
-            android:text="Widowed"
-            android:id="@+id/widowed"
+            app:layout_constraintStart_toStartOf="@id/college"
+            app:layout_constraintEnd_toEndOf="@id/college"
+            app:layout_constraintTop_toBottomOf="@id/college"
+            android:text="Doctorate"
+            android:id="@+id/doctorate"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/doctorate"
+            app:layout_constraintEnd_toEndOf="@id/doctorate"
+            app:layout_constraintTop_toBottomOf="@id/doctorate"
+            android:text="Other"
+            android:id="@+id/other"
             android:textColor="@color/pink"
             android:textSize="24sp"
             android:textStyle="bold"

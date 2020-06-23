@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.dropoutsolutions.betterhalf.Fragment.DashBoardFragment;
 import com.dropoutsolutions.betterhalf.Fragment.HomeFragment;
 import com.dropoutsolutions.betterhalf.Fragment.MessageFragment;
+import com.dropoutsolutions.betterhalf.Fragment.SearchFragment;
 import com.dropoutsolutions.betterhalf.Fragment.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 public class HomeActivity extends AppCompatActivity  {
 
@@ -59,6 +61,9 @@ public class HomeActivity extends AppCompatActivity  {
                 case R.id.navigation_setting :
                     loadFragment(new SettingFragment());
                     return true ;
+                case R.id.navigation_search :
+                    loadFragment(new SearchFragment());
+                    return true ;
             }
             return false;
         }
@@ -73,7 +78,7 @@ public class HomeActivity extends AppCompatActivity  {
     @Override
     protected void onStart() {
         super.onStart();
-
+        loadFragment(new HomeFragment());
         userref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -94,14 +99,23 @@ public class HomeActivity extends AppCompatActivity  {
     private void gotosetupactitvity() {
         Intent intent = new Intent(HomeActivity.this , Continue.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (fragmentManager.getBackStackEntryCount() > 1) {
+            //Go back to previous Fragment
+            fragmentManager.popBackStackImmediate();
+        } else {
+            //Nothing in the back stack, so exit
+            super.onBackPressed();
+            Intent a = new Intent(Intent.ACTION_MAIN);
+            a.addCategory(Intent.CATEGORY_HOME);
+            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(a);
+        }
     }
+
 }

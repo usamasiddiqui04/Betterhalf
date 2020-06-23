@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="#ffffff"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.DashBoardFragment">
 
@@ -14,7 +14,7 @@
         android:text="Your Favourite"
         android:textSize="26dp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:layout_margin="20sp"
         android:id="@+id/explore">
 
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/recyclerview"
         app:spanCount="2"
+        android:padding="5dp"
         android:scrollbars="vertical"
         android:layout_below="@id/explore"
         tools:listitem="@layout/favouriterecyclerview" />
