@@ -50,17 +50,13 @@ public class MaritalstatusActivity extends AppCompatActivity {
             userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful())
-                    {
-                        Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                        startActivity(intent);
-
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(MaritalstatusActivity.this, EducationActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
 
                 }
             });
-            Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-            startActivity(intent);
         });
 
         divorced.setOnClickListener(v -> {
@@ -77,9 +73,8 @@ public class MaritalstatusActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful())
                     {
-                        Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                        startActivity(intent);
-
+                        startActivity(new Intent(MaritalstatusActivity.this, EducationActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
 
                 }
@@ -101,9 +96,8 @@ public class MaritalstatusActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful())
                     {
-                        Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                        startActivity(intent);
-
+                        startActivity(new Intent(MaritalstatusActivity.this, EducationActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
 
                 }
@@ -123,11 +117,9 @@ public class MaritalstatusActivity extends AppCompatActivity {
             userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful())
-                    {
-                        Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                        startActivity(intent);
-
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(MaritalstatusActivity.this, EducationActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
 
                 }
@@ -150,13 +142,11 @@ public class MaritalstatusActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful())
                     {
-                        Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                        startActivity(intent);
+                        startActivity(new Intent(MaritalstatusActivity.this, EducationActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
-
                 }
             });
-
 
         });
     }

@@ -66,7 +66,6 @@ public class PrayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 upray.setPadding(20, 10, 20, 10);
                 upray.setBackgroundResource(R.drawable.edittextback);
                 spray.setBackgroundResource(R.drawable.resetbackground);
@@ -94,7 +93,6 @@ public class PrayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 spray.setPadding(20, 10, 20, 10);
                 spray.setBackgroundResource(R.drawable.edittextback);
                 upray.setBackgroundResource(R.drawable.resetbackground);
@@ -121,7 +119,6 @@ public class PrayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 npray.setPadding(20, 10, 20, 10);
                 npray.setBackgroundResource(R.drawable.edittextback);
                 upray.setBackgroundResource(R.drawable.resetbackground);

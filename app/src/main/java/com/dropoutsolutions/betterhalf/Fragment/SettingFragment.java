@@ -20,6 +20,7 @@ import com.dropoutsolutions.betterhalf.FragmentActivity;
 import com.dropoutsolutions.betterhalf.GoogleFacebookLogin;
 import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
 import com.dropoutsolutions.betterhalf.OnclickDetails;
+import com.dropoutsolutions.betterhalf.ProfilesettingActivity;
 import com.dropoutsolutions.betterhalf.R;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -41,7 +42,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class SettingFragment extends Fragment {
 
-    ConstraintLayout logout  , profileview;
+    ConstraintLayout logout  , profileview , profilesetting;
     View view ;
     TextView username ;
     CircleImageView profileimage ;
@@ -63,10 +64,18 @@ public class SettingFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_setting, container, false);
         logout = view.findViewById(R.id.logout);
         profileview = view.findViewById(R.id.profileview);
+        profilesetting = view.findViewById(R.id.profilesetting);
 
         username = view.findViewById(R.id.username);
         profileimage = view.findViewById(R.id.profileimage);
 
+        profilesetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext() , ProfilesettingActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mauth = FirebaseAuth.getInstance() ;
         Currentuserid = mauth.getCurrentUser().getUid();
@@ -79,7 +88,8 @@ public class SettingFragment extends Fragment {
                 {
                     if (!dataSnapshot.hasChild("AboutDetails"))
                     {
-                        startActivity(new Intent(getActivity() , MaritalstatusActivity.class));
+                        Intent intent = new Intent(getActivity() , MaritalstatusActivity.class);
+                        startActivity(intent);
                     }
                     else
                     {

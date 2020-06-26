@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
+import hk.ids.gws.android.sclick.SClick;
+
 public class MaritalstatusFragment extends Fragment {
 
     TextView nevermarried , divorced ,seprated ,annulled , widowed ;

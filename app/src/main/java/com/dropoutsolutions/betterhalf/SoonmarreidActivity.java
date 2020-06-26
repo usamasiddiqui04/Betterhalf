@@ -23,7 +23,6 @@ public class SoonmarreidActivity extends AppCompatActivity {
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
-    long mlastclicktime = 0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +39,6 @@ public class SoonmarreidActivity extends AppCompatActivity {
         asap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
-                mlastclicktime = SystemClock.elapsedRealtime();
                 asap.setPadding(20, 10, 20, 10);
                 asap.setBackgroundResource(R.drawable.edittextback);
                 one.setBackgroundResource(R.drawable.resetbackground);
@@ -68,9 +64,7 @@ public class SoonmarreidActivity extends AppCompatActivity {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
-                mlastclicktime = SystemClock.elapsedRealtime();
+
                 one.setPadding(20 , 10 , 20 , 10);
                 one.setBackgroundResource(R.drawable.edittextback);
                 asap.setBackgroundResource(R.drawable.resetbackground);
@@ -96,9 +90,6 @@ public class SoonmarreidActivity extends AppCompatActivity {
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
-                mlastclicktime = SystemClock.elapsedRealtime();
                 three.setPadding(20 , 10 , 20 , 10);
                 three.setBackgroundResource(R.drawable.edittextback);
                 asap.setBackgroundResource(R.drawable.resetbackground);
@@ -125,9 +116,7 @@ public class SoonmarreidActivity extends AppCompatActivity {
         four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SystemClock.elapsedRealtime() - mlastclicktime < 1000 )
-                    return;
-                mlastclicktime = SystemClock.elapsedRealtime();
+
                 four.setPadding(20 , 10 , 20 , 10);
                 four.setBackgroundResource(R.drawable.edittextback);
                 asap.setBackgroundResource(R.drawable.resetbackground);

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -211,8 +212,6 @@ public class HomeFragment extends Fragment {
                                     });
 
                                 }
-
-
                             }
 
                         }
@@ -240,8 +239,11 @@ public class HomeFragment extends Fragment {
         private RoundedImageView roundedImageView ;
         private TextView name , age , profession , country ;
         private CircleImageView messageimage  , fav;
+        private ConstraintLayout constraintLayout ;
         public UserViewHOlder(@NonNull View itemView) {
             super(itemView);
+
+            constraintLayout = itemView.findViewById(R.id.one);
 
             messageimage = itemView.findViewById(R.id.message);
             roundedImageView = itemView.findViewById(R.id.imageView);

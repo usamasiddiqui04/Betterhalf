@@ -1,6 +1,8 @@
 package com.dropoutsolutions.betterhalf.Fragment;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -103,14 +105,43 @@ public class DashBoardFragment extends Fragment {
                             if (isAdded()) {
                                 String Image = (String) dataSnapshot.child("ProfileImage").getValue();
                                 Glide.with(getContext()).load(Image).into(userViewHOlder.roundedImageView);
+                                String name = (String) dataSnapshot.child("Name").getValue();
 
                                 userViewHOlder.roundedImageView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
 
-                                        Intent intent = new Intent(getContext(), OnclickDetails.class);
-                                        intent.putExtra("Userid", postid);
-                                        startActivity(intent);
+                                        if (!dataSnapshot.hasChild("AboutDetails"))
+                                        {
+                                            AlertDialog alertDialog = new AlertDialog.Builder(
+                                                    getContext()).create();
+
+                                            // Setting Dialog Title
+                                            alertDialog.setTitle("Better half");
+
+                                            // Setting Dialog Message
+                                            alertDialog.setMessage( name + " is not completed her/his profile");
+
+                                            // Setting Icon to Dialog
+                                            alertDialog.setIcon(R.drawable.ic_bell);
+
+                                            // Setting OK Button
+                                            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    // Write your code here to execute after dialog closed
+
+                                                }
+                                            });
+
+                                            // Showing Alert Message
+                                            alertDialog.show();
+                                        }
+                                        else
+                                        {
+                                            Intent intent = new Intent(getContext() , OnclickDetails.class);
+                                            intent.putExtra("Userid" , postid);
+                                            startActivity(intent);
+                                        }
                                     }
                                 });
 

@@ -23,7 +23,6 @@ public class ReligionActivity extends AppCompatActivity {
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
-    long mlastclicktime = 0 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,6 @@ public class ReligionActivity extends AppCompatActivity {
         verypractising.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 verypractising.setPadding(20, 10, 20, 10);
                 verypractising.setBackgroundResource(R.drawable.edittextback);
                 practising.setBackgroundResource(R.drawable.resetbackground);
@@ -65,7 +63,6 @@ public class ReligionActivity extends AppCompatActivity {
         practising.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 practising.setPadding(20, 10, 20, 10);
                 practising.setBackgroundResource(R.drawable.edittextback);
                 verypractising.setBackgroundResource(R.drawable.resetbackground);
@@ -91,7 +88,6 @@ public class ReligionActivity extends AppCompatActivity {
         modepractsing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 modepractsing.setPadding(20 , 10 , 20 , 10);
                 modepractsing.setBackgroundResource(R.drawable.edittextback);
                 verypractising.setBackgroundResource(R.drawable.resetbackground);
@@ -117,7 +113,6 @@ public class ReligionActivity extends AppCompatActivity {
         notpractising.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 notpractising.setPadding(20 , 10 , 20 , 10);
                 notpractising.setBackgroundResource(R.drawable.edittextback);
                 verypractising.setBackgroundResource(R.drawable.resetbackground);

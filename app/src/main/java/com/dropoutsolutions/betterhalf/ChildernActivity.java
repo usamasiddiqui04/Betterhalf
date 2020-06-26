@@ -41,7 +41,6 @@ public class ChildernActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 yes.setPadding(20 , 10 , 20 , 10);
                 yes.setBackgroundResource(R.drawable.edittextback);
                 no.setBackgroundResource(R.drawable.resetbackground);
@@ -52,7 +51,7 @@ public class ChildernActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(ChildernActivity.this , MoveAbroadActivity.class));
+                            startActivity(new Intent(ChildernActivity.this, MoveAbroadActivity.class));
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
@@ -66,7 +65,6 @@ public class ChildernActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 no.setPadding(20, 10, 20, 10);
                 no.setBackgroundResource(R.drawable.edittextback);
                 yes.setBackgroundResource(R.drawable.resetbackground);

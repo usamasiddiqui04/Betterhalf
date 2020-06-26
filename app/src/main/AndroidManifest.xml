@@ -16,6 +16,25 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".GetmaritalStatusActivity"></activity>
+        <activity android:name=".GetSmookerActivity" />
+        <activity android:name=".GetAlcoholActivity" />
+        <activity android:name=".GethalalActivity" />
+        <activity android:name=".GetPrayingActivity" />
+        <activity android:name=".GetReligionActivity" />
+        <activity android:name=".GetconvertActivity" />
+        <activity android:name=".SectActivity" />
+        <activity android:name=".GetcountryActivity" />
+        <activity android:name=".EmployerActivity" />
+        <activity android:name=".JobActivity" />
+        <activity android:name=".SetProfessionActivity" />
+        <activity android:name=".OnlinestatusActivity" />
+        <activity android:name=".EditEducationActivity" />
+        <activity android:name=".SetdetailsActivity" />
+        <activity android:name=".SetgenderActivity" />
+        <activity android:name=".EditdobActivity" />
+        <activity android:name=".Editnickname" />
+        <activity android:name=".ProfilesettingActivity" />
         <activity android:name=".FragmentActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".OnclickDetails" />
@@ -31,10 +50,7 @@
         <activity android:name=".ReligionActivity" />
         <activity android:name=".CountryActivity" />
         <activity android:name=".EducationActivity" />
-        <activity android:name=".MaritalstatusActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+        <activity android:name=".MaritalstatusActivity" />
         <activity android:name=".SettingimageActivity" />
 
         <meta-data

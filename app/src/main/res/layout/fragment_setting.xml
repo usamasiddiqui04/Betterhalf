@@ -108,6 +108,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:padding="10dp"
+                android:id="@+id/profilesetting"
                 android:layout_height="wrap_content">
 
                 <ImageView

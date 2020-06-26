@@ -40,8 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                mlastclicktime = SystemClock.elapsedRealtime();
+                
                 userref.child("AboutDetails").setValue(details.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

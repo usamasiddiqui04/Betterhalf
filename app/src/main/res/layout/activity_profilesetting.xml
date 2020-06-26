@@ -1,0 +1,1283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    tools:context=".ProfilesettingActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/mainprofile"
+        android:paddingBottom="20dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Your profile"
+            android:layout_marginTop="15dp"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:id="@+id/profilesetting"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Done"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_marginRight="15dp" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/cardone"
+            app:layout_constraintTop_toBottomOf="@id/profilesetting"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:id="@+id/bacisinfo"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_help"
+                    android:id="@+id/helpicon"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/basicinfo"
+                    android:text="Basic Info"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@id/helpicon"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/nicknamelayout"
+                    app:layout_constraintTop_toBottomOf="@id/basicinfo"
+                    app:layout_constraintStart_toEndOf="@id/helpicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Nickname"
+                        android:textStyle="bold"
+                        android:id="@+id/nickname"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/nickname"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Nickname"
+                        android:id="@+id/getnickname"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/nextone"
+                        app:layout_constraintTop_toTopOf="@id/nickname"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getnickname"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/doblayout"
+                    app:layout_constraintTop_toBottomOf="@id/nicknamelayout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Date of birth"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textStyle="bold"
+                        android:id="@+id/dateofbirth"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/dateofbirth"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="dob"
+                        android:id="@+id/getdateofbirth"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/nexttwo"
+                        app:layout_constraintTop_toTopOf="@id/dateofbirth"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getdateofbirth"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/genderlayout"
+                    app:layout_constraintTop_toBottomOf="@id/doblayout"
+                    app:layout_constraintStart_toStartOf="parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Gender"
+                        android:textStyle="bold"
+                        android:id="@+id/gender"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/gender"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="male"
+                        android:id="@+id/getgender"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/nextthree"
+                        app:layout_constraintTop_toTopOf="@id/gender"
+                        app:layout_constraintBottom_toBottomOf="@id/getgender"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/statuslayout"
+                    app:layout_constraintTop_toBottomOf="@id/genderlayout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Status"
+                        android:textStyle="bold"
+                        android:id="@+id/status"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/status"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="male"
+                        android:id="@+id/getstatus"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/nextfour"
+                        app:layout_constraintTop_toTopOf="@id/status"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getstatus"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+               <androidx.constraintlayout.widget.ConstraintLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/aboutlayout"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/statuslayout">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent"
+                       android:layout_marginStart="60dp"
+                       android:layout_marginTop="20dp"
+                       android:text="Status"
+                       android:textStyle="bold"
+                       android:id="@+id/aboutyou"
+                       android:textSize="18sp"
+                       android:layout_marginLeft="10dp"/>
+
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:layout_constraintTop_toBottomOf="@id/aboutyou"
+                       app:layout_constraintStart_toStartOf="parent"
+                       android:layout_marginStart="60dp"
+                       android:layout_marginTop="5dp"
+                       android:text="male"
+                       android:paddingEnd="100dp"
+                       android:id="@+id/getaboutyou"
+                       android:layout_marginLeft="10dp"
+                       android:paddingRight="100dp" />
+
+                   <ImageView
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:layout_marginEnd="10dp"
+                       android:id="@+id/nextfive"
+                       app:layout_constraintTop_toTopOf="@id/aboutyou"
+                       app:layout_constraintBottom_toBottomOf="@id/getaboutyou"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       android:src="@drawable/ic_nexticon"
+                       android:layout_marginRight="10dp" />
+
+
+               </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:id="@+id/card2"
+            app:layout_constraintTop_toBottomOf="@id/cardone"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:id="@+id/educationandcareer"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_graduate"
+                    android:id="@+id/educationicon"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/educationtext"
+                    android:text="@string/education_career"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@id/educationicon"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/eduaction"
+                    app:layout_constraintTop_toBottomOf="@id/educationtext"
+                    app:layout_constraintStart_toEndOf="@id/educationicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Education"
+                        android:textStyle="bold"
+                        android:id="@+id/eduactiontype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/eduactiontype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/geteducation"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/edunextone"
+                        app:layout_constraintTop_toTopOf="@id/eduactiontype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/geteducation"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/professionlayout"
+                    app:layout_constraintTop_toBottomOf="@id/eduaction"
+                    app:layout_constraintStart_toEndOf="@id/educationicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Profession"
+                        android:textStyle="bold"
+                        android:id="@+id/professiontext"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/professiontext"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="profession"
+                        android:id="@+id/getprofession"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/edunexttow"
+                        app:layout_constraintTop_toTopOf="@id/professiontext"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getprofession"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/jobtitlelayout"
+                    app:layout_constraintTop_toBottomOf="@id/professionlayout"
+                    app:layout_constraintStart_toEndOf="@id/educationicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Job Title"
+                        android:textStyle="bold"
+                        android:id="@+id/jobtext"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/jobtext"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="job"
+                        android:id="@+id/getjob"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/edunextthree"
+                        app:layout_constraintTop_toTopOf="@id/jobtext"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getjob"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/employeelayout"
+                    app:layout_constraintTop_toBottomOf="@id/jobtitlelayout"
+                    app:layout_constraintStart_toEndOf="@id/educationicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Employer"
+                        android:textStyle="bold"
+                        android:id="@+id/employeetext"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/employeetext"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="job"
+                        android:id="@+id/getemploy"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/edunextfour"
+                        app:layout_constraintTop_toTopOf="@id/employeetext"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getemploy"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:id="@+id/card3"
+            app:layout_constraintTop_toBottomOf="@id/card2"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:id="@+id/ethnicity"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_world"
+                    android:id="@+id/ethnicityicon"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/ethnicitytext"
+                    android:text="Ethnicity"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@id/ethnicityicon"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/ethnicgrouplayout"
+                    app:layout_constraintTop_toBottomOf="@id/ethnicitytext"
+                    app:layout_constraintStart_toEndOf="@id/ethnicityicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Ethnic group"
+                        android:textStyle="bold"
+                        android:id="@+id/ethnicitytype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/ethnicitytype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getethnicity"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/ethnextone"
+                        app:layout_constraintTop_toTopOf="@id/ethnicitytype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getethnicity"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/ethnicorigin"
+                    app:layout_constraintTop_toBottomOf="@id/ethnicgrouplayout"
+                    app:layout_constraintStart_toEndOf="@id/ethnicityicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Ethnic origin"
+                        android:textStyle="bold"
+                        android:id="@+id/ethnicityorigntype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/ethnicityorigntype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getethnicityorigin"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/ethnexttwo"
+                        app:layout_constraintTop_toTopOf="@id/ethnicityorigntype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getethnicityorigin"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:id="@+id/card4"
+            app:layout_constraintTop_toBottomOf="@id/card3"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:id="@+id/lifestyle"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_islam"
+                    android:id="@+id/lifestyleicon"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/lifestyletext"
+                    android:text="Islamic lifestyle"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@id/lifestyleicon"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/sectlayout"
+                    app:layout_constraintTop_toBottomOf="@id/lifestyletext"
+                    app:layout_constraintStart_toEndOf="@id/lifestyleicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Sect"
+                        android:textStyle="bold"
+                        android:id="@+id/secttype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/secttype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getsect"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/lifenextone"
+                        app:layout_constraintTop_toTopOf="@id/secttype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getsect"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/convertlayout"
+                    app:layout_constraintTop_toBottomOf="@id/sectlayout"
+                    app:layout_constraintStart_toEndOf="@id/lifestyleicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Covert/revert"
+                        android:textStyle="bold"
+                        android:id="@+id/converttype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/converttype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getconvert"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/lifenextwo"
+                        app:layout_constraintTop_toTopOf="@id/converttype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getconvert"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/religiositylayout"
+                    app:layout_constraintTop_toBottomOf="@id/convertlayout"
+                    app:layout_constraintStart_toEndOf="@id/lifestyleicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Religiosity"
+                        android:textStyle="bold"
+                        android:id="@+id/religiositytype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/religiositytype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getreligiosity"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/lifenexthree"
+                        app:layout_constraintTop_toTopOf="@id/religiositytype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getreligiosity"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/prayinglayout"
+                    app:layout_constraintTop_toBottomOf="@id/religiositylayout"
+                    app:layout_constraintStart_toEndOf="@id/lifestyleicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Praying"
+                        android:textStyle="bold"
+                        android:id="@+id/prayertype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/prayertype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getprayer"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/lifenextfour"
+                        app:layout_constraintTop_toTopOf="@id/prayertype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getprayer"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/halalfoodlayout"
+                    app:layout_constraintTop_toBottomOf="@id/prayinglayout"
+                    app:layout_constraintStart_toEndOf="@id/lifestyleicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Halal food"
+                        android:textStyle="bold"
+                        android:id="@+id/halalfoodtype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/halalfoodtype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/gethalalfood"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/lifenextfive"
+                        app:layout_constraintTop_toTopOf="@id/halalfoodtype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/gethalalfood"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/alcohollayout"
+                    app:layout_constraintTop_toBottomOf="@id/halalfoodlayout"
+                    app:layout_constraintStart_toEndOf="@id/lifestyleicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Alcohol"
+                        android:textStyle="bold"
+                        android:id="@+id/alcoholtype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/alcoholtype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getalcohol"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/lifenextsix"
+                        app:layout_constraintTop_toTopOf="@id/alcoholtype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getalcohol"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/smookerlayout"
+                    app:layout_constraintTop_toBottomOf="@id/alcohollayout"
+                    app:layout_constraintStart_toEndOf="@id/lifestyleicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Smooker"
+                        android:textStyle="bold"
+                        android:id="@+id/smookertype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/smookertype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getsmoker"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/lifenextseven"
+                        app:layout_constraintTop_toTopOf="@id/smookertype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getsmoker"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:id="@+id/card5"
+            app:layout_constraintTop_toBottomOf="@id/card4"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:id="@+id/moreabout"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_add"
+                    android:id="@+id/moreabouticon"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/moreabouttext"
+                    android:text="More about me"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@id/moreabouticon"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/maritalstatuslayout"
+                    app:layout_constraintTop_toBottomOf="@id/moreabouttext"
+                    app:layout_constraintStart_toEndOf="@id/moreabouticon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Marital Status"
+                        android:textStyle="bold"
+                        android:id="@+id/maritalstatustype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/maritalstatustype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getmaritalstatus"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/morenextone"
+                        app:layout_constraintTop_toTopOf="@id/maritalstatustype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getmaritalstatus"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/chidernlayout"
+                    app:layout_constraintTop_toBottomOf="@id/maritalstatuslayout"
+                    app:layout_constraintStart_toEndOf="@id/moreabouticon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Children"
+                        android:textStyle="bold"
+                        android:id="@+id/chiderntype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/chiderntype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="no"
+                        android:id="@+id/getchildern"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/morenexttwo"
+                        app:layout_constraintTop_toTopOf="@id/chiderntype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getchildern"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:id="@+id/card6"
+            app:layout_constraintTop_toBottomOf="@id/card5"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:id="@+id/marriageplan"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_wedding"
+                    android:id="@+id/marriageplanicon"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/marriageplantext"
+                    android:text="Marriage plans"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@id/marriageplanicon"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/marriagehorizon"
+                    app:layout_constraintTop_toBottomOf="@id/marriageplantext"
+                    app:layout_constraintStart_toEndOf="@id/marriageplanicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Marraige horizon"
+                        android:textStyle="bold"
+                        android:id="@+id/marriagehorizontype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/marriagehorizontype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Education"
+                        android:id="@+id/getmarraigehorizon"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/marraigenextone"
+                        app:layout_constraintTop_toTopOf="@id/marriagehorizontype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getmarraigehorizon"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/relocation"
+                    app:layout_constraintTop_toBottomOf="@id/marriagehorizon"
+                    app:layout_constraintStart_toEndOf="@id/marriageplanicon"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="60dp"
+                        android:text="Relocation"
+                        android:textStyle="bold"
+                        android:id="@+id/relocationtype"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="10dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/relocationtype"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Yes"
+                        android:id="@+id/getrelocation"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:id="@+id/marraigenexttwo"
+                        app:layout_constraintTop_toTopOf="@id/relocationtype"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/getrelocation"
+                        android:src="@drawable/ic_nexticon"
+                        android:layout_marginRight="10dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

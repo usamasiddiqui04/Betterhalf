@@ -4,43 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main"
     tools:context=".GoogleFacebookLogin">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/dating"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        app:civ_border_color="#ffffff"
+        app:civ_border_width="1dp"
+        android:src="@drawable/logo"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/lovefloating" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/google"
         android:text="@string/better_half"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="46sp"
         android:id="@+id/text"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@id/cont"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="match_parent"
@@ -62,6 +54,7 @@
         android:gravity="center"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:id="@+id/cont"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@id/google"
         app:layout_constraintStart_toStartOf="@id/google"

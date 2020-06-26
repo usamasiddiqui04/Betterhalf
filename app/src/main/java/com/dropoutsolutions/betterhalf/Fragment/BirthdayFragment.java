@@ -61,9 +61,6 @@ public class BirthdayFragment extends Fragment {
         });
 
 
-
-
-
         button.setOnClickListener(v -> {
             HashMap<String, Object> user = new HashMap<>();
             user.put("DateOfBirth" , birthdaydate);

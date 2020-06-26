@@ -45,7 +45,6 @@ public class EducationActivity extends AppCompatActivity {
         bdegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 bdegree.setPadding(20 , 10 , 20 , 10);
                 bdegree.setBackgroundResource(R.drawable.edittextback);
                 mdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -61,6 +60,7 @@ public class EducationActivity extends AppCompatActivity {
                         if (task.isSuccessful())
                         {
                             startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
@@ -73,7 +73,6 @@ public class EducationActivity extends AppCompatActivity {
         mdegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 mdegree.setPadding(20 , 10 , 20 , 10);
                 mdegree.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -86,11 +85,10 @@ public class EducationActivity extends AppCompatActivity {
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
-
                     }
                 });
 
@@ -102,7 +100,6 @@ public class EducationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 nondegree.setPadding(20 , 10 , 20 , 10);
                 nondegree.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -117,6 +114,7 @@ public class EducationActivity extends AppCompatActivity {
                         if (task.isSuccessful())
                         {
                             startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                         }
 
@@ -130,7 +128,6 @@ public class EducationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mlastclicktime = SystemClock.elapsedRealtime();
                 college.setPadding(20 , 10 , 20 , 10);
                 college.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -145,6 +142,7 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
@@ -155,7 +153,6 @@ public class EducationActivity extends AppCompatActivity {
         doctorate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 doctorate.setPadding(20 , 10 , 20 , 10);
                 doctorate.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -171,6 +168,7 @@ public class EducationActivity extends AppCompatActivity {
                         if (task.isSuccessful())
                         {
                             startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
@@ -181,7 +179,6 @@ public class EducationActivity extends AppCompatActivity {
         other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 other.setPadding(20, 10, 20, 10);
                 other.setBackgroundResource(R.drawable.edittextback);
                 bdegree.setBackgroundResource(R.drawable.resetbackground);
@@ -196,12 +193,11 @@ public class EducationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             startActivity(new Intent(EducationActivity.this, CountryActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
 
                     }
                 });
-
-
             }
         });
 

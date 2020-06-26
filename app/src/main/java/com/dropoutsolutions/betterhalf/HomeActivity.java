@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.dropoutsolutions.betterhalf.Fragment.DashBoardFragment;
 import com.dropoutsolutions.betterhalf.Fragment.HomeFragment;
 import com.dropoutsolutions.betterhalf.Fragment.MessageFragment;
+import com.dropoutsolutions.betterhalf.Fragment.NickName;
 import com.dropoutsolutions.betterhalf.Fragment.SearchFragment;
 import com.dropoutsolutions.betterhalf.Fragment.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -41,7 +42,6 @@ public class HomeActivity extends AppCompatActivity  {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         loadFragment(new HomeFragment());
 
-
     }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -70,6 +70,7 @@ public class HomeActivity extends AppCompatActivity  {
     };
 
     private void loadFragment(Fragment fragment) {
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.nav_host_fragment, fragment).addToBackStack(null)
                 .commit();
@@ -78,7 +79,6 @@ public class HomeActivity extends AppCompatActivity  {
     @Override
     protected void onStart() {
         super.onStart();
-        loadFragment(new HomeFragment());
         userref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -94,6 +94,8 @@ public class HomeActivity extends AppCompatActivity  {
 
             }
         });
+
+
     }
 
     private void gotosetupactitvity() {

@@ -35,13 +35,9 @@ public class CountryActivity extends AppCompatActivity {
 
 
         countryCodePicker = findViewById(R.id.countrycodepicker);
-
-
-
         countryCodePicker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
             @Override
             public void onCountrySelected() {
-                mlastclicktime = SystemClock.elapsedRealtime();
                 HashMap<String, Object> user = new HashMap<>();
                 user.put("Country" , countryCodePicker.getSelectedCountryName());
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -49,9 +45,9 @@ public class CountryActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(CountryActivity.this , ReligionActivity.class));
+                            startActivity(new Intent(CountryActivity.this, ReligionActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         }
-
                     }
                 });
             }

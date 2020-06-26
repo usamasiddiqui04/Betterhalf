@@ -216,7 +216,7 @@ public class GoogleFacebookLogin extends AppCompatActivity {
             FirebaseUser firebaseUser = mauth.getCurrentUser();
             if (firebaseUser!= null)
             {
-                Intent intent = new Intent(GoogleFacebookLogin.this , HomeActivity.class );
+                Intent intent = new Intent(GoogleFacebookLogin.this , HomeActivity.class);
                 startActivity(intent);
             }
         }
