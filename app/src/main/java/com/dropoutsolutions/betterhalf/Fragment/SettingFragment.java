@@ -1,30 +1,24 @@
 package com.dropoutsolutions.betterhalf.Fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-import com.dropoutsolutions.betterhalf.EducationActivity;
-import com.dropoutsolutions.betterhalf.FragmentActivity;
 import com.dropoutsolutions.betterhalf.GoogleFacebookLogin;
+import com.dropoutsolutions.betterhalf.HomeActivity;
 import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
 import com.dropoutsolutions.betterhalf.OnclickDetails;
 import com.dropoutsolutions.betterhalf.ProfilesettingActivity;
 import com.dropoutsolutions.betterhalf.R;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,23 +31,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class SettingFragment extends Fragment {
 
     ConstraintLayout logout  , profileview , profilesetting;
     View view ;
     TextView username ;
     CircleImageView profileimage ;
-    CardView constraintLayout;
+    HomeActivity homeActivity ;
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
-    TextView email ;
 
     public SettingFragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -65,60 +55,53 @@ public class SettingFragment extends Fragment {
         logout = view.findViewById(R.id.logout);
         profileview = view.findViewById(R.id.profileview);
         profilesetting = view.findViewById(R.id.profilesetting);
+        mauth = FirebaseAuth.getInstance() ;
+        Currentuserid = mauth.getCurrentUser().getUid();
+        userref = FirebaseDatabase.getInstance().getReference().child("Users");
 
         username = view.findViewById(R.id.username);
         profileimage = view.findViewById(R.id.profileimage);
 
+
+
         profilesetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext() , ProfilesettingActivity.class);
+                Intent intent = new Intent(homeActivity , ProfilesettingActivity.class);
                 startActivity(intent);
             }
         });
 
-        mauth = FirebaseAuth.getInstance() ;
-        Currentuserid = mauth.getCurrentUser().getUid();
-        userref = FirebaseDatabase.getInstance().getReference().child("Users");
-        profileview.setOnClickListener(v ->
+        profileview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 userref.child(Currentuserid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
-                {
-                    if (!dataSnapshot.hasChild("AboutDetails"))
-                    {
-                        Intent intent = new Intent(getActivity() , MaritalstatusActivity.class);
-                        startActivity(intent);
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists())
+                        {
+                            if (!dataSnapshot.hasChild("AboutDetails"))
+                            {
+                                Intent intent = new Intent(homeActivity , MaritalstatusActivity.class);
+                                startActivity(intent);
+                            }
+                            else
+                            {
+                                Intent intent = new Intent(homeActivity , OnclickDetails.class);
+                                intent.putExtra("Userid" , Currentuserid);
+                                startActivity(intent);
+                            }
+
+                        }
                     }
-                    else
-                    {
-                        Intent intent = new Intent(getContext() , OnclickDetails.class);
-                        intent.putExtra("Userid" , Currentuserid);
-                        startActivity(intent);
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
                     }
-
-
-
-                }
+                });
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        }));
-
-//
-//        if (Currentuserid != null)
-//        {
-//            GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
-//            if (googleSignInAccount.getEmail() == null)
-//                 email.setText(googleSignInAccount.getEmail());
-//        }
-
-
-
+        });
 
         logout.setOnClickListener(v -> {
 
@@ -135,7 +118,6 @@ public class SettingFragment extends Fragment {
                     GoogleSignInOptions gso = new GoogleSignInOptions.
                             Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
                             build();
-
                     GoogleSignInClient googleSignInClient=GoogleSignIn.getClient(getContext(),gso);
                     googleSignInClient.signOut();
                     Intent intent = new Intent(getContext() , GoogleFacebookLogin.class);
@@ -145,7 +127,6 @@ public class SettingFragment extends Fragment {
                 }
             }
 
-
         });
         return view;
     }
@@ -153,7 +134,6 @@ public class SettingFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         userref.child(Currentuserid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -163,15 +143,22 @@ public class SettingFragment extends Fragment {
                     String image = (String) dataSnapshot.child("ProfileImage").getValue();
 
                     username.setText(name);
-                    Glide.with(getContext()).load(image).into(profileimage);
+                    if (isAdded())
+                        Glide.with(homeActivity).load(image).into(profileimage);
+
 
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+    }
+
+    @Override
+    public void onAttach(Activity context) {
+        super.onAttach(context);
+        this.homeActivity = (HomeActivity) context;
     }
 }

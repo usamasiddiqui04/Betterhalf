@@ -16,7 +16,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GetmaritalStatusActivity"></activity>
+        <activity android:name=".GetmaritalStatusActivity" />
         <activity android:name=".GetSmookerActivity" />
         <activity android:name=".GetAlcoholActivity" />
         <activity android:name=".GethalalActivity" />
@@ -73,9 +73,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".Continue" />
         <activity android:name=".GoogleFacebookLogin" />
         <activity android:name=".MainActivity">

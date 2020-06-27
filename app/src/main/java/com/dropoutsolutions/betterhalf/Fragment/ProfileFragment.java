@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.dropoutsolutions.betterhalf.HomeActivity;
+import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
 import com.dropoutsolutions.betterhalf.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -127,7 +128,7 @@ public class ProfileFragment extends Fragment {
                                 if (task.isSuccessful())
                                 {
                                     progressDialog.dismiss();
-                                    Intent intent = new Intent(getActivity() , HomeActivity.class);
+                                    Intent intent = new Intent(getActivity() , MaritalstatusActivity.class);
                                     startActivity(intent);
                                 }
                                 else
