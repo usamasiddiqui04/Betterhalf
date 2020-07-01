@@ -42,6 +42,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -50,6 +51,7 @@ import java.util.HashMap;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
+import static com.facebook.FacebookSdk.getCallbackRequestCodeOffset;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,7 +64,7 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth mAuth ;
     private DatabaseReference favref ;
     String currentuserid;
-    ProgressDialog progressDialog ;
+    ProgressBar progressBar ;
     public HomeFragment() {
     }
     @Override
@@ -78,11 +80,8 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setNestedScrollingEnabled(false);
         SnapHelper snapHelper = new PagerSnapHelper();
-        progressDialog = new ProgressDialog(getContext());
         snapHelper.attachToRecyclerView(recyclerView);
-        progressDialog.setTitle("Fetching data from server please wait");
-        progressDialog.setMessage("loading");
-        progressDialog.setCancelable(true);
+        progressBar = view.findViewById(R.id.progress_bar);
 
         return view ;
     }
@@ -90,8 +89,7 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-
-        progressDialog.show();
+        progressBar.setVisibility(View.VISIBLE);
         FirebaseRecyclerOptions options =
                 new FirebaseRecyclerOptions.Builder<User>()
                         .setQuery(userref ,User.class)
@@ -106,112 +104,117 @@ public class HomeFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists())
                         {
+
                             if (isAdded())
                             {
-                                progressDialog.dismiss();
-                                String name = (String) dataSnapshot.child("Name").getValue();
-                                String Profession = (String) dataSnapshot.child("Profession").getValue();
-                                String Age = (String) dataSnapshot.child("DateOfBirth").getValue();
-                                String count = (String) dataSnapshot.child("Country").getValue();
-                                if (dataSnapshot.hasChild("Status"))
+                                if (dataSnapshot.hasChild("AboutDetails"))
                                 {
-                                    String status = dataSnapshot.child("Status").getValue().toString() ;
-                                    if (status.equals("d"))
+                                    progressBar.setVisibility(View.GONE);
+                                    String name = (String) dataSnapshot.child("Name").getValue();
+                                    String Profession = (String) dataSnapshot.child("Profession").getValue();
+                                    String Age = (String) dataSnapshot.child("DateOfBirth").getValue();
+                                    String count = (String) dataSnapshot.child("Country").getValue();
+                                    if (dataSnapshot.hasChild("Status"))
                                     {
-                                        startActivity(new Intent(getContext() , Continue.class));
-                                    }
-
-                                }
-                                String Image = (String) dataSnapshot.child("ProfileImage").getValue();
-                                Glide.with(getContext()).load(Image).into(userViewHOlder.roundedImageView);
-                                userViewHOlder.name.setText(name);
-                                userViewHOlder.age.setText(Age);
-                                userViewHOlder.profession.setText(Profession);
-                                userViewHOlder.country.setText(count);
-
-                                userViewHOlder.roundedImageView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-
-                                        if (!dataSnapshot.hasChild("AboutDetails"))
+                                        String status = dataSnapshot.child("Status").getValue().toString() ;
+                                        if (status.equals("d"))
                                         {
-                                            AlertDialog alertDialog = new AlertDialog.Builder(
-                                                    getContext()).create();
-
-                                            // Setting Dialog Title
-                                            alertDialog.setTitle("Better half");
-
-                                            // Setting Dialog Message
-                                            alertDialog.setMessage(name + " is not completed her/his profile");
-
-                                            // Setting Icon to Dialog
-                                            alertDialog.setIcon(R.drawable.ic_bell);
-
-                                            // Setting OK Button
-                                            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    // Write your code here to execute after dialog closed
-
-                                                }
-                                            });
-
-                                            // Showing Alert Message
-                                            alertDialog.show();
-                                        }
-                                        else
-                                        {
-                                            Intent intent = new Intent(getContext() , OnclickDetails.class);
-                                            intent.putExtra("Userid" , postid);
-                                            startActivity(intent);
+                                            startActivity(new Intent(getContext() , Continue.class));
                                         }
 
                                     }
-                                });
+                                    String Image = (String) dataSnapshot.child("ProfileImage").getValue();
+                                    Glide.with(getContext()).load(Image).into(userViewHOlder.roundedImageView);
+                                    userViewHOlder.name.setText(name);
+                                    userViewHOlder.age.setText(Age);
+                                    userViewHOlder.profession.setText(Profession);
+                                    userViewHOlder.country.setText(count);
 
-                                if (postid.equals(currentuserid))
-                                {
-                                    userViewHOlder.messageimage.setVisibility(View.GONE);
-                                }
-                                else
-                                {
-                                    userViewHOlder.messageimage.setOnClickListener(new View.OnClickListener() {
+                                    userViewHOlder.roundedImageView.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
 
-                                            Intent intent = new Intent(getContext() , ChatActivity.class);
-                                            intent.putExtra("Userid" , postid);
-                                            startActivity(intent);
+                                            if (!dataSnapshot.hasChild("AboutDetails"))
+                                            {
+                                                AlertDialog alertDialog = new AlertDialog.Builder(
+                                                        getContext()).create();
+
+                                                // Setting Dialog Title
+                                                alertDialog.setTitle("Better half");
+
+                                                // Setting Dialog Message
+                                                alertDialog.setMessage(name + " is not completed her/his profile");
+
+                                                // Setting Icon to Dialog
+                                                alertDialog.setIcon(R.drawable.ic_bell);
+
+                                                // Setting OK Button
+                                                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        // Write your code here to execute after dialog closed
+
+                                                    }
+                                                });
+
+                                                // Showing Alert Message
+                                                alertDialog.show();
+                                            }
+                                            else
+                                            {
+                                                Intent intent = new Intent(getContext() , OnclickDetails.class);
+                                                intent.putExtra("Userid" , postid);
+                                                startActivity(intent);
+                                            }
+
                                         }
                                     });
-                                }
 
-                                if (postid.equals(currentuserid))
-                                {
-                                    userViewHOlder.fav.setVisibility(View.GONE);
-                                }
-                                else
-                                {
-                                    userViewHOlder.fav.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Toast.makeText(getActivity(),"Favourite", Toast.LENGTH_SHORT).show();
-                                            HashMap hashMap = new HashMap();
-                                            hashMap.put("Like by" , currentuserid);
-                                            favref.child(currentuserid).child(postid).updateChildren(hashMap).addOnCompleteListener(
-                                                    new OnCompleteListener() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task task) {
-                                                            if (task.isSuccessful())
-                                                            {
-                                                                Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+                                    if (postid.equals(currentuserid))
+                                    {
+                                        userViewHOlder.messageimage.setVisibility(View.GONE);
+                                    }
+                                    else
+                                    {
+                                        userViewHOlder.messageimage.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+
+                                                Intent intent = new Intent(getContext() , ChatActivity.class);
+                                                intent.putExtra("Userid" , postid);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    }
+
+                                    if (postid.equals(currentuserid))
+                                    {
+                                        userViewHOlder.fav.setVisibility(View.GONE);
+                                    }
+                                    else
+                                    {
+                                        userViewHOlder.fav.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(getActivity(),"Favourite", Toast.LENGTH_SHORT).show();
+                                                HashMap hashMap = new HashMap();
+                                                hashMap.put("Like by" , currentuserid);
+                                                favref.child(currentuserid).child(postid).updateChildren(hashMap).addOnCompleteListener(
+                                                        new OnCompleteListener() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task task) {
+                                                                if (task.isSuccessful())
+                                                                {
+                                                                    Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                            );
-                                        }
-                                    });
+                                                );
+                                            }
+                                        });
 
+                                    }
                                 }
+
                             }
 
                         }
@@ -239,11 +242,8 @@ public class HomeFragment extends Fragment {
         private RoundedImageView roundedImageView ;
         private TextView name , age , profession , country ;
         private CircleImageView messageimage  , fav;
-        private ConstraintLayout constraintLayout ;
         public UserViewHOlder(@NonNull View itemView) {
             super(itemView);
-
-            constraintLayout = itemView.findViewById(R.id.one);
 
             messageimage = itemView.findViewById(R.id.message);
             roundedImageView = itemView.findViewById(R.id.imageView);

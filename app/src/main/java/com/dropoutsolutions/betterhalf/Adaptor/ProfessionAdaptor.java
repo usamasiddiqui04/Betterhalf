@@ -1,5 +1,6 @@
 package com.dropoutsolutions.betterhalf.Adaptor;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -15,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dropoutsolutions.betterhalf.Fragment.Gender;
 import com.dropoutsolutions.betterhalf.Fragment.ProfileFragment;
 import com.dropoutsolutions.betterhalf.GetString;
+import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
+import com.dropoutsolutions.betterhalf.NicknameActivity;
+import com.dropoutsolutions.betterhalf.ProfileimageActivity;
 import com.dropoutsolutions.betterhalf.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,14 +32,21 @@ import java.util.HashMap;
 public class ProfessionAdaptor extends RecyclerView.Adapter<ProfessionAdaptor.MyViewHolder> {
     private ArrayList<String> text = new ArrayList<>();
     private Context context ;
+    String nickname  ;
+    String dob ;
+    String gender ;
     private int row_index ;
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
 
-    public ProfessionAdaptor(ArrayList<String> text, Context context) {
+
+    public ProfessionAdaptor(ArrayList<String> text, Context context, String nickname, String dob, String gender) {
         this.text = text;
         this.context = context;
+        this.nickname = nickname;
+        this.dob = dob;
+        this.gender = gender;
     }
 
     @NonNull
@@ -60,14 +71,7 @@ public class ProfessionAdaptor extends RecyclerView.Adapter<ProfessionAdaptor.My
             if (row_index == position)
             {
                 savedata(text.get(row_index));
-                Handler mainLooperHandler = new Handler(Looper.getMainLooper());
-                mainLooperHandler.postDelayed(() -> {
-                    AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
-                    ProfileFragment profileFragment = new ProfileFragment();
-                    appCompatActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.frameLayout , profileFragment).addToBackStack(null)
-                            .commit();
-                }, 500);
+
 
             }
         });
@@ -87,24 +91,14 @@ public class ProfessionAdaptor extends RecyclerView.Adapter<ProfessionAdaptor.My
         {
             holder.item.setBackgroundResource(R.drawable.resetbackground);
         }
-
     }
-
     private void savedata(String s) {
-        mauth = FirebaseAuth.getInstance() ;
-        Currentuserid = mauth.getCurrentUser().getUid();
-        userref = FirebaseDatabase.getInstance().getReference().child("Users").child(Currentuserid);
-        HashMap<String, Object> user = new HashMap<>();
-        user.put("Profession" , s);
-        userref.updateChildren(user).addOnCompleteListener(task -> {
-            if (task.isSuccessful())
-            {
-                Toast.makeText(context, "Profession done", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-
-
+        Intent intent = new Intent(context , MaritalstatusActivity.class);
+        intent.putExtra("gender" , gender);
+        intent.putExtra("nickname" , nickname);
+        intent.putExtra("dob" , dob);
+        intent.putExtra("profession" ,s);
+        context.startActivity(intent);
     }
 
 

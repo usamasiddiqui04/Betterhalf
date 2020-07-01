@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ public class GetPrayingActivity extends AppCompatActivity {
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
+    ProgressBar progressBar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +54,16 @@ public class GetPrayingActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(GetPrayingActivity.this , ProfilesettingActivity.class));
-                            finish();
+                            Intent intent = new Intent(GetPrayingActivity.this , ProfilesettingActivity.class);
+                            startActivity(intent);
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                            finish();
                         }
-
                     }
-
                 });
+
+
+
 
             }
         });
@@ -80,13 +84,14 @@ public class GetPrayingActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(GetPrayingActivity.this , ProfilesettingActivity.class));
-                            finish();
+                            Intent intent = new Intent(GetPrayingActivity.this , ProfilesettingActivity.class);
+                            startActivity(intent);
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                            finish();
                         }
-
                     }
                 });
+
 
             }
         });
@@ -108,20 +113,20 @@ public class GetPrayingActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(GetPrayingActivity.this , ProfilesettingActivity.class));
-                            finish();
+                            Intent intent = new Intent(GetPrayingActivity.this , ProfilesettingActivity.class);
+                            startActivity(intent);
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                            finish();
                         }
-
                     }
                 });
-
             }
         });
 
         npray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 npray.setPadding(20, 10, 20, 10);
                 npray.setBackgroundResource(R.drawable.edittextback);
@@ -135,9 +140,10 @@ public class GetPrayingActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
                         {
-                            startActivity(new Intent(GetPrayingActivity.this , ProfilesettingActivity.class));
-                            finish();
+                            Intent intent = new Intent(GetPrayingActivity.this , ProfilesettingActivity.class);
+                            startActivity(intent);
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                            finish();
                         }
                     }
                 });
@@ -150,14 +156,14 @@ public class GetPrayingActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        userref.addValueEventListener(new ValueEventListener() {
+        userref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String pray = (String)dataSnapshot.child("Prayer").getValue();
+                    String pray = (String) dataSnapshot.child("Prayer").getValue();
 
-                    if (pray.equals(apray))
+                    if (pray.equals(apray.getText()))
                     {
                         apray.setPadding(20 , 10 , 20 , 10);
                         apray.setBackgroundResource(R.drawable.edittextback);
@@ -165,7 +171,7 @@ public class GetPrayingActivity extends AppCompatActivity {
                         npray.setBackgroundResource(R.drawable.resetbackground);
                         upray.setBackgroundResource(R.drawable.resetbackground);
                     }
-                    else if (pray.equals(upray))
+                    else if (pray.equals(upray.getText()))
                     {
                         upray.setPadding(20, 10, 20, 10);
                         upray.setBackgroundResource(R.drawable.edittextback);
@@ -174,7 +180,7 @@ public class GetPrayingActivity extends AppCompatActivity {
                         apray.setBackgroundResource(R.drawable.resetbackground);
                         HashMap<String, Object> user = new HashMap<>();
                     }
-                    else if (pray.equals(spray))
+                    else if (pray.equals(spray.getText()))
                     {
                         spray.setPadding(20, 10, 20, 10);
                         spray.setBackgroundResource(R.drawable.edittextback);
@@ -198,5 +204,11 @@ public class GetPrayingActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
     }
 }

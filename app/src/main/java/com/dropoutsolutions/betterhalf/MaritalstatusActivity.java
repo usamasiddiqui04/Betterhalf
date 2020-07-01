@@ -23,6 +23,11 @@ public class MaritalstatusActivity extends AppCompatActivity {
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
+    String nickname ;
+    String dob ;
+    String gender ;
+    String profession ;
+    String prfileimage ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +41,10 @@ public class MaritalstatusActivity extends AppCompatActivity {
         seprated = findViewById(R.id.seprated);
         annulled = findViewById(R.id.annulled);
         widowed = findViewById(R.id.widowed);
-
+        nickname = getIntent().getStringExtra("nickname");
+        dob = getIntent().getStringExtra("dob");
+        gender = getIntent().getStringExtra("gender");
+        profession = getIntent().getStringExtra("profession");
 
 
         nevermarried.setOnClickListener(new View.OnClickListener() {
@@ -48,21 +56,14 @@ public class MaritalstatusActivity extends AppCompatActivity {
                 seprated.setBackgroundResource(R.drawable.resetbackground);
                 annulled.setBackgroundResource(R.drawable.resetbackground);
                 widowed.setBackgroundResource(R.drawable.resetbackground);
-                HashMap user = new HashMap<>();
-                user.put("MaritalStatus" , nevermarried.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-
-                            Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                            startActivity(intent);
-                            finish();
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , nevermarried.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -75,21 +76,14 @@ public class MaritalstatusActivity extends AppCompatActivity {
                 seprated.setBackgroundResource(R.drawable.resetbackground);
                 annulled.setBackgroundResource(R.drawable.resetbackground);
                 widowed.setBackgroundResource(R.drawable.resetbackground);
-                HashMap user = new HashMap<>();
-                user.put("MaritalStatus" , divorced.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                            startActivity(intent);
-                            finish();
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , divorced.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -103,21 +97,14 @@ public class MaritalstatusActivity extends AppCompatActivity {
                 divorced.setBackgroundResource(R.drawable.resetbackground);
                 annulled.setBackgroundResource(R.drawable.resetbackground);
                 widowed.setBackgroundResource(R.drawable.resetbackground);
-                HashMap user = new HashMap<>();
-                user.put("MaritalStatus" , seprated.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                            startActivity(intent);
-                            finish();
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , seprated.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -130,20 +117,14 @@ public class MaritalstatusActivity extends AppCompatActivity {
                 divorced.setBackgroundResource(R.drawable.resetbackground);
                 seprated.setBackgroundResource(R.drawable.resetbackground);
                 widowed.setBackgroundResource(R.drawable.resetbackground);
-                HashMap user = new HashMap<>();
-                user.put("MaritalStatus" , annulled.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                            startActivity(intent);
-                            finish();
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , annulled.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -156,20 +137,14 @@ public class MaritalstatusActivity extends AppCompatActivity {
                 divorced.setBackgroundResource(R.drawable.resetbackground);
                 seprated.setBackgroundResource(R.drawable.resetbackground);
                 annulled.setBackgroundResource(R.drawable.resetbackground);
-                HashMap user = new HashMap<>();
-                user.put("MaritalStatus" , widowed.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
-                            startActivity(intent);
-                            finish();
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-                    }
-                });
+                Intent intent = new Intent(MaritalstatusActivity.this , EducationActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , widowed.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

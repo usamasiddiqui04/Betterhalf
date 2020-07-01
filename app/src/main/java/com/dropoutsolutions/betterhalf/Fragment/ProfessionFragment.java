@@ -91,14 +91,13 @@ public class ProfessionFragment extends Fragment {
         text.add("Soldier");
 
 
-        recyclerView = view.findViewById(R.id.recyclerview);
-        ProfessionAdaptor professionAdaptor = new ProfessionAdaptor(text , getContext() );
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        professionAdaptor.notifyDataSetChanged();
-        recyclerView.setAdapter(professionAdaptor);
+//        recyclerView = view.findViewById(R.id.recyclerview);
+//        ProfessionAdaptor professionAdaptor = new ProfessionAdaptor(text , getContext() );
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+//        recyclerView.setLayoutManager(mLayoutManager);
+//        recyclerView.setNestedScrollingEnabled(false);
+//        professionAdaptor.notifyDataSetChanged();
+//        recyclerView.setAdapter(professionAdaptor);
 
         return view ;
     }

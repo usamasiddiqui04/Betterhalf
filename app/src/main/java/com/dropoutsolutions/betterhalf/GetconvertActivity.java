@@ -46,7 +46,7 @@ public class GetconvertActivity extends AppCompatActivity {
                 no.setBackgroundResource(R.drawable.resetbackground);
                 HashMap<String, Object> user = new HashMap<>();
                 user.put("Convert" , yes.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                userref.child("Convert").setValue(yes.getText()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
@@ -72,7 +72,7 @@ public class GetconvertActivity extends AppCompatActivity {
                 yes.setBackgroundResource(R.drawable.resetbackground);
                 HashMap<String, Object> user = new HashMap<>();
                 user.put("Convert" , no.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                userref.child("Convert").setValue(no.getText()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
@@ -83,6 +83,7 @@ public class GetconvertActivity extends AppCompatActivity {
                         }
 
                     }
+
                 });
 
             }
@@ -124,5 +125,13 @@ public class GetconvertActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        startActivity(new Intent(this , ProfilesettingActivity.class));
+        finish();
     }
 }

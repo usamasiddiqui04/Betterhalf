@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main"
     tools:context=".GoogleFacebookLogin">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -23,7 +22,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorPrimary"
         android:text="@string/better_half"
         android:textStyle="bold"
         android:gravity="center"
@@ -37,7 +36,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorPrimary"
         android:text="Where single muslim meet"
         android:textStyle="bold"
         android:layout_margin="10dp"
@@ -50,7 +49,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorPrimary"
         android:gravity="center"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -63,11 +62,29 @@
 
     </TextView>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/term"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/backgoundbytton">
+
+    </FrameLayout>
+
     <com.facebook.login.widget.LoginButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
+        android:drawableStart="@drawable/ic_facebook"
+        android:backgroundTint="#3b5998"
+        android:background="@drawable/backgoundbytton"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textAllCaps="true"
+        android:drawableLeft="@drawable/ic_facebook"
         app:layout_constraintBottom_toTopOf="@id/term"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,18 +95,26 @@
 
     </com.facebook.login.widget.LoginButton>
 
-    <com.google.android.gms.common.SignInButton
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
+        android:backgroundTint="#de5246"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:paddingStart="7dp"
+        android:drawableStart="@drawable/ic_gmail"
+        android:textColor="#ffffff"
+        android:text="Log in with google"
+        android:background="@drawable/backgoundbytton"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="18dp"
         app:layout_constraintBottom_toTopOf="@id/facebook"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/google">
-    </com.google.android.gms.common.SignInButton>
+    </Button>
 
     <TextView
         android:layout_width="match_parent"
@@ -104,6 +129,17 @@
         android:text="@string/by_continue_you_agree_to_our_terms_amd_policy">
 
     </TextView>
+
+
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        android:id="@+id/progress_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 

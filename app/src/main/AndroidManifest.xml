@@ -11,11 +11,20 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ProfileimageActivity"></activity>
+        <activity android:name=".ProfessionActivity" />
+        <activity android:name=".BirthdayActivity" />
+        <activity android:name=".GenderActivity" />
+        <activity android:name=".NicknameActivity" />
+        <activity android:name=".Getrelocation" />
+        <activity android:name=".Getsoonmarriage" />
+        <activity android:name=".getchildern" />
+        <activity android:name=".UserprofileActivity" />
         <activity android:name=".GetmaritalStatusActivity" />
         <activity android:name=".GetSmookerActivity" />
         <activity android:name=".GetAlcoholActivity" />

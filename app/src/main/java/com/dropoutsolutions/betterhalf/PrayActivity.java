@@ -24,6 +24,11 @@ public class PrayActivity extends AppCompatActivity {
     private DatabaseReference userref ;
     private String Currentuserid ;
     long mlastclicktime = 0 ;
+    String nickname ;
+    String dob ;
+    String gender ;
+    String profession ;
+    String prfileimage , maritalstatus , education , country , religion ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,15 @@ public class PrayActivity extends AppCompatActivity {
         upray = findViewById(R.id.upray);
         spray = findViewById(R.id.spray);
         npray = findViewById(R.id.npray);
+        nickname = getIntent().getStringExtra("nickname");
+        dob = getIntent().getStringExtra("dob");
+        gender = getIntent().getStringExtra("gender");
+        profession = getIntent().getStringExtra("profession");
+        prfileimage = getIntent().getStringExtra("profileimage");
+        maritalstatus = getIntent().getStringExtra("maritalstatus");
+        education = getIntent().getStringExtra("educationlevel");
+        country = getIntent().getStringExtra("country");
+        religion = getIntent().getStringExtra("religion");
 
         apray.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,20 +58,18 @@ public class PrayActivity extends AppCompatActivity {
                 spray.setBackgroundResource(R.drawable.resetbackground);
                 npray.setBackgroundResource(R.drawable.resetbackground);
                 upray.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("Prayer" , apray.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
 
-                    }
-
-                });
+                Intent intent = new Intent(PrayActivity.this , SoonmarreidActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , apray.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -71,19 +83,18 @@ public class PrayActivity extends AppCompatActivity {
                 spray.setBackgroundResource(R.drawable.resetbackground);
                 npray.setBackgroundResource(R.drawable.resetbackground);
                 apray.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("Prayer" , upray.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(PrayActivity.this , SoonmarreidActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , upray.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -98,19 +109,18 @@ public class PrayActivity extends AppCompatActivity {
                 upray.setBackgroundResource(R.drawable.resetbackground);
                 npray.setBackgroundResource(R.drawable.resetbackground);
                 apray.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("Prayer" , spray.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(PrayActivity.this , SoonmarreidActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , spray.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -124,23 +134,26 @@ public class PrayActivity extends AppCompatActivity {
                 upray.setBackgroundResource(R.drawable.resetbackground);
                 spray.setBackgroundResource(R.drawable.resetbackground);
                 apray.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("Prayer" , npray.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(PrayActivity.this , SoonmarreidActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-                    }
-                });
+                Intent intent = new Intent(PrayActivity.this , SoonmarreidActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , apray.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
 
-
-
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

@@ -165,7 +165,7 @@ public class DashBoardFragment extends Fragment {
                                     userViewHOlder.fav.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                            Toast.makeText(getActivity(), " un favourite", Toast.LENGTH_SHORT).show();
+                                            userref.child(postid).removeValue();
                                         }
                                     });
 

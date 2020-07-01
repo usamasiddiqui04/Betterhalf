@@ -5,14 +5,7 @@
     android:background="@android:color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/backimage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:src="@drawable/ic_navigate_before_black_24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/logo"
@@ -31,7 +24,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="@string/you_re_creating_a_new_account_please_enter_you_gender_to_continue"
+        android:text="@string/the_more_information_you_provide_allows_us_to_match_you_with_more_relevant_singles"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/logo"

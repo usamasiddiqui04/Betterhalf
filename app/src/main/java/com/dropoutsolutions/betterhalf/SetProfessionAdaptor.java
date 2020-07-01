@@ -90,13 +90,7 @@ public class SetProfessionAdaptor extends RecyclerView.Adapter<SetProfessionAdap
         userref = FirebaseDatabase.getInstance().getReference().child("Users").child(Currentuserid);
         HashMap<String, Object> user = new HashMap<>();
         user.put("Profession" , s);
-        userref.updateChildren(user).addOnCompleteListener(task -> {
-            if (task.isSuccessful())
-            {
-                Toast.makeText(context, "Profession done", Toast.LENGTH_SHORT).show();
-            }
-
-        });
+        userref.updateChildren(user);
 
 
     }

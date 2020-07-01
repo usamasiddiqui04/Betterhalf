@@ -23,6 +23,11 @@ public class SoonmarreidActivity extends AppCompatActivity {
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
+    String nickname ;
+    String dob ;
+    String gender ;
+    String profession ;
+    String prfileimage , maritalstatus , education , country , religion , prayer ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,16 @@ public class SoonmarreidActivity extends AppCompatActivity {
         one = findViewById(R.id.onetwo);
         three = findViewById(R.id.threefour);
         four = findViewById(R.id.fourplus);
+        nickname = getIntent().getStringExtra("nickname");
+        dob = getIntent().getStringExtra("dob");
+        gender = getIntent().getStringExtra("gender");
+        profession = getIntent().getStringExtra("profession");
+        prfileimage = getIntent().getStringExtra("profileimage");
+        maritalstatus = getIntent().getStringExtra("maritalstatus");
+        education = getIntent().getStringExtra("educationlevel");
+        country = getIntent().getStringExtra("country");
+        religion = getIntent().getStringExtra("religion");
+        prayer = getIntent().getStringExtra("prayer");
 
         asap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,19 +59,19 @@ public class SoonmarreidActivity extends AppCompatActivity {
                 one.setBackgroundResource(R.drawable.resetbackground);
                 three.setBackgroundResource(R.drawable.resetbackground);
                 four.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("SoonMarried" , asap.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(SoonmarreidActivity.this , EatActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , prayer);
+                intent.putExtra("soonmarried" , asap.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -70,19 +85,20 @@ public class SoonmarreidActivity extends AppCompatActivity {
                 asap.setBackgroundResource(R.drawable.resetbackground);
                 three.setBackgroundResource(R.drawable.resetbackground);
                 four.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("SoonMarried" , one.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
+                Intent intent = new Intent(SoonmarreidActivity.this , EatActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , prayer);
+                intent.putExtra("soonmarried" , one.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-                    }
-                });
 
             }
         });
@@ -95,19 +111,19 @@ public class SoonmarreidActivity extends AppCompatActivity {
                 asap.setBackgroundResource(R.drawable.resetbackground);
                 one.setBackgroundResource(R.drawable.resetbackground);
                 four.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("SoonMarried" , three.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(SoonmarreidActivity.this , EatActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , prayer);
+                intent.putExtra("soonmarried" , three.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
 
             }
@@ -122,19 +138,19 @@ public class SoonmarreidActivity extends AppCompatActivity {
                 asap.setBackgroundResource(R.drawable.resetbackground);
                 one.setBackgroundResource(R.drawable.resetbackground);
                 three.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("SoonMarried" , four.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(SoonmarreidActivity.this , EatActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(SoonmarreidActivity.this , EatActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , prayer);
+                intent.putExtra("soonmarried" ,four.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });

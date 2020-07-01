@@ -22,13 +22,14 @@ public class ProfilesettingActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth ;
     DatabaseReference userref ;
+    TextView done ;
     String currentuser ;
-    TextView name  , dob , gender , status , about  , education ,employee,
+    TextView name  , dob , gender , status , about  , education ,
             prfession , jobtitle , employer , ethnicgroup , ethnicorigin , sect , convert , religion ,
             praying ,halalfood , alcohol ,smooker , maritalstatus , childern , marriagehorizon , relocation ;
     ConstraintLayout setclayout ,ethnicgrouplayout,employeelayour,joblayout ,nicknamelayout , doblayout , genderlayout , statuslayout , aboutlayout ,eductionalayout  , professionlayout;
     ConstraintLayout convertlayout , religionlayout , praylayout , halalayout , alcohollayout , smookerlayout,
-    maritallayout ;
+    maritallayout , childrenlayout , getmaarriagehorizon , relocationlayout ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +43,22 @@ public class ProfilesettingActivity extends AppCompatActivity {
         religionlayout = findViewById(R.id.religiositylayout);
         praylayout = findViewById(R.id.prayinglayout);
         halalayout = findViewById(R.id.halalfoodlayout);
+        relocationlayout = findViewById(R.id.relocation);
         alcohollayout = findViewById(R.id.alcohollayout);
         smookerlayout = findViewById(R.id.smookerlayout);
         nicknamelayout = findViewById(R.id.nicknamelayout);
         doblayout = findViewById(R.id.doblayout);
+        getmaarriagehorizon = findViewById(R.id.getmarriagehorizon);
         genderlayout = findViewById(R.id.genderlayout);
         statuslayout = findViewById(R.id.statuslayout);
         aboutlayout = findViewById(R.id.aboutlayout);
+        childrenlayout = findViewById(R.id.chidernlayout);
         name = findViewById(R.id.getnickname);
         dob = findViewById(R.id.getdateofbirth);
         gender = findViewById(R.id.getgender);
         status = findViewById(R.id.getstatus);
         about = findViewById(R.id.getaboutyou);
+        marriagehorizon = findViewById(R.id.marraigehorizon);
         maritallayout = findViewById(R.id.maritalstatuslayout);
         education = findViewById(R.id.geteducation);
         prfession = findViewById(R.id.getprofession);
@@ -70,7 +75,6 @@ public class ProfilesettingActivity extends AppCompatActivity {
         smooker = findViewById(R.id.getsmoker);
         maritalstatus = findViewById(R.id.getmaritalstatus);
         childern = findViewById(R.id.getchildern);
-        marriagehorizon = findViewById(R.id.getmarraigehorizon);
         relocation = findViewById(R.id.getrelocation);
         eductionalayout = findViewById(R.id.eduaction);
         professionlayout = findViewById(R.id.professionlayout);
@@ -79,10 +83,44 @@ public class ProfilesettingActivity extends AppCompatActivity {
         ethnicgrouplayout = findViewById(R.id.ethnicgrouplayout);
         setclayout =findViewById(R.id.sectlayout);
 
+        done = findViewById(R.id.done);
+
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+        relocationlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfilesettingActivity.this ,Getrelocation.class));
+                finish();
+            }
+        });
+
+        getmaarriagehorizon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfilesettingActivity.this ,Getsoonmarriage.class));
+                finish();
+            }
+        });
+
+        childrenlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfilesettingActivity.this ,getchildern.class));
+                finish();
+            }
+        });
         convertlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this ,GetconvertActivity.class));
+                finish();
             }
         });
 
@@ -90,6 +128,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this ,GetmaritalStatusActivity.class));
+                finish();
             }
         });
 
@@ -97,6 +136,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , GetReligionActivity.class));
+                finish();
             }
         });
 
@@ -104,6 +144,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , GetPrayingActivity.class));
+                finish();
             }
         });
 
@@ -111,6 +152,8 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , GethalalActivity.class));
+                finish();
+
             }
         });
 
@@ -118,6 +161,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , GetAlcoholActivity.class));
+                finish();
             }
         });
 
@@ -125,6 +169,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , GetSmookerActivity.class));
+                finish();
             }
         });
 
@@ -132,6 +177,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , EditdobActivity.class));
+                finish();
             }
         });
 
@@ -139,6 +185,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , Editnickname.class));
+                finish();
             }
         });
 
@@ -146,12 +193,14 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , SetgenderActivity.class));
+                finish();
             }
         });
         aboutlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , SetdetailsActivity.class));
+                finish();
             }
         });
 
@@ -159,6 +208,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , EditEducationActivity.class));
+                finish();
             }
         });
 
@@ -166,6 +216,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , OnlinestatusActivity.class));
+                finish();
             }
         });
 
@@ -173,6 +224,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , SetProfessionActivity.class));
+                finish();
             }
         });
 
@@ -180,6 +232,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , JobActivity.class));
+                finish();
             }
         });
 
@@ -187,6 +240,7 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , EmployerActivity.class));
+                finish();
             }
         });
 
@@ -194,12 +248,14 @@ public class ProfilesettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , GetcountryActivity.class));
+                finish();
             }
         });
         setclayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilesettingActivity.this , SectActivity.class));
+                finish();
             }
         });
     }
@@ -238,6 +294,24 @@ public class ProfilesettingActivity extends AppCompatActivity {
                         status.setText(Status);
                     }
 
+                    if (dataSnapshot.hasChild("JobTitle"))
+                    {
+                        String Jobtitle = (String) dataSnapshot.child("JobTitle").getValue();
+                        jobtitle.setText(Jobtitle);
+                    }
+
+                    if (dataSnapshot.hasChild("EmployeePosition"))
+                    {
+                        String eomployeepostion = (String) dataSnapshot.child("EmployeePosition").getValue();
+                        employer.setText(eomployeepostion);
+                    }
+
+                    if (dataSnapshot.hasChild("Sect"))
+                    {
+                        String Sect = (String) dataSnapshot.child("Sect").getValue();
+                        sect.setText(Sect);
+                    }
+
                     name.setText(Name);
                     dob.setText(Age);
                     gender.setText(Gender);
@@ -263,5 +337,12 @@ public class ProfilesettingActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 }

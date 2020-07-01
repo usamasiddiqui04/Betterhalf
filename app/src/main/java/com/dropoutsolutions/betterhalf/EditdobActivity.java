@@ -58,12 +58,20 @@ public class EditdobActivity extends AppCompatActivity {
                     {
                         startActivity(new Intent(EditdobActivity.this , ProfilesettingActivity.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        finish();
                     }
 
                 }
             });
         });
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this , ProfilesettingActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
     }
 
     @Override

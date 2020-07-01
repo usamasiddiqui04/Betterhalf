@@ -58,6 +58,7 @@ public class SetgenderActivity extends AppCompatActivity {
                             Intent intent = new Intent(SetgenderActivity.this , ProfilesettingActivity.class);
                             startActivity(intent);
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                            finish();
                         }
 
                     }
@@ -76,9 +77,9 @@ public class SetgenderActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         Intent intent = new Intent(SetgenderActivity.this , ProfilesettingActivity.class);
-
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        finish();
 
                     }
 
@@ -123,5 +124,12 @@ public class SetgenderActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this , ProfilesettingActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
     }
 }

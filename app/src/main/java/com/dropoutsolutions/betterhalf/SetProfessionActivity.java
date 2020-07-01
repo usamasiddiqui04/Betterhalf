@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,7 +21,8 @@ public class SetProfessionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_profession);
+        setContentView(R.layout.setprofession);
+
         text.clear();
         text.add("Accountant");
         text.add("Actor");
@@ -69,7 +71,8 @@ public class SetProfessionActivity extends AppCompatActivity {
         SetProfessionAdaptor professionAdaptor = new SetProfessionAdaptor(text , this );
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.hasFixedSize();
+        recyclerView.setNestedScrollingEnabled(true);
         professionAdaptor.notifyDataSetChanged();
         recyclerView.setAdapter(professionAdaptor);
 
@@ -79,4 +82,5 @@ public class SetProfessionActivity extends AppCompatActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
 }

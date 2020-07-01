@@ -58,6 +58,7 @@ public class EmployerActivity extends AppCompatActivity {
                         {
                             startActivity(new Intent(EmployerActivity.this , ProfilesettingActivity.class));
                             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                            finish();
 
                         }
 
@@ -92,5 +93,12 @@ public class EmployerActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this , ProfilesettingActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
     }
 }

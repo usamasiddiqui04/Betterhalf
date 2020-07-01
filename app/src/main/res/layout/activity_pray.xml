@@ -8,16 +8,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/backimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:src="@drawable/ic_navigate_before_black_24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
+
 
         <ImageView
             android:id="@+id/logo"
@@ -125,6 +119,16 @@
             android:layout_margin="30sp">
 
         </TextView>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+            android:id="@+id/progress_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,11 @@ public class EducationActivity extends AppCompatActivity {
     private DatabaseReference userref ;
     private String Currentuserid ;
     long mlastclicktime = 0 ;
+    String nickname ;
+    String dob ;
+    String gender ;
+    String profession ;
+    String prfileimage , maritalstatus ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,11 @@ public class EducationActivity extends AppCompatActivity {
         doctorate = findViewById(R.id.doctorate);
         other = findViewById(R.id.other);
 
+        nickname = getIntent().getStringExtra("nickname");
+        dob = getIntent().getStringExtra("dob");
+        gender = getIntent().getStringExtra("gender");
+        profession = getIntent().getStringExtra("profession");
+        maritalstatus = getIntent().getStringExtra("maritalstatus");
         bdegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,19 +62,15 @@ public class EducationActivity extends AppCompatActivity {
                 college.setBackgroundResource(R.drawable.resetbackground);
                 doctorate.setBackgroundResource(R.drawable.resetbackground);
                 other.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("EducationLevel" , bdegree.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(EducationActivity.this, CountryActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , bdegree.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -80,18 +86,15 @@ public class EducationActivity extends AppCompatActivity {
                 college.setBackgroundResource(R.drawable.resetbackground);
                 doctorate.setBackgroundResource(R.drawable.resetbackground);
                 other.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("EducationLevel" , mdegree.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-                    }
-                });
-
+                Intent intent = new Intent(EducationActivity.this, CountryActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , mdegree.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -106,20 +109,15 @@ public class EducationActivity extends AppCompatActivity {
                 mdegree.setBackgroundResource(R.drawable.resetbackground);
                 college.setBackgroundResource(R.drawable.resetbackground);
                 doctorate.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("EducationLevel" , nondegree.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(EducationActivity.this, CountryActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , nondegree.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -135,18 +133,15 @@ public class EducationActivity extends AppCompatActivity {
                 nondegree.setBackgroundResource(R.drawable.resetbackground);
                 doctorate.setBackgroundResource(R.drawable.resetbackground);
                 other.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("EducationLevel" , college.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(EducationActivity.this, CountryActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , college.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -160,19 +155,15 @@ public class EducationActivity extends AppCompatActivity {
                 college.setBackgroundResource(R.drawable.resetbackground);
                 nondegree.setBackgroundResource(R.drawable.resetbackground);
                 other.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("EducationLevel" , doctorate.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(EducationActivity.this, CountryActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , doctorate.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -186,21 +177,25 @@ public class EducationActivity extends AppCompatActivity {
                 college.setBackgroundResource(R.drawable.resetbackground);
                 nondegree.setBackgroundResource(R.drawable.resetbackground);
                 doctorate.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("EducationLevel", other.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(EducationActivity.this, CountryActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
+                Intent intent = new Intent(EducationActivity.this, CountryActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , other.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
 
 }

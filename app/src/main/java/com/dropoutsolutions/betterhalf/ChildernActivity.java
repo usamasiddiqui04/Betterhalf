@@ -26,6 +26,11 @@ public class ChildernActivity extends AppCompatActivity {
     private DatabaseReference userref ;
     private String Currentuserid ;
     long mlastclicktime = 0 ;
+    String nickname ;
+    String dob ;
+    String gender ;
+    String profession ;
+    String prfileimage , maritalstatus , education , country , religion , prayer , soonmarried , eat , smoke , drink ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,19 @@ public class ChildernActivity extends AppCompatActivity {
 
         yes = findViewById(R.id.yes);
         no = findViewById(R.id.No);
+        nickname = getIntent().getStringExtra("nickname");
+        dob = getIntent().getStringExtra("dob");
+        gender = getIntent().getStringExtra("gender");
+        profession = getIntent().getStringExtra("profession");
+        maritalstatus = getIntent().getStringExtra("maritalstatus");
+        education = getIntent().getStringExtra("educationlevel");
+        country = getIntent().getStringExtra("country");
+        religion = getIntent().getStringExtra("religion");
+        prayer = getIntent().getStringExtra("prayer");
+        eat = getIntent().getStringExtra("eat");
+        soonmarried = getIntent().getStringExtra("soonmarried");
+        smoke = getIntent().getStringExtra("smoke");
+        drink = getIntent().getStringExtra("drink");
 
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,20 +62,24 @@ public class ChildernActivity extends AppCompatActivity {
                 yes.setPadding(20 , 10 , 20 , 10);
                 yes.setBackgroundResource(R.drawable.edittextback);
                 no.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("HaveChildren" , yes.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(ChildernActivity.this, MoveAbroadActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
 
-
-                    }
-                });
+                Intent intent = new Intent(ChildernActivity.this, MoveAbroadActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , prayer);
+                intent.putExtra("soonmarried" , soonmarried);
+                intent.putExtra("eat" , eat);
+                intent.putExtra("smoke" , smoke);
+                intent.putExtra("drink" , drink);
+                intent.putExtra("children" , yes.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -68,19 +90,23 @@ public class ChildernActivity extends AppCompatActivity {
                 no.setPadding(20, 10, 20, 10);
                 no.setBackgroundResource(R.drawable.edittextback);
                 yes.setBackgroundResource(R.drawable.resetbackground);
-                HashMap<String, Object> user = new HashMap<>();
-                user.put("HaveChildren", no.getText());
-                userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(ChildernActivity.this, MoveAbroadActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-
-                    }
-                });
-
+                Intent intent = new Intent(ChildernActivity.this, MoveAbroadActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , prayer);
+                intent.putExtra("soonmarried" , soonmarried);
+                intent.putExtra("eat" , eat);
+                intent.putExtra("smoke" , smoke);
+                intent.putExtra("drink" , drink);
+                intent.putExtra("children" , yes.getText());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

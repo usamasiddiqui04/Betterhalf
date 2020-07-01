@@ -6,14 +6,6 @@
     android:background="#ffffff"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/backimage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:src="@drawable/ic_navigate_before_black_24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/logo"
@@ -33,7 +25,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="@string/start_by_giving_us_a_nickname_this_is_a_public_but_doesnt_have_to_be_your_real_name"
+        android:text="@string/the_more_information_you_provide_allows_us_to_match_you_with_more_relevant_singles"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

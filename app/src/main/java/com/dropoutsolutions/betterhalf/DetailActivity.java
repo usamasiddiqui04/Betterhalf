@@ -9,6 +9,8 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,6 +29,13 @@ public class DetailActivity extends AppCompatActivity {
     private DatabaseReference userref ;
     private String Currentuserid ;
     long mlastclicktime = 0 ;
+    ProgressBar progressBar ;
+
+    String nickname ;
+    String dob , children  , move  , convert;
+    String gender ;
+    String profession ;
+    String prfileimage , maritalstatus , education , country , religion , prayer , soonmarried , eat , smoke , drink ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,26 +44,60 @@ public class DetailActivity extends AppCompatActivity {
         Currentuserid = mauth.getCurrentUser().getUid();
         userref = FirebaseDatabase.getInstance().getReference().child("Users").child(Currentuserid);
         details = findViewById(R.id.details);
+        progressBar = findViewById(R.id.progress_bar);
         cont = findViewById(R.id.cont);
+
+        nickname = getIntent().getStringExtra("nickname");
+        dob = getIntent().getStringExtra("dob");
+        gender = getIntent().getStringExtra("gender");
+        profession = getIntent().getStringExtra("profession");
+        prfileimage = getIntent().getStringExtra("profileimage");
+        maritalstatus = getIntent().getStringExtra("maritalstatus");
+        education = getIntent().getStringExtra("educationlevel");
+        country = getIntent().getStringExtra("country");
+        religion = getIntent().getStringExtra("religion");
+        prayer = getIntent().getStringExtra("prayer");
+        eat = getIntent().getStringExtra("eat");
+        soonmarried = getIntent().getStringExtra("soonmarried");
+        smoke = getIntent().getStringExtra("smoke");
+        drink = getIntent().getStringExtra("drink");
+        children = getIntent().getStringExtra("children");
+        move = getIntent().getStringExtra("movetoabroad");
+        convert = getIntent().getStringExtra("convert");
 
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
-                userref.child("AboutDetails").setValue(details.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(DetailActivity.this , HomeActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
 
-                    }
-                });
-
+                Intent intent = new Intent(DetailActivity.this , ProfileimageActivity.class);
+                intent.putExtra("gender" , gender);
+                intent.putExtra("nickname" , nickname);
+                intent.putExtra("dob" , dob);
+                intent.putExtra("profession" ,profession);
+                intent.putExtra("maritalstatus" , maritalstatus);
+                intent.putExtra("educationlevel" , education);
+                intent.putExtra("country" , country);
+                intent.putExtra("religion" , religion);
+                intent.putExtra("prayer" , prayer);
+                intent.putExtra("soonmarried" , soonmarried);
+                intent.putExtra("eat" , eat);
+                intent.putExtra("smoke" , smoke);
+                intent.putExtra("drink" , drink);
+                intent.putExtra("children" , children);
+                intent.putExtra("movetoabroad" , move);
+                intent.putExtra("convert" , convert);
+                intent.putExtra("details" , details.getText().toString());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
 }

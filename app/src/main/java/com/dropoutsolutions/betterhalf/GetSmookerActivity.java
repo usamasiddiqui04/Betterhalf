@@ -122,4 +122,11 @@ public class GetSmookerActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this , ProfilesettingActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
+    }
 }

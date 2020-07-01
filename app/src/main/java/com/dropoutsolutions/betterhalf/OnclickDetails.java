@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.widget.TextView;
@@ -37,7 +38,6 @@ public class OnclickDetails extends AppCompatActivity {
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
 
         postid = getIntent().getStringExtra("Userid");
-        Toast.makeText(this, postid, Toast.LENGTH_SHORT).show();
 
         imageview = findViewById(R.id.imageView);
         name = findViewById(R.id.name);
@@ -88,6 +88,29 @@ public class OnclickDetails extends AppCompatActivity {
                         String Soon = (String) dataSnapshot.child("SoonMarried").getValue();
                         String Abroad = (String) dataSnapshot.child("MoveToAbroad").getValue();
 
+                        if (dataSnapshot.hasChild("OnlineStatus"))
+                        {
+                            String Shortstatus = (String) dataSnapshot.child("OnlineStatus").getValue();
+                            statusshort.setText(Shortstatus);
+                        }
+                        if (dataSnapshot.hasChild("JobTitle"))
+                        {
+                            String Jobtitle = (String) dataSnapshot.child("JobTitle").getValue();
+                            jobtitle.setText(Jobtitle);
+                        }
+
+                        if (dataSnapshot.hasChild("EmployeePosition"))
+                        {
+                            String Employee = (String) dataSnapshot.child("EmployeePosition").getValue();
+                            employer.setText(Employee);
+                        }
+
+                        if (dataSnapshot.hasChild("Sect"))
+                        {
+                            String Sect = (String) dataSnapshot.child("Sect").getValue();
+                            sect.setText(Sect);
+                        }
+
                         mstatus.setText(Mstatus);
                         countryname.setText(Countryname);
                         education.setText(Education);
@@ -96,6 +119,7 @@ public class OnclickDetails extends AppCompatActivity {
                         practising.setText(Prcatising);
                         paryer.setText(Prayer);
                         eathalal.setText(Eathalal);
+
                         if (Drink.equals("Yes"))
                         {
                             drink.setText("Drink Alcohol");
@@ -150,5 +174,12 @@ public class OnclickDetails extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        finish();
     }
 }

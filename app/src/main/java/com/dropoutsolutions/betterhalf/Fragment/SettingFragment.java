@@ -17,6 +17,7 @@ import com.dropoutsolutions.betterhalf.MaritalstatusActivity;
 import com.dropoutsolutions.betterhalf.OnclickDetails;
 import com.dropoutsolutions.betterhalf.ProfilesettingActivity;
 import com.dropoutsolutions.betterhalf.R;
+import com.dropoutsolutions.betterhalf.UserprofileActivity;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -80,18 +81,8 @@ public class SettingFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists())
                         {
-                            if (!dataSnapshot.hasChild("AboutDetails"))
-                            {
-                                Intent intent = new Intent(homeActivity , MaritalstatusActivity.class);
-                                startActivity(intent);
-                            }
-                            else
-                            {
-                                Intent intent = new Intent(homeActivity , OnclickDetails.class);
-                                intent.putExtra("Userid" , Currentuserid);
-                                startActivity(intent);
-                            }
-
+                            Intent intent = new Intent(getContext() , UserprofileActivity.class);
+                            startActivity(intent);
                         }
                     }
 

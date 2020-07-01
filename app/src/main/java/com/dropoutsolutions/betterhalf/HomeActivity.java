@@ -79,10 +79,10 @@ public class HomeActivity extends AppCompatActivity  {
     @Override
     protected void onStart() {
         super.onStart();
-        userref.addValueEventListener(new ValueEventListener() {
+        userref.child(Currentuserid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.hasChild(Currentuserid))
+                if (!dataSnapshot.hasChild("AboutDetails"))
                 {
                     gotosetupactitvity();
                 }
@@ -99,7 +99,7 @@ public class HomeActivity extends AppCompatActivity  {
     }
 
     private void gotosetupactitvity() {
-        Intent intent = new Intent(HomeActivity.this , Continue.class);
+        Intent intent = new Intent(HomeActivity.this , NicknameActivity.class);
         startActivity(intent);
         finish();
     }
