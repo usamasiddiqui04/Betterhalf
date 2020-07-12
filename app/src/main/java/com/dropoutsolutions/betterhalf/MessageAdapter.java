@@ -1,8 +1,11 @@
 package com.dropoutsolutions.betterhalf;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +32,9 @@ public class MessageAdapter  extends RecyclerView.Adapter<MessageAdapter.Message
     private List<Messages> usermessagelist ;
     private FirebaseAuth auth ;
     private Context context ;
+    AlertDialog.Builder builder ;
+    Message messageid ;
+    DatabaseReference messageref;
 
     public MessageAdapter(List<Messages> usermessagelist, Context context) {
         this.usermessagelist = usermessagelist;
@@ -50,10 +56,42 @@ public class MessageAdapter  extends RecyclerView.Adapter<MessageAdapter.Message
         String messageSenderId = auth.getCurrentUser().getUid();
         Messages messages = usermessagelist.get(i);
 
+        String id = messages.getMessageid();
+
+
+
+
+
 
 
         String Fromuserid = messages.getFrom();
         String frommessagetype = messages.getType() ;
+        String reciverid = messages.getTo();
+
+        messageref = FirebaseDatabase.getInstance().getReference().child("Messages").child(messageSenderId).child(reciverid).child(id);
+            holder.sender.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+
+                    builder  = new AlertDialog.Builder(context);
+                    builder.setTitle("Delete message");
+                    builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            messageref.removeValue();
+                            MessageAdapter.this.notifyDataSetChanged();
+                        }
+                    });
+                    builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
+                    builder.create();
+                    builder.show();
+                    return false;
+                }
+            });
 
         holder.recieverImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,10 +130,11 @@ public class MessageAdapter  extends RecyclerView.Adapter<MessageAdapter.Message
         {
             if (Fromuserid.equals(messageSenderId))
             {
+
                 holder.sender.setVisibility(View.VISIBLE);
                 holder.sender.setBackgroundResource(R.drawable.sendermessagelayout);
                 holder.sender.setGravity(Gravity.LEFT);
-                holder.sender.setText(messages.getMessage() + "\n\n" + messages.getTime() + "-" + messages.getDate());
+                holder.sender.setText(messages.getMessage() + "\n\n" + messages.getTime() + "   " + messages.getDate());
 
             }
 
@@ -106,7 +145,7 @@ public class MessageAdapter  extends RecyclerView.Adapter<MessageAdapter.Message
                 holder.recieverImage.setVisibility(View.VISIBLE);
                 holder.reciever.setBackgroundResource(R.drawable.recievermessagelayout);
                 holder.reciever.setGravity(Gravity.LEFT);
-                holder.reciever.setText(messages.getMessage() + "\n\n" + messages.getTime() + "-" + messages.getDate());
+                holder.reciever.setText(messages.getMessage() + "\n\n" + messages.getTime() + "   " + messages.getDate());
 
             }
         }
@@ -157,6 +196,8 @@ public class MessageAdapter  extends RecyclerView.Adapter<MessageAdapter.Message
 
             }
         }
+
+
 
 
     }

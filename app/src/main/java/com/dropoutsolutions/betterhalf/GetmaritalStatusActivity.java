@@ -166,52 +166,56 @@ public class GetmaritalStatusActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String s = (String) dataSnapshot.child("MaritalStatus").getValue();
-                    if (s.equals(nevermarried.getText()))
+                    if (dataSnapshot.hasChild("MaritalStatus"))
                     {
-                        nevermarried.setPadding(20 , 10 , 20 , 10);
-                        nevermarried.setBackgroundResource(R.drawable.edittextback);
-                        divorced.setBackgroundResource(R.drawable.resetbackground);
-                        seprated.setBackgroundResource(R.drawable.resetbackground);
-                        annulled.setBackgroundResource(R.drawable.resetbackground);
-                        widowed.setBackgroundResource(R.drawable.resetbackground);
+                        String s = (String) dataSnapshot.child("MaritalStatus").getValue();
+                        if (s.equals(nevermarried.getText()))
+                        {
+                            nevermarried.setPadding(20 , 10 , 20 , 10);
+                            nevermarried.setBackgroundResource(R.drawable.edittextback);
+                            divorced.setBackgroundResource(R.drawable.resetbackground);
+                            seprated.setBackgroundResource(R.drawable.resetbackground);
+                            annulled.setBackgroundResource(R.drawable.resetbackground);
+                            widowed.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (s.equals(seprated.getText()))
+                        {
+                            seprated.setPadding(20 , 10 , 20 , 10);
+                            seprated.setBackgroundResource(R.drawable.edittextback);
+                            nevermarried.setBackgroundResource(R.drawable.resetbackground);
+                            divorced.setBackgroundResource(R.drawable.resetbackground);
+                            annulled.setBackgroundResource(R.drawable.resetbackground);
+                            widowed.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (s.equals(widowed.getText()))
+                        {
+                            widowed.setPadding(20 , 10 , 20 , 10);
+                            widowed.setBackgroundResource(R.drawable.edittextback);
+                            nevermarried.setBackgroundResource(R.drawable.resetbackground);
+                            divorced.setBackgroundResource(R.drawable.resetbackground);
+                            seprated.setBackgroundResource(R.drawable.resetbackground);
+                            annulled.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (s.equals(annulled.getText()))
+                        {
+                            annulled.setPadding(20 , 10 , 20 , 10);
+                            annulled.setBackgroundResource(R.drawable.edittextback);
+                            nevermarried.setBackgroundResource(R.drawable.resetbackground);
+                            divorced.setBackgroundResource(R.drawable.resetbackground);
+                            seprated.setBackgroundResource(R.drawable.resetbackground);
+                            widowed.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            divorced.setPadding(20 , 10 , 20 , 10);
+                            divorced.setBackgroundResource(R.drawable.edittextback);
+                            nevermarried.setBackgroundResource(R.drawable.resetbackground);
+                            seprated.setBackgroundResource(R.drawable.resetbackground);
+                            annulled.setBackgroundResource(R.drawable.resetbackground);
+                            widowed.setBackgroundResource(R.drawable.resetbackground);
+                        }
                     }
-                    else if (s.equals(seprated.getText()))
-                    {
-                        seprated.setPadding(20 , 10 , 20 , 10);
-                        seprated.setBackgroundResource(R.drawable.edittextback);
-                        nevermarried.setBackgroundResource(R.drawable.resetbackground);
-                        divorced.setBackgroundResource(R.drawable.resetbackground);
-                        annulled.setBackgroundResource(R.drawable.resetbackground);
-                        widowed.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (s.equals(widowed.getText()))
-                    {
-                        widowed.setPadding(20 , 10 , 20 , 10);
-                        widowed.setBackgroundResource(R.drawable.edittextback);
-                        nevermarried.setBackgroundResource(R.drawable.resetbackground);
-                        divorced.setBackgroundResource(R.drawable.resetbackground);
-                        seprated.setBackgroundResource(R.drawable.resetbackground);
-                        annulled.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (s.equals(annulled.getText()))
-                    {
-                        annulled.setPadding(20 , 10 , 20 , 10);
-                        annulled.setBackgroundResource(R.drawable.edittextback);
-                        nevermarried.setBackgroundResource(R.drawable.resetbackground);
-                        divorced.setBackgroundResource(R.drawable.resetbackground);
-                        seprated.setBackgroundResource(R.drawable.resetbackground);
-                        widowed.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else
-                    {
-                        divorced.setPadding(20 , 10 , 20 , 10);
-                        divorced.setBackgroundResource(R.drawable.edittextback);
-                        nevermarried.setBackgroundResource(R.drawable.resetbackground);
-                        seprated.setBackgroundResource(R.drawable.resetbackground);
-                        annulled.setBackgroundResource(R.drawable.resetbackground);
-                        widowed.setBackgroundResource(R.drawable.resetbackground);
-                    }
+
                 }
             }
 
@@ -227,10 +231,5 @@ public class GetmaritalStatusActivity extends AppCompatActivity {
         startActivity(new Intent(this , ProfilesettingActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
-    }
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

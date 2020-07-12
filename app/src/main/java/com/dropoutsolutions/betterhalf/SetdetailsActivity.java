@@ -67,8 +67,12 @@ public class SetdetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String _details = (String) dataSnapshot.child("AboutDetails").getValue();
-                    details.setText(_details);
+                    if (dataSnapshot.hasChild("AboutDetails"))
+                    {
+                        String _details = (String) dataSnapshot.child("AboutDetails").getValue();
+                        details.setText(_details);
+                    }
+
                 }
             }
 

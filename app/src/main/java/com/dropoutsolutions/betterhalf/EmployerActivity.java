@@ -23,56 +23,47 @@ import java.util.HashMap;
 
 public class EmployerActivity extends AppCompatActivity {
 
-    private Button button ;
-    private FirebaseAuth mauth ;
-    private DatabaseReference userref ;
-    private String Currentuserid ;
-    private EditText name ;
-    private String getname ;
+    private Button button;
+    private FirebaseAuth mauth;
+    private DatabaseReference userref;
+    private String Currentuserid;
+    private EditText name;
+    private String getname;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employer);
 
         button = findViewById(R.id.cont);
-        mauth = FirebaseAuth.getInstance() ;
+        mauth = FirebaseAuth.getInstance();
         Currentuserid = mauth.getCurrentUser().getUid();
         userref = FirebaseDatabase.getInstance().getReference().child("Users").child(Currentuserid);
 
         name = findViewById(R.id.name);
 
         button.setOnClickListener(v -> {
-            getname = name.getText().toString() ;
-            if (getname.isEmpty())
-            {
+            getname = name.getText().toString();
+            if (getname.isEmpty()) {
                 name.setError("Please enter employee position");
-            }
-            else
-            {
+            } else {
                 HashMap<String, Object> user = new HashMap<>();
-                user.put("EmployeePosition" , name.getText().toString());
+                user.put("EmployeePosition", name.getText().toString());
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             startActivity(new Intent(EmployerActivity.this , ProfilesettingActivity.class));
                             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                             finish();
 
                         }
-
                     }
                 });
             }
         });
     }
 
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 
     @Override
     protected void onStart() {
@@ -81,10 +72,13 @@ public class EmployerActivity extends AppCompatActivity {
         userref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists())
-                {
-                    String employee = (String) dataSnapshot.child("EmployeePosition").getValue();
-                    name.setText(employee);
+                if (dataSnapshot.exists()) {
+                    if (dataSnapshot.hasChild("EmployeePosition"))
+                    {
+                        String employee = (String) dataSnapshot.child("EmployeePosition").getValue();
+                        name.setText(employee);
+                    }
+
                 }
             }
 
@@ -94,10 +88,11 @@ public class EmployerActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this , ProfilesettingActivity.class));
+        startActivity(new Intent(EmployerActivity.this , ProfilesettingActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
     }

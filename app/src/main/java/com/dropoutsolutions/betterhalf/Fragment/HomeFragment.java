@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -65,6 +66,8 @@ public class HomeFragment extends Fragment {
     private DatabaseReference favref ;
     String currentuserid;
     ProgressBar progressBar ;
+
+    FirebaseRecyclerAdapter<User , UserViewHOlder> firebaseRecyclerAdapter;
     public HomeFragment() {
     }
     @Override
@@ -85,17 +88,18 @@ public class HomeFragment extends Fragment {
 
         return view ;
     }
+
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         progressBar.setVisibility(View.VISIBLE);
         FirebaseRecyclerOptions options =
                 new FirebaseRecyclerOptions.Builder<User>()
                         .setQuery(userref ,User.class)
                         .build();
-        FirebaseRecyclerAdapter<User , UserViewHOlder> firebaseRecyclerAdapter
-                = new FirebaseRecyclerAdapter<User, UserViewHOlder>(options) {
+
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<User, UserViewHOlder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull UserViewHOlder userViewHOlder, int i, @NonNull User user) {
                 final String postid = getRef(i).getKey();
@@ -129,7 +133,6 @@ public class HomeFragment extends Fragment {
                                     userViewHOlder.age.setText(Age);
                                     userViewHOlder.profession.setText(Profession);
                                     userViewHOlder.country.setText(count);
-
                                     userViewHOlder.roundedImageView.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
@@ -234,9 +237,18 @@ public class HomeFragment extends Fragment {
             }
 
         };
+
         recyclerView.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
     }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        firebaseRecyclerAdapter.stopListening();
+    }
+
 
     public static class UserViewHOlder extends RecyclerView.ViewHolder {
         private RoundedImageView roundedImageView ;

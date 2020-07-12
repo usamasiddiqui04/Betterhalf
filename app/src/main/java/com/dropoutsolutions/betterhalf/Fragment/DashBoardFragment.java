@@ -60,6 +60,7 @@ public class DashBoardFragment extends Fragment {
     String currentuserid;
     ProgressDialog progressDialog ;
     GridLayoutManager gridLayoutManager;
+    FirebaseRecyclerAdapter<User, UserViewHOlder> firebaseRecyclerAdapter;
 
     public DashBoardFragment() {
         // Required empty public constructor
@@ -85,16 +86,14 @@ public class DashBoardFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         FirebaseRecyclerOptions options =
                 new FirebaseRecyclerOptions.Builder<User>()
                         .setQuery(favref, User.class)
                         .build();
-        FirebaseRecyclerAdapter<User, UserViewHOlder> firebaseRecyclerAdapter
-                = new FirebaseRecyclerAdapter<User, UserViewHOlder>(options) {
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<User, UserViewHOlder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull UserViewHOlder userViewHOlder, int i, @NonNull User user) {
                 final String postid = getRef(i).getKey();
@@ -165,7 +164,7 @@ public class DashBoardFragment extends Fragment {
                                     userViewHOlder.fav.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                            userref.child(postid).removeValue();
+                                            favref.child(postid).removeValue();
                                         }
                                     });
 
@@ -239,6 +238,12 @@ public class DashBoardFragment extends Fragment {
         firebaseRecyclerAdapter.startListening();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        firebaseRecyclerAdapter.stopListening();
+    }
+
     public static class UserViewHOlder extends RecyclerView.ViewHolder {
         private RoundedImageView roundedImageView;
         ConstraintLayout constraintLayout;
@@ -255,48 +260,4 @@ public class DashBoardFragment extends Fragment {
         }
     }
 }
-//
-//    private void setupViewPager(ViewPager viewPager) {
-//        ViewPagerAdapter adapter = new ViewPagerAdapter(getParentFragmentManager());
-//        adapter.addFragment(new LikeFragment(), "Liked You");
-//        adapter.addFragment(new LikedbyFragment(), "You Liked");
-//        viewPager.setAdapter(adapter);
-//
-//    }
-//
-//    static class ViewPagerAdapter extends FragmentPagerAdapter {
-//        private final List<Fragment> mFragmentList = new ArrayList<>();
-//        private final List<String> mFragmentTitleList = new ArrayList<>();
-//
-//        ViewPagerAdapter(FragmentManager manager) {
-//            super(manager);
-//        }
-//
-//        @Override
-//        public Fragment getItem(int position) {
-//            return mFragmentList.get(position);
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return mFragmentList.size();
-//        }
-//
-//        public void addFragment(Fragment fragment, String title) {
-//            mFragmentList.add(fragment);
-//            mFragmentTitleList.add(title);
-//        }
-//
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return mFragmentTitleList.get(position);
-//        }
-//    }
-//
-//
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        setupViewPager(viewPager);
-//    }
 

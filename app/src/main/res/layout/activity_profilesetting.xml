@@ -41,12 +41,34 @@
             android:layout_marginRight="15dp" />
 
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_margin="20sp"
+            android:id="@+id/profileimage"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="2dp"
+            android:src="@drawable/lovepic"
+            app:layout_constraintTop_toBottomOf="@id/profilesetting"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/addimage"
+            android:layout_margin="15dp"
+            app:layout_constraintEnd_toEndOf="@id/profileimage"
+            app:layout_constraintBottom_toBottomOf="@id/profileimage"
+            android:src="@drawable/ic_addimage"/>
+
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:id="@+id/cardone"
-            app:layout_constraintTop_toBottomOf="@id/profilesetting"
+            app:layout_constraintTop_toBottomOf="@id/profileimage"
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,6 +109,18 @@
                     app:layout_constraintTop_toBottomOf="@id/basicinfo"
                     app:layout_constraintStart_toEndOf="@id/helpicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertname"
+                        android:visibility="gone"
+                        android:paddingEnd="25dp"
+                        app:layout_constraintEnd_toStartOf="@id/nextone"
+                        app:layout_constraintTop_toTopOf="@id/nickname"
+                        app:layout_constraintBottom_toBottomOf="@id/getnickname" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -108,7 +142,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Nickname"
+                        android:text="Please Enter your Nickname"
                         android:id="@+id/getnickname"
                         android:layout_marginLeft="10dp"/>
 
@@ -130,6 +164,20 @@
                     app:layout_constraintTop_toBottomOf="@id/nicknamelayout"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toTopOf="@id/dateofbirth"
+                        app:layout_constraintEnd_toStartOf="@id/nexttwo"
+                        app:layout_constraintBottom_toBottomOf="@id/getdateofbirth"
+                        android:id="@+id/alertdob" />
+
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -151,7 +199,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="dob"
+                        android:text="Select date of birth"
                         android:id="@+id/getdateofbirth"
                         android:layout_marginLeft="10dp"/>
 
@@ -173,6 +221,17 @@
                     android:id="@+id/genderlayout"
                     app:layout_constraintTop_toBottomOf="@id/doblayout"
                     app:layout_constraintStart_toStartOf="parent">
+
+                    <ImageView
+                        android:id="@+id/alertgender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="25dp"
+                        android:src="@drawable/ic_alert"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/nextthree"
+                        app:layout_constraintTop_toTopOf="@id/gender" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -194,7 +253,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="male"
+                        android:text="Select gender"
                         android:id="@+id/getgender"
                         android:layout_marginLeft="10dp"/>
 
@@ -216,12 +275,24 @@
                     android:id="@+id/statuslayout"
                     app:layout_constraintTop_toBottomOf="@id/genderlayout">
 
+                    <ImageView
+                        android:id="@+id/alertstatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="25dp"
+                        android:src="@drawable/ic_alert"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/nextfour"
+                        app:layout_constraintTop_toTopOf="@id/status" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
+
                         android:layout_marginTop="20dp"
                         android:text="Status"
                         android:textStyle="bold"
@@ -237,8 +308,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="male"
                         android:id="@+id/getstatus"
+                        android:text="Please enter status"
                         android:layout_marginLeft="10dp"/>
 
                     <ImageView
@@ -260,6 +331,17 @@
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintTop_toBottomOf="@id/statuslayout">
 
+                   <ImageView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:src="@drawable/ic_alert"
+                       android:id="@+id/alertabout"
+                       android:paddingEnd="25dp"
+                       android:visibility="gone"
+                       app:layout_constraintEnd_toStartOf="@id/nextfive"
+                       app:layout_constraintTop_toTopOf="@id/aboutyou"
+                       app:layout_constraintBottom_toBottomOf="@id/getaboutyou"/>
+
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
@@ -267,7 +349,7 @@
                        app:layout_constraintTop_toTopOf="parent"
                        android:layout_marginStart="60dp"
                        android:layout_marginTop="20dp"
-                       android:text="Status"
+                       android:text="About"
                        android:textStyle="bold"
                        android:id="@+id/aboutyou"
                        android:textSize="18sp"
@@ -280,10 +362,9 @@
                        app:layout_constraintTop_toBottomOf="@id/aboutyou"
                        app:layout_constraintStart_toStartOf="parent"
                        android:layout_marginStart="60dp"
-                       android:layout_marginTop="5dp"
-                       android:text="male"
                        android:paddingEnd="100dp"
                        android:id="@+id/getaboutyou"
+                       android:text="Please enter details"
                        android:layout_marginLeft="10dp"
                        android:paddingRight="100dp" />
 
@@ -352,6 +433,17 @@
                     app:layout_constraintTop_toBottomOf="@id/educationtext"
                     app:layout_constraintStart_toEndOf="@id/educationicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/alerteducation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="25dp"
+                        android:src="@drawable/ic_alert"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/edunextone"
+                        app:layout_constraintTop_toTopOf="@id/eduactiontype" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -373,7 +465,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Enter education"
                         android:id="@+id/geteducation"
                         android:layout_marginLeft="10dp"/>
 
@@ -397,6 +489,17 @@
                     app:layout_constraintTop_toBottomOf="@id/eduaction"
                     app:layout_constraintStart_toEndOf="@id/educationicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/alertprofession"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="25dp"
+                        android:src="@drawable/ic_alert"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/edunexttow"
+                        app:layout_constraintTop_toTopOf="@id/professiontext" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -418,7 +521,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="profession"
+                        android:text="Enter yout profession"
                         android:id="@+id/getprofession"
                         android:layout_marginLeft="10dp"/>
 
@@ -442,6 +545,17 @@
                     app:layout_constraintTop_toBottomOf="@id/professionlayout"
                     app:layout_constraintStart_toEndOf="@id/educationicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertjob"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/edunextthree"
+                        app:layout_constraintTop_toTopOf="@id/jobtext"
+                        app:layout_constraintBottom_toBottomOf="@id/getjob"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -463,7 +577,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="job"
+                        android:text="Enter you job title"
                         android:id="@+id/getjob"
                         android:layout_marginLeft="10dp"/>
 
@@ -488,6 +602,16 @@
                     app:layout_constraintTop_toBottomOf="@id/jobtitlelayout"
                     app:layout_constraintStart_toEndOf="@id/educationicon"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertemployee"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/edunextfour"
+                        app:layout_constraintTop_toTopOf="@id/employeetext"
+                        app:layout_constraintBottom_toBottomOf="@id/getemploy"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -509,7 +633,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="job"
+                        android:text="Enter your eomployee position"
                         android:id="@+id/getemploy"
                         android:layout_marginLeft="10dp"/>
 
@@ -545,6 +669,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content">
 
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -576,6 +701,17 @@
                     app:layout_constraintTop_toBottomOf="@id/ethnicitytext"
                     app:layout_constraintStart_toEndOf="@id/ethnicityicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertethinicgroup"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/ethnextone"
+                        app:layout_constraintTop_toTopOf="@id/ethnicitytype"
+                        app:layout_constraintBottom_toBottomOf="@id/getethnicity"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -597,7 +733,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Enter you ethnic group"
                         android:id="@+id/getethnicity"
                         android:layout_marginLeft="10dp"/>
 
@@ -615,10 +751,21 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:id="@+id/ethnicorigin"
+                    android:id="@+id/ethnicoriginlayout"
                     app:layout_constraintTop_toBottomOf="@id/ethnicgrouplayout"
                     app:layout_constraintStart_toEndOf="@id/ethnicityicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertethinicorigin"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/ethnexttwo"
+                        app:layout_constraintTop_toTopOf="@id/ethnicityorigntype"
+                        app:layout_constraintBottom_toBottomOf="@id/getethnicityorigin"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -640,7 +787,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Enter your ethnic origin"
                         android:id="@+id/getethnicityorigin"
                         android:layout_marginLeft="10dp"/>
 
@@ -709,6 +856,17 @@
                     app:layout_constraintTop_toBottomOf="@id/lifestyletext"
                     app:layout_constraintStart_toEndOf="@id/lifestyleicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertsect"
+                        android:visibility="gone"
+                        android:paddingEnd="25dp"
+                        app:layout_constraintEnd_toStartOf="@id/lifenextone"
+                        app:layout_constraintTop_toTopOf="@id/secttype"
+                        app:layout_constraintBottom_toBottomOf="@id/getsect"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -730,7 +888,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Enter your sect"
                         android:id="@+id/getsect"
                         android:layout_marginLeft="10dp"/>
 
@@ -752,6 +910,17 @@
                     app:layout_constraintTop_toBottomOf="@id/sectlayout"
                     app:layout_constraintStart_toEndOf="@id/lifestyleicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertcpnvert"
+                        android:visibility="gone"
+                        android:paddingEnd="25dp"
+                        app:layout_constraintEnd_toStartOf="@id/lifenextwo"
+                        app:layout_constraintTop_toTopOf="@id/converttype"
+                        app:layout_constraintBottom_toBottomOf="@id/getconvert"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -765,7 +934,6 @@
                         android:textSize="18sp"
                         android:layout_marginLeft="10dp"/>
 
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -773,7 +941,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Do you want to convert?"
                         android:id="@+id/getconvert"
                         android:layout_marginLeft="10dp"/>
 
@@ -795,6 +963,17 @@
                     app:layout_constraintTop_toBottomOf="@id/convertlayout"
                     app:layout_constraintStart_toEndOf="@id/lifestyleicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertreligion"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/lifenexthree"
+                        app:layout_constraintTop_toTopOf="@id/religiositytype"
+                        app:layout_constraintBottom_toBottomOf="@id/getreligiosity"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -816,7 +995,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="How religious you are?"
                         android:id="@+id/getreligiosity"
                         android:layout_marginLeft="10dp"/>
 
@@ -839,6 +1018,16 @@
                     app:layout_constraintTop_toBottomOf="@id/religiositylayout"
                     app:layout_constraintStart_toEndOf="@id/lifestyleicon"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertpray"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/lifenextfour"
+                        app:layout_constraintTop_toTopOf="@id/prayertype"
+                        app:layout_constraintBottom_toBottomOf="@id/getprayer"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -860,7 +1049,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Do you often Prayer?"
                         android:id="@+id/getprayer"
                         android:layout_marginLeft="10dp"/>
 
@@ -883,6 +1072,17 @@
                     app:layout_constraintTop_toBottomOf="@id/prayinglayout"
                     app:layout_constraintStart_toEndOf="@id/lifestyleicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alerthalal"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/lifenextfive"
+                        app:layout_constraintTop_toTopOf="@id/halalfoodtype"
+                        app:layout_constraintBottom_toBottomOf="@id/gethalalfood"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -904,7 +1104,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Do you eat halal?"
                         android:id="@+id/gethalalfood"
                         android:layout_marginLeft="10dp"/>
 
@@ -927,6 +1127,17 @@
                     app:layout_constraintTop_toBottomOf="@id/halalfoodlayout"
                     app:layout_constraintStart_toEndOf="@id/lifestyleicon"
                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertalcohol"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/lifenextsix"
+                        app:layout_constraintTop_toTopOf="@id/alcoholtype"
+                        app:layout_constraintBottom_toBottomOf="@id/getalcohol"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -948,7 +1159,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Do you drink alcohol?"
                         android:id="@+id/getalcohol"
                         android:layout_marginLeft="10dp"/>
 
@@ -971,6 +1182,16 @@
                     app:layout_constraintTop_toBottomOf="@id/alcohollayout"
                     app:layout_constraintStart_toEndOf="@id/lifestyleicon"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertsmoke"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/lifenextseven"
+                        app:layout_constraintTop_toTopOf="@id/smookertype"
+                        app:layout_constraintBottom_toBottomOf="@id/getsmoker"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -992,7 +1213,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Do you smoke?"
                         android:id="@+id/getsmoker"
                         android:layout_marginLeft="10dp"/>
 
@@ -1059,6 +1280,16 @@
                     app:layout_constraintTop_toBottomOf="@id/moreabouttext"
                     app:layout_constraintStart_toEndOf="@id/moreabouticon"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertmarital"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/morenextone"
+                        app:layout_constraintTop_toTopOf="@id/maritalstatustype"
+                        app:layout_constraintBottom_toBottomOf="@id/getmaritalstatus"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1080,7 +1311,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Your marital status?"
                         android:id="@+id/getmaritalstatus"
                         android:layout_marginLeft="10dp"/>
 
@@ -1102,6 +1333,16 @@
                     app:layout_constraintTop_toBottomOf="@id/maritalstatuslayout"
                     app:layout_constraintStart_toEndOf="@id/moreabouticon"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertchildern"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/morenexttwo"
+                        app:layout_constraintTop_toTopOf="@id/chiderntype"
+                        app:layout_constraintBottom_toBottomOf="@id/getchildern"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1123,7 +1364,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="no"
+                        android:text="Do you have children?"
                         android:id="@+id/getchildern"
                         android:layout_marginLeft="10dp"/>
 
@@ -1193,6 +1434,16 @@
                     app:layout_constraintTop_toBottomOf="@id/marriageplantext"
                     app:layout_constraintStart_toEndOf="@id/marriageplanicon"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertplans"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/marraigenextone"
+                        app:layout_constraintTop_toTopOf="@id/marriagehorizontype"
+                        app:layout_constraintBottom_toBottomOf="@id/getmarriagehorizon"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1214,7 +1465,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Education"
+                        android:text="Enter your marriage plan?"
                         android:id="@+id/marraigehorizon"
                         android:layout_marginLeft="10dp"/>
 
@@ -1236,6 +1487,16 @@
                     app:layout_constraintTop_toBottomOf="@id/getmarriagehorizon"
                     app:layout_constraintStart_toEndOf="@id/marriageplanicon"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alert"
+                        android:id="@+id/alertrelocation"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/marraigenexttwo"
+                        app:layout_constraintTop_toTopOf="@id/relocationtype"
+                        app:layout_constraintBottom_toBottomOf="@id/getrelocation"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1257,7 +1518,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="5dp"
-                        android:text="Yes"
+                        android:text="Do you move to abroad?"
                         android:id="@+id/getrelocation"
                         android:layout_marginLeft="10dp"/>
 

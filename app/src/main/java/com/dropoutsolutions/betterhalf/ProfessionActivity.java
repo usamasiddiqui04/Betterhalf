@@ -67,6 +67,7 @@ public class ProfessionActivity extends AppCompatActivity {
         text.add("Teacher");
         text.add("Waiter");
         text.add("Soldier");
+        text.add("Other");
 
 
         recyclerView = findViewById(R.id.recyclerview);

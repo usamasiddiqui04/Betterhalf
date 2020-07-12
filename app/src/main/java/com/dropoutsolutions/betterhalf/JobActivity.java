@@ -82,8 +82,12 @@ public class JobActivity extends AppCompatActivity {
 
                 if (dataSnapshot.exists())
                 {
-                    String job = (String) dataSnapshot.child("JobTitle").getValue();
-                    name.setText(job);
+                    if (dataSnapshot.hasChild("JobTitle"))
+                    {
+                        String job = (String) dataSnapshot.child("JobTitle").getValue();
+                        name.setText(job);
+                    }
+
                 }
             }
 

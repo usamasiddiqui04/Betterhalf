@@ -28,4 +28,25 @@
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@id/nav_view"/>
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Complete you profile"
+        android:background="@drawable/completeprofile"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:layout_margin="20sp"
+        android:paddingTop="15sp"
+        android:paddingBottom="15sp"
+        android:id="@+id/completeprofile"
+        android:paddingEnd="20sp"
+        android:paddingStart="20sp"
+        android:visibility="gone"
+        android:drawableEnd="@drawable/ic_close"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

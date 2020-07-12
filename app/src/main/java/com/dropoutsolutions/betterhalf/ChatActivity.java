@@ -74,6 +74,7 @@ public class ChatActivity extends AppCompatActivity {
     private ImageView addfile ;
     private ProgressDialog progressDialog ;
     private String checker = "";
+    ImageView backimage ;
     private Uri imageuri ;
     RecyclerView recyclerView ;
     private LinearLayoutManager linearLayoutManager ;
@@ -92,12 +93,28 @@ public class ChatActivity extends AppCompatActivity {
         addfile = findViewById(R.id.add);
         profileimage = findViewById(R.id.profileimage);
         name = findViewById(R.id.username);
+        backimage = findViewById(R.id.backimage);
         recyclerView = findViewById(R.id.recyclerview);
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
         chatref = FirebaseDatabase.getInstance().getReference();
         recieverid = getIntent().getExtras().get("Userid").toString();
         inputmessage = findViewById(R.id.inputmessage);
 
+        profileimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChatActivity.this  , OnclickDetails.class);
+                intent.putExtra("Userid" , recieverid);
+                startActivity(intent);
+            }
+        });
+
+        backimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         sendmessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,6 +137,7 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setAdapter(messageAdapter);
 
         fetchmessage();
+
 
     }
     private void fetchmessage() {
@@ -176,11 +194,11 @@ public class ChatActivity extends AppCompatActivity {
             String messagepushid = usermessageref.getKey();
 
             Calendar calendarfordate = Calendar.getInstance();
-            SimpleDateFormat currentdate = new SimpleDateFormat("dd-MMMM-yyyy");
+            SimpleDateFormat currentdate = new SimpleDateFormat("dd MMMM");
             CurrentDate = currentdate.format(calendarfordate.getTime());
 
             Calendar calendarfortime = Calendar.getInstance();
-            SimpleDateFormat currenttime = new SimpleDateFormat("HH:mm:ss");
+            SimpleDateFormat currenttime = new SimpleDateFormat("HH:mm");
             CurrentTime = currenttime.format(calendarfortime.getTime());
 
             Map messagebody = new HashMap();
@@ -200,7 +218,6 @@ public class ChatActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(ChatActivity.this, "Sent", Toast.LENGTH_SHORT).show();
                         inputmessage.setText(null);
                     } else {
                         Toast.makeText(ChatActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();

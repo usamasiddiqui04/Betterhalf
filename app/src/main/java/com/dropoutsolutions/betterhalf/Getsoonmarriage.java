@@ -48,7 +48,7 @@ public class Getsoonmarriage extends AppCompatActivity {
                 three.setBackgroundResource(R.drawable.resetbackground);
                 four.setBackgroundResource(R.drawable.resetbackground);
                 HashMap<String, Object> user = new HashMap<>();
-                user.put("SoonMarried" , asap.getText());
+                user.put("SoonMarried" , asap.getText().toString());
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -75,7 +75,7 @@ public class Getsoonmarriage extends AppCompatActivity {
                 three.setBackgroundResource(R.drawable.resetbackground);
                 four.setBackgroundResource(R.drawable.resetbackground);
                 HashMap<String, Object> user = new HashMap<>();
-                user.put("SoonMarried" , one.getText());
+                user.put("SoonMarried" , one.getText().toString());
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -101,7 +101,7 @@ public class Getsoonmarriage extends AppCompatActivity {
                 one.setBackgroundResource(R.drawable.resetbackground);
                 four.setBackgroundResource(R.drawable.resetbackground);
                 HashMap<String, Object> user = new HashMap<>();
-                user.put("SoonMarried" , three.getText());
+                user.put("SoonMarried" , three.getText().toString());
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -129,7 +129,7 @@ public class Getsoonmarriage extends AppCompatActivity {
                 one.setBackgroundResource(R.drawable.resetbackground);
                 three.setBackgroundResource(R.drawable.resetbackground);
                 HashMap<String, Object> user = new HashMap<>();
-                user.put("SoonMarried" , four.getText());
+                user.put("SoonMarried" , four.getText().toString());
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -160,39 +160,43 @@ public class Getsoonmarriage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists())
                 {
-                    String soon = (String) snapshot.child("SoonMarried").getValue();
-                    if (soon.equals(asap.getText()))
+                    if (snapshot.hasChild("SoonMarried"))
                     {
-                        asap.setPadding(20, 10, 20, 10);
-                        asap.setBackgroundResource(R.drawable.edittextback);
-                        one.setBackgroundResource(R.drawable.resetbackground);
-                        three.setBackgroundResource(R.drawable.resetbackground);
-                        four.setBackgroundResource(R.drawable.resetbackground);
+                        String soon = (String) snapshot.child("SoonMarried").getValue();
+                        if (soon.equals(asap.getText()))
+                        {
+                            asap.setPadding(20, 10, 20, 10);
+                            asap.setBackgroundResource(R.drawable.edittextback);
+                            one.setBackgroundResource(R.drawable.resetbackground);
+                            three.setBackgroundResource(R.drawable.resetbackground);
+                            four.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (soon.equals(one.getText()))
+                        {
+                            one.setPadding(20 , 10 , 20 , 10);
+                            one.setBackgroundResource(R.drawable.edittextback);
+                            asap.setBackgroundResource(R.drawable.resetbackground);
+                            three.setBackgroundResource(R.drawable.resetbackground);
+                            four.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (soon.equals(three.getText()))
+                        {
+                            three.setPadding(20 , 10 , 20 , 10);
+                            three.setBackgroundResource(R.drawable.edittextback);
+                            asap.setBackgroundResource(R.drawable.resetbackground);
+                            one.setBackgroundResource(R.drawable.resetbackground);
+                            four.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            four.setPadding(20 , 10 , 20 , 10);
+                            four.setBackgroundResource(R.drawable.edittextback);
+                            asap.setBackgroundResource(R.drawable.resetbackground);
+                            one.setBackgroundResource(R.drawable.resetbackground);
+                            three.setBackgroundResource(R.drawable.resetbackground);
+                        }
                     }
-                    else if (soon.equals(one.getText()))
-                    {
-                        one.setPadding(20 , 10 , 20 , 10);
-                        one.setBackgroundResource(R.drawable.edittextback);
-                        asap.setBackgroundResource(R.drawable.resetbackground);
-                        three.setBackgroundResource(R.drawable.resetbackground);
-                        four.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (soon.equals(three.getText()))
-                    {
-                        three.setPadding(20 , 10 , 20 , 10);
-                        three.setBackgroundResource(R.drawable.edittextback);
-                        asap.setBackgroundResource(R.drawable.resetbackground);
-                        one.setBackgroundResource(R.drawable.resetbackground);
-                        four.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else
-                    {
-                        four.setPadding(20 , 10 , 20 , 10);
-                        four.setBackgroundResource(R.drawable.edittextback);
-                        asap.setBackgroundResource(R.drawable.resetbackground);
-                        one.setBackgroundResource(R.drawable.resetbackground);
-                        three.setBackgroundResource(R.drawable.resetbackground);
-                    }
+
 
                 }
             }

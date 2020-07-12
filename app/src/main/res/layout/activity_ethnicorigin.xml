@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="@string/the_more_information_you_provide_allows_us_to_match_you_with_more_relevant_singles"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/heart"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="30sp"
+            android:src="@drawable/ic_moon"
+            app:layout_constraintEnd_toEndOf="@id/text"
+            app:layout_constraintStart_toStartOf="@id/text"
+            app:layout_constraintTop_toBottomOf="@id/text" />
+
+        <TextView
+            android:id="@+id/ethnicorigin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Whats your ethnic origin?"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/ethnicorigin"
+            app:layout_constraintEnd_toEndOf="@id/ethnicorigin"
+            app:layout_constraintTop_toBottomOf="@id/ethnicorigin"
+            android:text="Pakistani"
+            android:id="@+id/Pakistani"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/Pakistani"
+            app:layout_constraintEnd_toEndOf="@id/Pakistani"
+            app:layout_constraintTop_toBottomOf="@id/Pakistani"
+            android:text="Afghani"
+            android:id="@+id/afgani"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/afgani"
+            app:layout_constraintEnd_toEndOf="@id/afgani"
+            app:layout_constraintTop_toBottomOf="@id/afgani"
+            android:text="Indian"
+            android:id="@+id/indian"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/indian"
+            app:layout_constraintEnd_toEndOf="@id/indian"
+            app:layout_constraintTop_toBottomOf="@id/indian"
+            android:text="Arab"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:id="@+id/arab"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/arab"
+            app:layout_constraintEnd_toEndOf="@id/arab"
+            app:layout_constraintTop_toBottomOf="@id/arab"
+            android:text="Bangladeshi"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:id="@+id/bangali"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/bangali"
+            app:layout_constraintEnd_toEndOf="@id/bangali"
+            app:layout_constraintTop_toBottomOf="@id/bangali"
+            android:text="African/Black"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:id="@+id/african"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/african"
+            app:layout_constraintEnd_toEndOf="@id/african"
+            app:layout_constraintTop_toBottomOf="@id/african"
+            android:text="Caucasian/White"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:id="@+id/white"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/white"
+            app:layout_constraintEnd_toEndOf="@id/white"
+            app:layout_constraintTop_toBottomOf="@id/white"
+            android:text="Far east asian"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:id="@+id/fareast"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/fareast"
+            app:layout_constraintEnd_toEndOf="@id/fareast"
+            app:layout_constraintTop_toBottomOf="@id/fareast"
+            android:text="Persian"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:id="@+id/percian"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/percian"
+            app:layout_constraintEnd_toEndOf="@id/percian"
+            app:layout_constraintTop_toBottomOf="@id/percian"
+            android:text="Turkish"
+            android:textColor="@color/pink"
+            android:textSize="24sp"
+            android:id="@+id/turkish"
+            android:textStyle="bold"
+            android:layout_margin="30sp">
+
+        </TextView>
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -3,6 +3,8 @@ package com.dropoutsolutions.betterhalf;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dropoutsolutions.betterhalf.Fragment.DashBoardFragment;
@@ -31,16 +33,27 @@ public class HomeActivity extends AppCompatActivity  {
     private DatabaseReference userref ;
     private String Currentuserid ;
     private FirebaseAuth firebaseAuth ;
+    TextView Completeprofile ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         navView = findViewById(R.id.nav_view);
+        Completeprofile = findViewById(R.id.completeprofile);
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
         firebaseAuth = FirebaseAuth.getInstance() ;
         Currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         loadFragment(new HomeFragment());
+
+        Completeprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this ,ProfilesettingActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -96,6 +109,31 @@ public class HomeActivity extends AppCompatActivity  {
         });
 
 
+        userref.child(Currentuserid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists())
+                {
+                    long count = snapshot.getChildrenCount();
+
+                    if (count != 23)
+                    {
+                        Completeprofile.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        Completeprofile.setVisibility(View.GONE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 
     private void gotosetupactitvity() {
@@ -119,5 +157,7 @@ public class HomeActivity extends AppCompatActivity  {
             startActivity(a);
         }
     }
+
+
 
 }

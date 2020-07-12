@@ -75,8 +75,12 @@ public class OnlinestatusActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String Name = (String) dataSnapshot.child("OnlineStatus").getValue();
-                    name.setText(Name);
+                    if (dataSnapshot.hasChild("OnlineStatus"))
+                    {
+                        String Name = (String) dataSnapshot.child("OnlineStatus").getValue();
+                        name.setText(Name);
+                    }
+
                 }
             }
 
@@ -86,11 +90,7 @@ public class OnlinestatusActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
+
 
     @Override
     public void onBackPressed() {

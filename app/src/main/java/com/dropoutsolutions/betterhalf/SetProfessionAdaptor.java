@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.dropoutsolutions.betterhalf.ProfilesettingActivity;
 import com.dropoutsolutions.betterhalf.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -35,10 +37,12 @@ public class SetProfessionAdaptor extends RecyclerView.Adapter<SetProfessionAdap
     private FirebaseAuth mauth ;
     private DatabaseReference userref ;
     private String Currentuserid ;
+    BottomSheetDialog bottomSheetDialog ;
 
     public SetProfessionAdaptor(ArrayList<String> text, Context context) {
         this.text = text;
         this.context = context;
+        bottomSheetDialog = new BottomSheetDialog(context);
     }
 
     @NonNull
@@ -53,16 +57,45 @@ public class SetProfessionAdaptor extends RecyclerView.Adapter<SetProfessionAdap
     public void onBindViewHolder(@NonNull final SetProfessionAdaptor.MyViewHolder holder, final int position) {
 
 
-
         holder.item.setText(text.get(position));
         holder.item.setOnClickListener(v -> {
 
             row_index = position;
             notifyDataSetChanged();
-            if (row_index == position)
+
+            if (text.get(row_index).equals("Other"))
+            {
+                LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View Dailoglayout = li.inflate(R.layout.bottomsheet , null);
+                bottomSheetDialog.setContentView(Dailoglayout);
+                TextView profession ;
+                Button cont ;
+
+                profession = Dailoglayout.findViewById(R.id.name);
+                cont = Dailoglayout.findViewById(R.id.cont);
+
+                cont.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (profession.getText().equals(""))
+                        {
+                            Toast.makeText(context, "Please enter profession", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            bottomSheetDialog.dismiss();
+                            savedata(profession.getText().toString());
+
+                        }
+                    }
+                });
+                bottomSheetDialog.show();
+
+
+            }
+            else if (row_index == position)
             {
                 savedata(text.get(row_index));
-                context.startActivity(new Intent(context , ProfilesettingActivity.class));
             }
         });
 
@@ -91,6 +124,7 @@ public class SetProfessionAdaptor extends RecyclerView.Adapter<SetProfessionAdap
         HashMap<String, Object> user = new HashMap<>();
         user.put("Profession" , s);
         userref.updateChildren(user);
+        context.startActivity(new Intent(context , ProfilesettingActivity.class));
 
 
     }

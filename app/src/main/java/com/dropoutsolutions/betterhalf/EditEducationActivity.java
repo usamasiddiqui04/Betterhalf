@@ -221,65 +221,69 @@ public class EditEducationActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String education = (String) dataSnapshot.child("EducationLevel").getValue();
+                    if (dataSnapshot.hasChild("EducationLevel"))
+                    {
+                        String education = (String) dataSnapshot.child("EducationLevel").getValue();
 
-                    if (education.equals(other.getText()))
-                    {
-                        other.setPadding(20, 10, 20, 10);
-                        other.setBackgroundResource(R.drawable.edittextback);
-                        bdegree.setBackgroundResource(R.drawable.resetbackground);
-                        mdegree.setBackgroundResource(R.drawable.resetbackground);
-                        college.setBackgroundResource(R.drawable.resetbackground);
-                        nondegree.setBackgroundResource(R.drawable.resetbackground);
-                        doctorate.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (education.equals(doctorate.getText()))
-                    {
-                        doctorate.setPadding(20 , 10 , 20 , 10);
-                        doctorate.setBackgroundResource(R.drawable.edittextback);
-                        bdegree.setBackgroundResource(R.drawable.resetbackground);
-                        mdegree.setBackgroundResource(R.drawable.resetbackground);
-                        college.setBackgroundResource(R.drawable.resetbackground);
-                        nondegree.setBackgroundResource(R.drawable.resetbackground);
-                        other.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (education.equals(college.getText()))
-                    {
-                        college.setPadding(20 , 10 , 20 , 10);
-                        college.setBackgroundResource(R.drawable.edittextback);
-                        bdegree.setBackgroundResource(R.drawable.resetbackground);
-                        mdegree.setBackgroundResource(R.drawable.resetbackground);
-                        nondegree.setBackgroundResource(R.drawable.resetbackground);
-                        doctorate.setBackgroundResource(R.drawable.resetbackground);
-                        other.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (education.equals(nondegree.getText()))
-                    {
-                        nondegree.setPadding(20 , 10 , 20 , 10);
-                        nondegree.setBackgroundResource(R.drawable.edittextback);
-                        bdegree.setBackgroundResource(R.drawable.resetbackground);
-                        mdegree.setBackgroundResource(R.drawable.resetbackground);
-                        college.setBackgroundResource(R.drawable.resetbackground);
-                        doctorate.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (education.equals(mdegree.getText()))
-                    {
-                        mdegree.setPadding(20 , 10 , 20 , 10);
-                        mdegree.setBackgroundResource(R.drawable.edittextback);
-                        bdegree.setBackgroundResource(R.drawable.resetbackground);
-                        nondegree.setBackgroundResource(R.drawable.resetbackground);
-                        college.setBackgroundResource(R.drawable.resetbackground);
-                        doctorate.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (education.equals(bdegree.getText()))
-                    {
-                        bdegree.setPadding(20 , 10 , 20 , 10);
-                        bdegree.setBackgroundResource(R.drawable.edittextback);
-                        mdegree.setBackgroundResource(R.drawable.resetbackground);
-                        nondegree.setBackgroundResource(R.drawable.resetbackground);
-                        college.setBackgroundResource(R.drawable.resetbackground);
-                        doctorate.setBackgroundResource(R.drawable.resetbackground);
-                        other.setBackgroundResource(R.drawable.resetbackground);
+                        if (education.equals(other.getText()))
+                        {
+                            other.setPadding(20, 10, 20, 10);
+                            other.setBackgroundResource(R.drawable.edittextback);
+                            bdegree.setBackgroundResource(R.drawable.resetbackground);
+                            mdegree.setBackgroundResource(R.drawable.resetbackground);
+                            college.setBackgroundResource(R.drawable.resetbackground);
+                            nondegree.setBackgroundResource(R.drawable.resetbackground);
+                            doctorate.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (education.equals(doctorate.getText()))
+                        {
+                            doctorate.setPadding(20 , 10 , 20 , 10);
+                            doctorate.setBackgroundResource(R.drawable.edittextback);
+                            bdegree.setBackgroundResource(R.drawable.resetbackground);
+                            mdegree.setBackgroundResource(R.drawable.resetbackground);
+                            college.setBackgroundResource(R.drawable.resetbackground);
+                            nondegree.setBackgroundResource(R.drawable.resetbackground);
+                            other.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (education.equals(college.getText()))
+                        {
+                            college.setPadding(20 , 10 , 20 , 10);
+                            college.setBackgroundResource(R.drawable.edittextback);
+                            bdegree.setBackgroundResource(R.drawable.resetbackground);
+                            mdegree.setBackgroundResource(R.drawable.resetbackground);
+                            nondegree.setBackgroundResource(R.drawable.resetbackground);
+                            doctorate.setBackgroundResource(R.drawable.resetbackground);
+                            other.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (education.equals(nondegree.getText()))
+                        {
+                            nondegree.setPadding(20 , 10 , 20 , 10);
+                            nondegree.setBackgroundResource(R.drawable.edittextback);
+                            bdegree.setBackgroundResource(R.drawable.resetbackground);
+                            mdegree.setBackgroundResource(R.drawable.resetbackground);
+                            college.setBackgroundResource(R.drawable.resetbackground);
+                            doctorate.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (education.equals(mdegree.getText()))
+                        {
+                            mdegree.setPadding(20 , 10 , 20 , 10);
+                            mdegree.setBackgroundResource(R.drawable.edittextback);
+                            bdegree.setBackgroundResource(R.drawable.resetbackground);
+                            nondegree.setBackgroundResource(R.drawable.resetbackground);
+                            college.setBackgroundResource(R.drawable.resetbackground);
+                            doctorate.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (education.equals(bdegree.getText()))
+                        {
+                            bdegree.setPadding(20 , 10 , 20 , 10);
+                            bdegree.setBackgroundResource(R.drawable.edittextback);
+                            mdegree.setBackgroundResource(R.drawable.resetbackground);
+                            nondegree.setBackgroundResource(R.drawable.resetbackground);
+                            college.setBackgroundResource(R.drawable.resetbackground);
+                            doctorate.setBackgroundResource(R.drawable.resetbackground);
+                            other.setBackgroundResource(R.drawable.resetbackground);
+                        }
+
                     }
 
 
@@ -293,12 +297,6 @@ public class EditEducationActivity extends AppCompatActivity {
 
 
         });
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     @Override

@@ -51,14 +51,14 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         android:gravity="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="14sp"
         android:id="@+id/cont"
+        android:layout_margin="15dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@id/google"
         app:layout_constraintStart_toStartOf="@id/google"
         app:layout_constraintEnd_toEndOf="@id/google"
-        android:text="Continue with">
+        android:text="@string/by_clicking_continue_you_agree_with_our_terms_conditions_learn_how_we_precess_your_data_in_our_privacy_policy_and_cookies_policy">
 
     </TextView>
 
@@ -82,8 +82,9 @@
         android:background="@drawable/backgoundbytton"
         android:gravity="center"
         android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textAllCaps="true"
+        android:paddingStart="30dp"
         android:drawableLeft="@drawable/ic_facebook"
         app:layout_constraintBottom_toTopOf="@id/term"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,11 +103,11 @@
         android:layout_marginLeft="15dp"
         android:backgroundTint="#de5246"
         android:textAllCaps="true"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:paddingStart="7dp"
         android:drawableStart="@drawable/ic_gmail"
         android:textColor="#ffffff"
-        android:text="Log in with google"
+        android:text="Continue with google"
         android:background="@drawable/backgoundbytton"
         android:layout_marginTop="18dp"
         android:layout_marginBottom="18dp"

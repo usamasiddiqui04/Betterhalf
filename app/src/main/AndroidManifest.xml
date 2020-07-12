@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileimageActivity"></activity>
+        <activity android:name=".EthnicoriginActivity"></activity>
+        <activity android:name=".ProfileimageActivity" />
         <activity android:name=".ProfessionActivity" />
         <activity android:name=".BirthdayActivity" />
         <activity android:name=".GenderActivity" />

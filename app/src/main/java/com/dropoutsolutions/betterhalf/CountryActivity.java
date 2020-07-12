@@ -61,7 +61,7 @@ public class CountryActivity extends AppCompatActivity {
                 intent.putExtra("profession" ,profession);
                 intent.putExtra("maritalstatus" , maritalstatus);
                 intent.putExtra("educationlevel" , education);
-                intent.putExtra("country" , countryCodePicker.getDefaultCountryName());
+                intent.putExtra("country" , "Pakistan");
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }

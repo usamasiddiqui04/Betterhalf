@@ -161,41 +161,45 @@ public class GetPrayingActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String pray = (String) dataSnapshot.child("Prayer").getValue();
+                    if (dataSnapshot.hasChild("Prayer"))
+                    {
+                        String pray = (String) dataSnapshot.child("Prayer").getValue();
 
-                    if (pray.equals(apray.getText()))
-                    {
-                        apray.setPadding(20 , 10 , 20 , 10);
-                        apray.setBackgroundResource(R.drawable.edittextback);
-                        spray.setBackgroundResource(R.drawable.resetbackground);
-                        npray.setBackgroundResource(R.drawable.resetbackground);
-                        upray.setBackgroundResource(R.drawable.resetbackground);
+                        if (pray.equals(apray.getText()))
+                        {
+                            apray.setPadding(20 , 10 , 20 , 10);
+                            apray.setBackgroundResource(R.drawable.edittextback);
+                            spray.setBackgroundResource(R.drawable.resetbackground);
+                            npray.setBackgroundResource(R.drawable.resetbackground);
+                            upray.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (pray.equals(upray.getText()))
+                        {
+                            upray.setPadding(20, 10, 20, 10);
+                            upray.setBackgroundResource(R.drawable.edittextback);
+                            spray.setBackgroundResource(R.drawable.resetbackground);
+                            npray.setBackgroundResource(R.drawable.resetbackground);
+                            apray.setBackgroundResource(R.drawable.resetbackground);
+                            HashMap<String, Object> user = new HashMap<>();
+                        }
+                        else if (pray.equals(spray.getText()))
+                        {
+                            spray.setPadding(20, 10, 20, 10);
+                            spray.setBackgroundResource(R.drawable.edittextback);
+                            upray.setBackgroundResource(R.drawable.resetbackground);
+                            npray.setBackgroundResource(R.drawable.resetbackground);
+                            apray.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            npray.setPadding(20, 10, 20, 10);
+                            npray.setBackgroundResource(R.drawable.edittextback);
+                            upray.setBackgroundResource(R.drawable.resetbackground);
+                            spray.setBackgroundResource(R.drawable.resetbackground);
+                            apray.setBackgroundResource(R.drawable.resetbackground);
+                        }
                     }
-                    else if (pray.equals(upray.getText()))
-                    {
-                        upray.setPadding(20, 10, 20, 10);
-                        upray.setBackgroundResource(R.drawable.edittextback);
-                        spray.setBackgroundResource(R.drawable.resetbackground);
-                        npray.setBackgroundResource(R.drawable.resetbackground);
-                        apray.setBackgroundResource(R.drawable.resetbackground);
-                        HashMap<String, Object> user = new HashMap<>();
-                    }
-                    else if (pray.equals(spray.getText()))
-                    {
-                        spray.setPadding(20, 10, 20, 10);
-                        spray.setBackgroundResource(R.drawable.edittextback);
-                        upray.setBackgroundResource(R.drawable.resetbackground);
-                        npray.setBackgroundResource(R.drawable.resetbackground);
-                        apray.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else
-                    {
-                        npray.setPadding(20, 10, 20, 10);
-                        npray.setBackgroundResource(R.drawable.edittextback);
-                        upray.setBackgroundResource(R.drawable.resetbackground);
-                        spray.setBackgroundResource(R.drawable.resetbackground);
-                        apray.setBackgroundResource(R.drawable.resetbackground);
-                    }
+
                 }
             }
 
@@ -208,7 +212,8 @@ public class GetPrayingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        startActivity(new Intent(this , ProfilesettingActivity.class));
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

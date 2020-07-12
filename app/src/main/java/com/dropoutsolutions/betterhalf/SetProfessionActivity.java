@@ -65,6 +65,7 @@ public class SetProfessionActivity extends AppCompatActivity {
         text.add("Teacher");
         text.add("Waiter");
         text.add("Soldier");
+        text.add("Other");
 
 
         recyclerView = findViewById(R.id.recyclerview);
@@ -77,9 +78,13 @@ public class SetProfessionActivity extends AppCompatActivity {
         recyclerView.setAdapter(professionAdaptor);
 
     }
+
+
     @Override
-    public void finish() {
-        super.finish();
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this , ProfilesettingActivity.class));
+        finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 

@@ -44,7 +44,7 @@ public class Getrelocation extends AppCompatActivity {
                 yes.setBackgroundResource(R.drawable.edittextback);
                 no.setBackgroundResource(R.drawable.resetbackground);
                 HashMap<String, Object> user = new HashMap<>();
-                user.put("MoveToAbroad" , yes.getText());
+                user.put("MoveToAbroad" , yes.getText().toString());
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -68,7 +68,7 @@ public class Getrelocation extends AppCompatActivity {
                 no.setBackgroundResource(R.drawable.edittextback);
                 yes.setBackgroundResource(R.drawable.resetbackground);
                 HashMap<String, Object> user = new HashMap<>();
-                user.put("MoveToAbroad" , no.getText());
+                user.put("MoveToAbroad" , no.getText().toString());
                 userref.updateChildren(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -98,19 +98,23 @@ public class Getrelocation extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists())
                 {
-                    String child = (String) snapshot.child("MoveToAbroad").getValue();
-                    if (child.equals(yes.getText()))
+                    if (snapshot.hasChild("MoveToAbroad"))
                     {
-                        yes.setPadding(20 , 10 , 20 , 10);
-                        yes.setBackgroundResource(R.drawable.edittextback);
-                        no.setBackgroundResource(R.drawable.resetbackground);
+                        String child = (String) snapshot.child("MoveToAbroad").getValue();
+                        if (child.equals(yes.getText()))
+                        {
+                            yes.setPadding(20 , 10 , 20 , 10);
+                            yes.setBackgroundResource(R.drawable.edittextback);
+                            no.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            no.setPadding(20, 10, 20, 10);
+                            no.setBackgroundResource(R.drawable.edittextback);
+                            yes.setBackgroundResource(R.drawable.resetbackground);
+                        }
                     }
-                    else
-                    {
-                        no.setPadding(20, 10, 20, 10);
-                        no.setBackgroundResource(R.drawable.edittextback);
-                        yes.setBackgroundResource(R.drawable.resetbackground);
-                    }
+
                 }
             }
 
@@ -119,5 +123,12 @@ public class Getrelocation extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this , ProfilesettingActivity.class));
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

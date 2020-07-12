@@ -102,20 +102,24 @@ public class GetAlcoholActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String convert = (String)dataSnapshot.child("Drink").getValue();
+                    if(dataSnapshot.hasChild("Drink"))
+                    {
+                        String convert = (String)dataSnapshot.child("Drink").getValue();
 
-                    if (convert.equals(yes.getText()))
-                    {
-                        yes.setPadding(20 , 10 , 20 , 10);
-                        yes.setBackgroundResource(R.drawable.edittextback);
-                        no.setBackgroundResource(R.drawable.resetbackground);
+                        if (convert.equals(yes.getText()))
+                        {
+                            yes.setPadding(20 , 10 , 20 , 10);
+                            yes.setBackgroundResource(R.drawable.edittextback);
+                            no.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            no.setPadding(20 , 10 , 20 , 10);
+                            no.setBackgroundResource(R.drawable.edittextback);
+                            yes.setBackgroundResource(R.drawable.resetbackground);
+                        }
                     }
-                    else
-                    {
-                        no.setPadding(20 , 10 , 20 , 10);
-                        no.setBackgroundResource(R.drawable.edittextback);
-                        yes.setBackgroundResource(R.drawable.resetbackground);
-                    }
+
                 }
             }
 

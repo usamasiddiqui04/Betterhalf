@@ -156,39 +156,43 @@ public class GetReligionActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String rel = (String) dataSnapshot.child("Religious").getValue();
-                    if (rel.equals(verypractising.getText()))
+                    if (dataSnapshot.hasChild("Religious"))
                     {
-                        verypractising.setPadding(20, 10, 20, 10);
-                        verypractising.setBackgroundResource(R.drawable.edittextback);
-                        practising.setBackgroundResource(R.drawable.resetbackground);
-                        modepractsing.setBackgroundResource(R.drawable.resetbackground);
-                        notpractising.setBackgroundResource(R.drawable.resetbackground);
+                        String rel = (String) dataSnapshot.child("Religious").getValue();
+                        if (rel.equals(verypractising.getText()))
+                        {
+                            verypractising.setPadding(20, 10, 20, 10);
+                            verypractising.setBackgroundResource(R.drawable.edittextback);
+                            practising.setBackgroundResource(R.drawable.resetbackground);
+                            modepractsing.setBackgroundResource(R.drawable.resetbackground);
+                            notpractising.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (rel.equals(modepractsing.getText()))
+                        {
+                            modepractsing.setPadding(20 , 10 , 20 , 10);
+                            modepractsing.setBackgroundResource(R.drawable.edittextback);
+                            verypractising.setBackgroundResource(R.drawable.resetbackground);
+                            practising.setBackgroundResource(R.drawable.resetbackground);
+                            notpractising.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else if (rel.equals(practising.getText()))
+                        {
+                            practising.setPadding(20, 10, 20, 10);
+                            practising.setBackgroundResource(R.drawable.edittextback);
+                            verypractising.setBackgroundResource(R.drawable.resetbackground);
+                            modepractsing.setBackgroundResource(R.drawable.resetbackground);
+                            notpractising.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            notpractising.setPadding(20 , 10 , 20 , 10);
+                            notpractising.setBackgroundResource(R.drawable.edittextback);
+                            verypractising.setBackgroundResource(R.drawable.resetbackground);
+                            practising.setBackgroundResource(R.drawable.resetbackground);
+                            modepractsing.setBackgroundResource(R.drawable.resetbackground);
+                        }
                     }
-                    else if (rel.equals(modepractsing.getText()))
-                    {
-                        modepractsing.setPadding(20 , 10 , 20 , 10);
-                        modepractsing.setBackgroundResource(R.drawable.edittextback);
-                        verypractising.setBackgroundResource(R.drawable.resetbackground);
-                        practising.setBackgroundResource(R.drawable.resetbackground);
-                        notpractising.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else if (rel.equals(practising.getText()))
-                    {
-                        practising.setPadding(20, 10, 20, 10);
-                        practising.setBackgroundResource(R.drawable.edittextback);
-                        verypractising.setBackgroundResource(R.drawable.resetbackground);
-                        modepractsing.setBackgroundResource(R.drawable.resetbackground);
-                        notpractising.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else
-                    {
-                        notpractising.setPadding(20 , 10 , 20 , 10);
-                        notpractising.setBackgroundResource(R.drawable.edittextback);
-                        verypractising.setBackgroundResource(R.drawable.resetbackground);
-                        practising.setBackgroundResource(R.drawable.resetbackground);
-                        modepractsing.setBackgroundResource(R.drawable.resetbackground);
-                    }
+
                 }
             }
 

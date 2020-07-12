@@ -97,20 +97,24 @@ public class SetgenderActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String sex = (String) dataSnapshot.child("Gender").getValue();
+                    if(dataSnapshot.hasChild("Gender"))
+                    {
+                        String sex = (String) dataSnapshot.child("Gender").getValue();
 
-                    if (sex.equals("Male"))
-                    {
-                        male.setPadding(20 , 10 , 20 , 10);
-                        male.setBackgroundResource(R.drawable.edittextback);
-                        female.setBackgroundResource(R.drawable.resetbackground);
+                        if (sex.equals("Male"))
+                        {
+                            male.setPadding(20 , 10 , 20 , 10);
+                            male.setBackgroundResource(R.drawable.edittextback);
+                            female.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            female.setPadding(20, 10, 20, 10);
+                            female.setBackgroundResource(R.drawable.edittextback);
+                            male.setBackgroundResource(R.drawable.resetbackground);
+                        }
                     }
-                    else
-                    {
-                        female.setPadding(20, 10, 20, 10);
-                        female.setBackgroundResource(R.drawable.edittextback);
-                        male.setBackgroundResource(R.drawable.resetbackground);
-                    }
+
                 }
             }
 

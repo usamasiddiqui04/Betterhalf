@@ -105,19 +105,23 @@ public class getchildern extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists())
                 {
-                    String child = (String) snapshot.child("HaveChildren").getValue();
-                    if (child.equals(yes.getText()))
+                    if (snapshot.hasChild("HaveChildren"))
                     {
-                        yes.setPadding(20 , 10 , 20 , 10);
-                        yes.setBackgroundResource(R.drawable.edittextback);
-                        no.setBackgroundResource(R.drawable.resetbackground);
+                        String child = (String) snapshot.child("HaveChildren").getValue();
+                        if (child.equals(yes.getText()))
+                        {
+                            yes.setPadding(20 , 10 , 20 , 10);
+                            yes.setBackgroundResource(R.drawable.edittextback);
+                            no.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            no.setPadding(20, 10, 20, 10);
+                            no.setBackgroundResource(R.drawable.edittextback);
+                            yes.setBackgroundResource(R.drawable.resetbackground);
+                        }
                     }
-                    else
-                    {
-                        no.setPadding(20, 10, 20, 10);
-                        no.setBackgroundResource(R.drawable.edittextback);
-                        yes.setBackgroundResource(R.drawable.resetbackground);
-                    }
+
                 }
             }
 
@@ -126,5 +130,12 @@ public class getchildern extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this , ProfilesettingActivity.class));
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

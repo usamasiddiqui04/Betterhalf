@@ -76,21 +76,9 @@ public class SettingFragment extends Fragment {
         profileview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userref.child(Currentuserid).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists())
-                        {
-                            Intent intent = new Intent(getContext() , UserprofileActivity.class);
-                            startActivity(intent);
-                        }
-                    }
+                Intent intent = new Intent(getContext() , UserprofileActivity.class);
+                startActivity(intent);
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
             }
         });
 

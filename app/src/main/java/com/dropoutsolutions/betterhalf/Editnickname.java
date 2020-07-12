@@ -79,8 +79,12 @@ public class Editnickname extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists())
                     {
-                        String Name = (String) dataSnapshot.child("Name").getValue();
-                        name.setText(Name);
+                        if (dataSnapshot.hasChild("Name"))
+                        {
+                            String Name = (String) dataSnapshot.child("Name").getValue();
+                            name.setText(Name);
+                        }
+
                     }
                 }
 

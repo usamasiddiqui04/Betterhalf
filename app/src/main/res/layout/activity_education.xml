@@ -35,17 +35,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <com.airbnb.lottie.LottieAnimationView
+        <ImageView
             android:id="@+id/heart"
             android:layout_width="225dp"
-            android:layout_height="130dp"
+            android:layout_height="150dp"
             android:layout_marginTop="30sp"
+            android:src="@drawable/ic_graduate"
             app:layout_constraintEnd_toEndOf="@id/text"
             app:layout_constraintStart_toStartOf="@id/text"
-            app:layout_constraintTop_toBottomOf="@id/text"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/degree" />
+            app:layout_constraintTop_toBottomOf="@id/text"/>
 
         <TextView
             android:id="@+id/gender"
@@ -66,7 +64,7 @@
             app:layout_constraintStart_toStartOf="@id/gender"
             app:layout_constraintEnd_toEndOf="@id/gender"
             app:layout_constraintTop_toBottomOf="@id/gender"
-            android:text="Bachelors Degree"
+            android:text="Doctorate"
             android:id="@+id/bachlorsdegree"
             android:textColor="@color/pink"
             android:textSize="24sp"
@@ -96,7 +94,7 @@
             app:layout_constraintStart_toStartOf="@id/master"
             app:layout_constraintEnd_toEndOf="@id/master"
             app:layout_constraintTop_toBottomOf="@id/master"
-            android:text="Non degree Qualification"
+            android:text="Bachelors Degree"
             android:id="@+id/nondegree"
             android:textColor="@color/pink"
             android:textSize="24sp"
@@ -126,7 +124,7 @@
             app:layout_constraintStart_toStartOf="@id/college"
             app:layout_constraintEnd_toEndOf="@id/college"
             app:layout_constraintTop_toBottomOf="@id/college"
-            android:text="Doctorate"
+            android:text="Non degree qualifiaction"
             android:id="@+id/doctorate"
             android:textColor="@color/pink"
             android:textSize="24sp"

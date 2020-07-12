@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,33 +12,28 @@
         android:id="@+id/logo"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_margin="15dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/logo"/>
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_below="@id/logo"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
         android:text="@string/this_help_us_connect_you_to_relevant_matches"
         android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textStyle="bold"/>
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/heart"
         android:layout_width="250dp"
         android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="@id/text"
-        app:layout_constraintStart_toStartOf="@id/text"
-        app:layout_constraintTop_toBottomOf="@id/text"
+        android:layout_centerHorizontal="true"
         app:lottie_autoPlay="true"
+        android:layout_below="@id/text"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/profession" />
 
@@ -50,6 +45,8 @@
         android:text="@string/what_do_you_do_for_a_living"
         android:textColor="#000000"
         android:textSize="28sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/heart"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,14 +57,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="380dp"
-        android:layout_marginBottom="30sp"
+        android:layout_below="@id/born"
+        android:layout_marginBottom="20sp"
         android:id="@+id/recyclerview"
-        tools:listitem="@layout/professionrecylerlayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/born">
+        tools:listitem="@layout/professionrecylerlayout">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

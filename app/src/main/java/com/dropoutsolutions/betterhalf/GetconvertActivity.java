@@ -103,20 +103,23 @@ public class GetconvertActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
                 {
-                    String convert = (String)dataSnapshot.child("Convert").getValue();
+                    if (dataSnapshot.hasChild("Convert"))
+                    {
+                        String convert = (String)dataSnapshot.child("Convert").getValue();
+                        if (convert.equals(yes.getText()))
+                        {
+                            yes.setPadding(20 , 10 , 20 , 10);
+                            yes.setBackgroundResource(R.drawable.edittextback);
+                            no.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                        else
+                        {
+                            no.setPadding(20 , 10 , 20 , 10);
+                            no.setBackgroundResource(R.drawable.edittextback);
+                            yes.setBackgroundResource(R.drawable.resetbackground);
+                        }
+                    }
 
-                    if (convert.equals(yes.getText()))
-                    {
-                        yes.setPadding(20 , 10 , 20 , 10);
-                        yes.setBackgroundResource(R.drawable.edittextback);
-                        no.setBackgroundResource(R.drawable.resetbackground);
-                    }
-                    else
-                    {
-                        no.setPadding(20 , 10 , 20 , 10);
-                        no.setBackgroundResource(R.drawable.edittextback);
-                        yes.setBackgroundResource(R.drawable.resetbackground);
-                    }
                 }
             }
 
@@ -130,8 +133,8 @@ public class GetconvertActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         startActivity(new Intent(this , ProfilesettingActivity.class));
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
