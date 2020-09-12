@@ -42,11 +42,22 @@
         android:paddingBottom="15sp"
         android:id="@+id/completeprofile"
         android:paddingEnd="20sp"
-        android:paddingStart="20sp"
         android:visibility="gone"
-        android:drawableEnd="@drawable/ic_close"
+        android:paddingStart="20sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"
+        android:id="@+id/cross"
+        app:layout_constraintTop_toTopOf="@id/completeprofile"
+        app:layout_constraintEnd_toEndOf="@id/completeprofile"
+        app:layout_constraintBottom_toBottomOf="@id/completeprofile"
+        android:src="@drawable/ic_close"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

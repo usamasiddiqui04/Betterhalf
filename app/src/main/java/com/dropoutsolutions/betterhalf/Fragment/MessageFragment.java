@@ -1,6 +1,8 @@
 package com.dropoutsolutions.betterhalf.Fragment;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,6 +23,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dropoutsolutions.betterhalf.ChatActivity;
+import com.dropoutsolutions.betterhalf.MessageAdapter;
 import com.dropoutsolutions.betterhalf.OnclickDetails;
 import com.dropoutsolutions.betterhalf.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -44,6 +47,7 @@ public class MessageFragment extends Fragment {
     private DatabaseReference messageref ;
     String currentuserid;
     ProgressDialog progressDialog ;
+    AlertDialog.Builder builder ;
     public MessageFragment() {
         // Required empty public constructor
     }
@@ -99,6 +103,28 @@ public class MessageFragment extends Fragment {
                                         Intent intent = new Intent(getContext() , ChatActivity.class);
                                         intent.putExtra("Userid" , postid);
                                         startActivity(intent);
+                                    }
+                                });
+
+                                userViewHOlder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                                    @Override
+                                    public boolean onLongClick(View view) {
+                                        builder  = new AlertDialog.Builder(getContext());
+                                        builder.setTitle("Delete message");
+                                        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                messageref.removeValue();
+                                            }
+                                        });
+                                        builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int id) {
+                                            }
+                                        });
+                                        builder.create();
+                                        builder.show();
+                                        return false;
                                     }
                                 });
                             }

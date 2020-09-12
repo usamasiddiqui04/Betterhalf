@@ -79,6 +79,7 @@ public class DrinkActivity extends AppCompatActivity {
                 intent.putExtra("drink" , yes.getText());
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 
@@ -104,8 +105,6 @@ public class DrinkActivity extends AppCompatActivity {
                 intent.putExtra("drink" , no.getText());
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-
             }
         });
     }

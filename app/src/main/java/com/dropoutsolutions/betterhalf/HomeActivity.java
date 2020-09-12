@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import androidx.fragment.app.FragmentManager;
 public class HomeActivity extends AppCompatActivity  {
 
     BottomNavigationView navView ;
+    ImageView cross ;
     private DatabaseReference userref ;
     private String Currentuserid ;
     private FirebaseAuth firebaseAuth ;
@@ -39,12 +41,22 @@ public class HomeActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         navView = findViewById(R.id.nav_view);
+        cross = findViewById(R.id.cross);
         Completeprofile = findViewById(R.id.completeprofile);
         userref = FirebaseDatabase.getInstance().getReference().child("Users");
         firebaseAuth = FirebaseAuth.getInstance() ;
         Currentuserid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         loadFragment(new HomeFragment());
+
+        cross.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Completeprofile.setVisibility(View.GONE);
+                cross.setVisibility(View.GONE);
+            }
+        });
+
 
         Completeprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,11 +130,13 @@ public class HomeActivity extends AppCompatActivity  {
 
                     if (count != 23)
                     {
+                        cross.setVisibility(View.VISIBLE);
                         Completeprofile.setVisibility(View.VISIBLE);
                     }
                     else
                     {
                         Completeprofile.setVisibility(View.GONE);
+                        cross.setVisibility(View.GONE);
                     }
                 }
             }
