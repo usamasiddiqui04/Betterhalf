@@ -114,7 +114,7 @@ public class MessageFragment extends Fragment {
                                         builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int id) {
-                                                messageref.removeValue();
+                                                messageref.child(postid).removeValue();
                                             }
                                         });
                                         builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
